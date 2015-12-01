@@ -95,4 +95,4 @@ vinna_ar.sort()
 vinna_kyn.sort()
 vinna_starfsstett.sort()
 
-print_keys()
+
