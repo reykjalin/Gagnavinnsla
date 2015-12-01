@@ -9,15 +9,17 @@ for row in data.vinna:
         AKKHeildFullMedal[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
 
 AKKHeildFullMedal = dict_sort.sort(AKKHeildFullMedal)
+
 x = list()
 y = list()
-for pair in AKKHeildFullMedal:
-    print(pair[0], pair[1], sep = '\t')
-    x.append(int(pair[0]))
-    y.append(int(pair[1]))
+for key in list(AKKHeildFullMedal.keys()):
+    x.append(int(key))
+    y.append(int(AKKHeildFullMedal[key]))
 
-plt.bar(x, y)
+plt.bar(x, y, align = 'center')
 plt.title('Heildarlaun - Meðaltal í fullri vinnu milli ára í þús. kr.')
+plt.xticks([year for year in x if year % 2 == 0])
+plt.xlim(1997, 2015)
 plt.show()
         
 
