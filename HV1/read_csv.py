@@ -4,38 +4,46 @@ menntun = []
 menntun_menntun = set()
 menntun_aldurbus = set()
 menntun_kyn = set()
+menntun_ar = list()
 
 vinna = []
 vinna_ar = set()
 vinna_starfsstett = set()
 vinna_kyn = set()
+vinna_vinnuhlutf = list()
 
 def print_keys():
     print('----- Vinna: Ár -----')
-    for i in vinna_ar:
-        print(i)
+    print(*vinna_ar, sep = '\t|\t')
     print('----- Vinna: Ár -----')
+    print()
     print('----- Vinna: Starfsstéttir -----')
-    for i in vinna_starfsstett:
-        print(i)
+    print(*vinna_starfsstett, sep = '\t|\t')
     print('----- Vinna: Starfsstéttir -----')
+    print()
     print('----- Vinna: Kyn -----')
-    for i in vinna_kyn:
-        print(i)
+    print(*vinna_kyn, sep = '\t|\t')
     print('----- Vinna: Kyn -----')
     print()
+    print('----- Vinna: Vinnuhlutfall -----')
+    print(*vinna_vinnuhlutf, sep = '\n')
+    print('----- Vinna: Vinnuhlutfall -----')
+    print()
     print('----- Menntun: Menntunarstig -----')
-    for i in menntun_menntun:
-        print(i)
+    print(*menntun_menntun, sep = '\t|\t')
     print('----- Menntun: Menntunarstig -----')
+    print()
     print('----- Menntun: Aldur/Búseta -----')
-    for i in menntun_aldurbus:
-        print(i)
+    print(*menntun_aldurbus, sep = '\t|\t')
     print('----- Menntun: Aldur/Búseta -----')
+    print()
     print('----- Menntun: Kyn -----')
-    for i in menntun_kyn:
-        print(i)
+    print(*menntun_kyn, sep = '\t|\t')
     print('----- Menntun: Kyn -----')
+    print()
+    print('----- Menntun: Ár -----')
+    print(*menntun_ar, sep = '\t|\t')
+    print('----- Menntun: Ár -----')    
 
 with open('menntun.csv', 'r') as csvfile:
     # Use sniffer to find dialect
@@ -72,6 +80,8 @@ with open('laun_alm_vinnum.csv', 'r') as csvfile:
 menntun_menntun = list(menntun_menntun)
 menntun_kyn = list(menntun_kyn)
 menntun_aldurbus = list(menntun_aldurbus)
+menntun_ar = [x for x in list(menntun[0].keys()) if x.isdigit()]
+menntun_ar.sort()
 menntun_menntun.sort()
 menntun_kyn.sort()
 menntun_aldurbus.sort()
@@ -79,6 +89,8 @@ menntun_aldurbus.sort()
 vinna_ar = list(vinna_ar)
 vinna_kyn = list(vinna_kyn)
 vinna_starfsstett = list(vinna_starfsstett)
+vinna_vinnuhlutf = [x for x in list(vinna[0].keys()) if x != 'Kyn' and x != 'Starfsstétt' and x != 'Ár']
+vinna_vinnuhlutf.sort()
 vinna_ar.sort()
 vinna_kyn.sort()
 vinna_starfsstett.sort()
