@@ -45,7 +45,7 @@ for i in range(len(data)):
     
     if changed:
         if upper:
-            letter = newletter.upper()
+            letter = letter.upper()
         data = data[:i] + letter + data[i+1:]
 
 # Get new filename, with correct file ending and _eng at the end
