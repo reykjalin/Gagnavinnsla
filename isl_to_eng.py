@@ -11,7 +11,6 @@ for i in range(len(data)):
     letter = data[i]
     upper = letter.isupper()
     changed = False
-    newletter = ''
     if letter.lower() == 'á':
         letter = 'a'
         changed = True
