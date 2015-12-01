@@ -1,7 +1,8 @@
 import csv
 
-headers = ''
-with open('data.csv', 'r') as csvfile:
+headers = {}
+menntun = []
+with open('menntun.csv', 'r') as csvfile:
     # Use sniffer to find dialect
     currdialect = csv.Sniffer().sniff(csvfile.read(1024))
     # Use seek to go back to beginning of data.csv
@@ -13,9 +14,7 @@ with open('data.csv', 'r') as csvfile:
     # Read from csv file
     firstrow = True
     for row in dictreader:
-        if firstrow:
-            firstrow = False
-            print(row)
-            headers = row
-        if row['2013 Alls'].isdigit() and row['Skóli'] == 'Háskólinn í Reykjavík' and int(row['2013 Alls']) > 0:
-            print(row['Skóli'], row['Námsbrautir og gráður'], row['2013 Alls'], sep=' <==> ')
+        menntun.append(row)
+
+for i in menntun:
+    print(i)
