@@ -1,5 +1,6 @@
 import csv
 
+headers = ''
 with open('data.csv', 'r') as csvfile:
     # Use sniffer to find dialect
     currdialect = csv.Sniffer().sniff(csvfile.read(1024))
@@ -15,5 +16,6 @@ with open('data.csv', 'r') as csvfile:
         if firstrow:
             firstrow = False
             print(row)
+            headers = row
         if row['2013 Alls'].isdigit() and row['Skóli'] == 'Háskólinn í Reykjavík' and int(row['2013 Alls']) > 0:
             print(row['Skóli'], row['Námsbrautir og gráður'], row['2013 Alls'], sep=' <==> ')
