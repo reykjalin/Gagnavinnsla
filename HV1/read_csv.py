@@ -33,7 +33,7 @@ def print_keys():
     print(*vinna_kyn, sep = '\t\t')
     print()
     print()
-    print('----- Vinna: Vinnuhlutfall -----')
+    print('----- Vinna: Vinnuhlutfall (listi af keys) -----')
     print(*vinna_vinnuhlutf, sep = '\n')
     print()
     print()
