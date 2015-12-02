@@ -25,26 +25,20 @@ for x in range (len(Mentun_ar)):
 	      		AllsMentun[x] = row
 	      		AllsMentun[Mentun_ar[x]] = AllsMentun.pop(x)
 
-print(AllsMentun)	
-
-
+print(AllsMentun)
 
 x = list()
 y = list()
 
-print(AllsMentun['20 til 24 ára'][:][0])
-x,y = AllsMentun['20 til 24 ára'][1]
-print ('-------')
-print (len((AllsMentun['20 til 24 ára'])))
-
-print (x)
-print (y)
-
 for bla1 in range(len(Mentun_ar)):
-	for bla2 in range(len((AllsMentun[(Mentun_ar[bla1]]))):
-		
+	for bla2 in range(len(AllsMentun[(Mentun_ar[bla1])])):	
+		x(bla1).append= AllsMentun[Mentun_ar[bla1]][bla2][0]
+		print( AllsMentun[Mentun_ar[bla1]][bla2][0])
+		print (type	(AllsMentun[Mentun_ar[bla1]][bla2]))
 
+	print("-----------------")		
 
+# print (x)
 # for x in range (len(Mentun_ar)):
 # 	for key in list(AllsMentun[Mentun_ar[x]].keys()):
 # 	x.append(int(key))
