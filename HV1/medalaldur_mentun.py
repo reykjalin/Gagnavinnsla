@@ -5,13 +5,15 @@ import list_to_int as lti
 
 
 
+
 # Hver er meðalaldur háskólamenntaðs fólks, bæði karla og kvenna?
 
-
 Mentun_ar = ('20 til 24 ára','25 til 29 ára','30 til 49 ára','50 til 64 ára','65 til 74 ára')
-AllsMentun = dict()
+AllsMentun = {}
 KarlaMentun = dict()
 KvennaMentun = dict()
+
+
 
 
 for x in range (len(Mentun_ar)):
@@ -22,9 +24,31 @@ for x in range (len(Mentun_ar)):
 	      		row = lti.tuple2_toint(row)
 	      		AllsMentun[x] = row
 	      		AllsMentun[Mentun_ar[x]] = AllsMentun.pop(x)
+
 print(AllsMentun)	
 
 
+
+x = list()
+y = list()
+
+print(AllsMentun['20 til 24 ára'][:][0])
+x,y = AllsMentun['20 til 24 ára'][1]
+print ('-------')
+print (len((AllsMentun['20 til 24 ára'])))
+
+print (x)
+print (y)
+
+for bla1 in range(len(Mentun_ar)):
+	for bla2 in range(len((AllsMentun[(Mentun_ar[bla1]]))):
+		
+
+
+# for x in range (len(Mentun_ar)):
+# 	for key in list(AllsMentun[Mentun_ar[x]].keys()):
+# 	x.append(int(key))
+# 	y.append(int(AllsMentun[Mentun_ar[x]][key]))
 
 
 
