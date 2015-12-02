@@ -43,6 +43,6 @@ for kyn in range(len(KynFlokkur)):
 	plt.grid(True)
 
 
-
+plt.tight_layout()
 plt.show()
 
