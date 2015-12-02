@@ -2,6 +2,7 @@ import read_csv as data
 import dict_sort
 import list_to_int as lti
 import matplotlib.pyplot as plt
+import plotter
 
 # Declare all dictionaries that will store data
 avg_all = dict()
@@ -16,6 +17,21 @@ stjorn_kvk = dict()
 serfr_all = dict()
 serfr_kk = dict()
 serfr_kvk = dict()
+idnad_all = dict()
+idnad_kk = dict()
+idnad_kvk = dict()
+skrifst_all = dict()
+skrifst_kk = dict()
+skrifst_kvk = dict()
+taeknar_all = dict()
+taeknar_kk = dict()
+taeknar_kvk = dict()
+verka_all = dict()
+verka_kk = dict()
+verka_kvk = dict()
+solu_all = dict()
+solu_kk = dict()
+solu_kvk = dict()
 
 legend_handles = list()
 plot_title = list()
@@ -50,6 +66,41 @@ for row in data.vinna:
             serfr_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             serfr_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+    elif row['Starfsstétt'] == 'Sérfræðingar':
+        if row['Kyn'] == 'Alls':
+            idnad_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Karlar':
+            idnad_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Konur':
+            idnad_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+    elif row['Starfsstétt'] == 'Sérfræðingar':
+        if row['Kyn'] == 'Alls':
+            skrifst_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Karlar':
+            skrifst_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Konur':
+            skrifst_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+    elif row['Starfsstétt'] == 'Sérfræðingar':
+        if row['Kyn'] == 'Alls':
+            taeknar_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Karlar':
+            taeknar_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Konur':
+            taeknar_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+    elif row['Starfsstétt'] == 'Sérfræðingar':
+        if row['Kyn'] == 'Alls':
+            verka_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Karlar':
+            verka_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Konur':
+            verka_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+    elif row['Starfsstétt'] == 'Sérfræðingar':
+        if row['Kyn'] == 'Alls':
+            solu_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Karlar':
+            solu_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+        elif row['Kyn'] == 'Konur':
+            solu_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
 
 # Sort dictionaries and get lists
 avg_all = dict_sort.key_sort(avg_all)
@@ -64,6 +115,21 @@ stjorn_kvk = dict_sort.key_sort(stjorn_kvk)
 serfr_all = dict_sort.key_sort(serfr_all)
 serfr_kk = dict_sort.key_sort(serfr_kk)
 serfr_kvk = dict_sort.key_sort(serfr_kvk)
+idnad_all = dict_sort.key_sort(idnad_all)
+idnad_kk = dict_sort.key_sort(idnad_kk)
+idnad_kvk = dict_sort.key_sort(idnad_kvk)
+skrifst_all = dict_sort.key_sort(skrifst_all)
+skrifst_kk = ddict_sort.key_sort(skrifst_kk)
+skrifst_kvk = dict_sort.key_sort(skrifst_kvk)
+taeknar_all = dict_sort.key_sort(taeknar_all)
+taeknar_kk = dict_sort.key_sort(taeknar_kk)
+taeknar_kvk = dict_sort.key_sort(taeknar_kvk)
+verka_all = dict_sort.key_sort(verka_all)
+verka_kk = dict_sort.key_sort(verka_kk)
+verka_kvk = dict_sort.key_sort(verka_kvk)
+solu_all = dict_sort.key_sort(solu_all)
+solu_kk = ddict_sort.key_sort(solu_kk)
+solu_kvk = dict_sort.key_sort(solu_kvk)
 
 # Change lists to int
 avg_all = lti.tuple2_toint(avg_all)
@@ -78,6 +144,22 @@ stjorn_kvk = lti.tuple2_toint(stjorn_kvk)
 serfr_all = lti.tuple2_toint(serfr_all)
 serfr_kk = lti.tuple2_toint(serfr_kk)
 serfr_kvk = lti.tuple2_toint(serfr_kvk)
+idnad_all = lti.tuple2_toint(idnad_all)
+idnad_kk = lti.tuple2_toint(idnad_kk)
+idnad_kvk = lti.tuple2_toint(idnad_kvk)
+skrifst_all = lti.tuple2_toint(skrifst_all)
+skrifst_kk = lti.tuple2_toint(skrifst_kk)
+skrifst_kvk = lti.tuple2_toint(skrifst_kvk)
+taeknar_all = lti.tuple2_toint(taeknar_all)
+taeknar_kk = lti.tuple2_toint(taeknar_kk)
+taeknar_kvk = lti.tuple2_toint(taeknar_kvk)
+verka_all = lti.tuple2_toint(verka_all)
+verka_kk = lti.tuple2_toint(verka_kk)
+verka_kvk = lti.tuple2_toint(verka_kvk)
+solu_all = lti.tuple2_toint(solu_all)
+solu_kk = lti.tuple2_toint(solu_kk)
+solu_kvk =lti.tuple2_toint(solu_kvk)
+
 
 def plot_avg_all():
     x = list()
@@ -246,6 +328,7 @@ plt.title(', '.join(plot_title))
 plt.legend(legend_handles, loc = 'upper left')
 plot_title = list()
 legend_handles = list()
+
 
 # Show plot
 plt.show()
