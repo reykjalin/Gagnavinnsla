@@ -55,7 +55,7 @@ def print_keys():
     print(*menntun_kyn, sep = '\t\t')
     print()
     print()
-    print('----- Menntun: Ár -----')
+    print('----- Menntun: Ár (x-ás) -----')
     print(*menntun_ar[:4], sep = '\t')
     print(*menntun_ar[4:8], sep = '\t')
     print(*menntun_ar[8:], sep = '\t')
