@@ -66,35 +66,35 @@ for row in data.vinna:
             serfr_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             serfr_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
-    elif row['Starfsstétt'] == 'Sérfræðingar':
+    elif row['Starfsstétt'] == 'Iðnaðarmenn':
         if row['Kyn'] == 'Alls':
             idnad_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Karlar':
             idnad_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             idnad_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
-    elif row['Starfsstétt'] == 'Sérfræðingar':
+    elif row['Starfsstétt'] == 'Skrifstofufólk':
         if row['Kyn'] == 'Alls':
             skrifst_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Karlar':
             skrifst_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             skrifst_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
-    elif row['Starfsstétt'] == 'Sérfræðingar':
+    elif row['Starfsstétt'] == 'Tæknar og sérmenntað starfsfólk':
         if row['Kyn'] == 'Alls':
             taeknar_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Karlar':
             taeknar_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             taeknar_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
-    elif row['Starfsstétt'] == 'Sérfræðingar':
+    elif row['Starfsstétt'] == 'Verkafólk':
         if row['Kyn'] == 'Alls':
             verka_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Karlar':
             verka_kk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Konur':
             verka_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
-    elif row['Starfsstétt'] == 'Sérfræðingar':
+    elif row['Starfsstétt'] == 'Þjónustu-, sölu- og afgreiðslufólk':
         if row['Kyn'] == 'Alls':
             solu_all[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
         elif row['Kyn'] == 'Karlar':
@@ -119,7 +119,7 @@ idnad_all = dict_sort.key_sort(idnad_all)
 idnad_kk = dict_sort.key_sort(idnad_kk)
 idnad_kvk = dict_sort.key_sort(idnad_kvk)
 skrifst_all = dict_sort.key_sort(skrifst_all)
-skrifst_kk = ddict_sort.key_sort(skrifst_kk)
+skrifst_kk = dict_sort.key_sort(skrifst_kk)
 skrifst_kvk = dict_sort.key_sort(skrifst_kvk)
 taeknar_all = dict_sort.key_sort(taeknar_all)
 taeknar_kk = dict_sort.key_sort(taeknar_kk)
@@ -128,7 +128,7 @@ verka_all = dict_sort.key_sort(verka_all)
 verka_kk = dict_sort.key_sort(verka_kk)
 verka_kvk = dict_sort.key_sort(verka_kvk)
 solu_all = dict_sort.key_sort(solu_all)
-solu_kk = ddict_sort.key_sort(solu_kk)
+solu_kk = dict_sort.key_sort(solu_kk)
 solu_kvk = dict_sort.key_sort(solu_kvk)
 
 # Change lists to int
@@ -160,6 +160,155 @@ solu_all = lti.tuple2_toint(solu_all)
 solu_kk = lti.tuple2_toint(solu_kk)
 solu_kvk =lti.tuple2_toint(solu_kvk)
 
+def plot_skrifst_all():
+    x = list()
+    y = list()
+    for i in range(len(skrifst_all)):
+        x.append(skrifst_all[i][0])
+        y.append(skrifst_all[i][1])
+    plt.plot(x, y)
+    plot_title.append('Skrifstofufólk - Alls')
+    legend_handles.append('Skrifstofufólk - Alls')
+
+def plot_skrifst_kk():
+    x = list()
+    y = list()
+    for i in range(len(skrifst_kk)):
+        x.append(skrifst_kk[i][0])
+        y.append(skrifst_kk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Skrifstofufólk - Karlar')
+    legend_handles.append('Skrifstofufólk - Karlar')
+
+def plot_skrifst_kvk():
+    x = list()
+    y = list()
+    for i in range(len(skrifst_kvk)):
+        x.append(skrifst_kvk[i][0])
+        y.append(skrifst_kvk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Skrifstofufólk - Konur')
+    legend_handles.append('Skrifstofufólk - Konur')
+
+def plot_taeknar_all():
+    x = list()
+    y = list()
+    for i in range(len(taeknar_all)):
+        x.append(taeknar_all[i][0])
+        y.append(taeknar_all[i][1])
+    plt.plot(x, y)
+    plot_title.append('Tæknar og sérm. starfsf. - Alls')
+    legend_handles.append('Tæknar og sérm. starfsf. - Alls')
+
+def plot_taeknar_kk():
+    x = list()
+    y = list()
+    for i in range(len(taeknar_kk)):
+        x.append(taeknar_kk[i][0])
+        y.append(taeknar_kk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Tæknar og sérm. starfsf. - Karlar')
+    legend_handles.append('Tæknar og sérm. starfsf. - Karlar')
+
+def plot_taeknar_kvk():
+    x = list()
+    y = list()
+    for i in range(len(taeknar_kvk)):
+        x.append(taeknar_kvk[i][0])
+        y.append(taeknar_kvk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Tæknar og sérm. starfsf. - Konur')
+    legend_handles.append('Tæknar og sérm. starfsf. - Konur')
+
+def plot_verka_all():
+    x = list()
+    y = list()
+    for i in range(len(verka_all)):
+        x.append(verka_all[i][0])
+        y.append(verka_all[i][1])
+    plt.plot(x, y)
+    plot_title.append('Verkafólk - Alls')
+    legend_handles.append('Verkafólk - Alls')
+
+def plot_verka_kk():
+    x = list()
+    y = list()
+    for i in range(len(verka_kk)):
+        x.append(verka_kk[i][0])
+        y.append(verka_kk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Verkafólk - Karlar')
+    legend_handles.append('Verkafólk - Karlar')
+
+def plot_verka_kvk():
+    x = list()
+    y = list()
+    for i in range(len(verka_kvk)):
+        x.append(verka_kvk[i][0])
+        y.append(verka_kvk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Verkafólk - Konur')
+    legend_handles.append('Verkafólk - Konur')
+
+def plot_solu_all():
+    x = list()
+    y = list()
+    for i in range(len(solu_all)):
+        x.append(solu_all[i][0])
+        y.append(solu_all[i][1])
+    plt.plot(x, y)
+    plot_title.append('Sölufólk - Alls')
+    legend_handles.append('Sölufólk - Alls')
+
+def plot_solu_kk():
+    x = list()
+    y = list()
+    for i in range(len(solu_kk)):
+        x.append(solu_kk[i][0])
+        y.append(solu_kk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Sölufólk - Karlar')
+    legend_handles.append('Sölufólk - Karlar')
+
+def plot_solu_kvk():
+    x = list()
+    y = list()
+    for i in range(len(solu_kvk)):
+        x.append(solu_kvk[i][0])
+        y.append(solu_kvk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Sölufólk - Konur')
+    legend_handles.append('Sölufólk - Konur')
+
+def plot_idnad_kvk():
+    x = list()
+    y = list()
+    for i in range(len(idnad_kvk)):
+        x.append(idnad_kvk[i][0])
+        y.append(idnad_kvk[i][1])
+    plt.plot(x, y)
+    plot_title.append('Iðnaðarmenn - Konur')
+    legend_handles.append('Iðnaðarmenn - Konur')
+
+def plot_idnad_kk():
+    x = list()
+    y = list()
+    for i in range(len(idnad_kk)):
+        x.append(idnad_kk[i][0])
+        y.append(idnad_kk[i][1])
+    plt.plot(x, y)#, align = 'center')
+    plot_title.append('Iðnaðarmenn - Karlar')
+    legend_handles.append('Iðnaðarmenn - Karlar')
+
+def plot_idnad_all():
+    x = list()
+    y = list()
+    for i in range(len(idnad_all)):
+        x.append(idnad_all[i][0])
+        y.append(idnad_all[i][1])
+    plt.plot(x, y)#, align = 'center')
+    plot_title.append('Iðnaðarmenn - Alls')
+    legend_handles.append('Iðnaðarmenn - Alls')
 
 def plot_avg_all():
     x = list()
@@ -329,6 +478,65 @@ plt.legend(legend_handles, loc = 'upper left')
 plot_title = list()
 legend_handles = list()
 
+
+# Figure 3
+plt.figure()
+
+# Subplot 3.1
+plt.subplot(2,1,1)
+plot_idnad_all()
+plot_idnad_kk()
+plot_idnad_kvk()
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
+
+# Subplot 3.2
+plt.subplot(2,1,2)
+plot_skrifst_all()
+plot_skrifst_kk()
+plot_skrifst_kvk()
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
+
+
+# Figure 4
+plt.figure()
+
+# Subplot 4.1
+plt.subplot(2,1,1)
+plot_taeknar_all()
+plot_taeknar_kk()
+plot_taeknar_kvk()
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
+
+# Subplot 4.2
+plt.subplot(2,1,2)
+plot_verka_all()
+plot_verka_kk()
+plot_verka_kvk()
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
+
+
+# Figure 5
+plt.figure()
+
+plot_solu_all()
+plot_solu_kk()
+plot_solu_kvk()
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
 
 # Show plot
 plt.show()
