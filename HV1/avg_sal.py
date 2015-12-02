@@ -3,6 +3,15 @@ import dict_sort
 import list_to_int as lti
 import matplotlib.pyplot as plt
 import plotter
+import spurningarjon as sj
+
+arkk = sj.ArKK
+fjkk = sj.FjKK
+arkvk = sj.ArKvK
+fjkvk = sj.FjKvK
+
+for i in range(len(fjkvk)):
+    arkvk[i] -= 0.05
 
 # Declare all dictionaries that will store data
 avg_all = dict()
@@ -434,112 +443,120 @@ def plot_serfr_kvk():
 # Figure 1
 plt.figure()
 
-# Subplot 1.1
-plt.subplot(2,1,1)
+# # Subplot 1.1
+# plt.subplot(2,1,1)
 plot_avg_all()
 plot_avg_kk()
 plot_avg_kvk()
-plt.title(', '.join(plot_title))
 plt.legend(legend_handles, loc = 'upper left')
+plt.ylabel('Meðallaun í þús. kr.')
+
+plt.twinx()
+plt.ylabel('Fjöldi háskólamenntaðra einstaklinga')
+plt.bar(arkk, fjkk, width=0.1)
+plt.bar(arkvk, fjkvk, width=0.1, align='center', color = 'red')
+plt.legend(('Fj. Hásk.mennt. Karla','Fj. Hásk.mennt. Kvenna'), loc='center left')
+plt.title(', '.join(plot_title))
 plot_title = list()
 legend_handles = list()
-
-# Subplot 1.2
-plt.subplot(2,1,2)
-plot_avg2_all()
-plot_avg2_kk()
-plot_avg2_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-
-# Figure 2
-plt.figure()
-
-# Subplot 2.1
-plt.subplot(2,1,1)
-plot_stjorn_all()
-plot_stjorn_kk()
-plot_stjorn_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-# Subplot 2.2
-plt.subplot(2,1,2)
-plot_serfr_all()
-plot_serfr_kk()
-plot_serfr_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-
-# Figure 3
-plt.figure()
-
-# Subplot 3.1
-plt.subplot(2,1,1)
-plot_idnad_all()
-plot_idnad_kk()
-plot_idnad_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-# Subplot 3.2
-plt.subplot(2,1,2)
-plot_skrifst_all()
-plot_skrifst_kk()
-plot_skrifst_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-
-# Figure 4
-plt.figure()
-
-# Subplot 4.1
-plt.subplot(2,1,1)
-plot_taeknar_all()
-plot_taeknar_kk()
-plot_taeknar_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-# Subplot 4.2
-plt.subplot(2,1,2)
-plot_verka_all()
-plot_verka_kk()
-plot_verka_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-
-# Figure 5
-plt.figure()
-
-plot_solu_all()
-plot_solu_kk()
-plot_solu_kvk()
-plt.title(', '.join(plot_title))
-plt.legend(legend_handles, loc = 'upper left')
-plot_title = list()
-legend_handles = list()
-
-# Show plot
 plt.show()
+
+# # Subplot 1.2
+# plt.subplot(2,1,2)
+# plot_avg2_all()
+# plot_avg2_kk()
+# plot_avg2_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+
+# # Figure 2
+# plt.figure()
+
+# # Subplot 2.1
+# plt.subplot(2,1,1)
+# plot_stjorn_all()
+# plot_stjorn_kk()
+# plot_stjorn_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+# # Subplot 2.2
+# plt.subplot(2,1,2)
+# plot_serfr_all()
+# plot_serfr_kk()
+# plot_serfr_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+
+# # Figure 3
+# plt.figure()
+
+# # Subplot 3.1
+# plt.subplot(2,1,1)
+# plot_idnad_all()
+# plot_idnad_kk()
+# plot_idnad_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+# # Subplot 3.2
+# plt.subplot(2,1,2)
+# plot_skrifst_all()
+# plot_skrifst_kk()
+# plot_skrifst_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+
+# # Figure 4
+# plt.figure()
+
+# # Subplot 4.1
+# plt.subplot(2,1,1)
+# plot_taeknar_all()
+# plot_taeknar_kk()
+# plot_taeknar_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+# # Subplot 4.2
+# plt.subplot(2,1,2)
+# plot_verka_all()
+# plot_verka_kk()
+# plot_verka_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+
+# # Figure 5
+# plt.figure()
+
+# plot_solu_all()
+# plot_solu_kk()
+# plot_solu_kvk()
+# plt.title(', '.join(plot_title))
+# plt.legend(legend_handles, loc = 'upper left')
+# plot_title = list()
+# legend_handles = list()
+
+# # Show plot
+# plt.show()
         
 # Print keys and relevant information
 print()
