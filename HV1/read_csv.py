@@ -60,7 +60,7 @@ def print_keys():
     print(*menntun_ar[4:8], sep = '\t')
     print(*menntun_ar[8:], sep = '\t')
 
-with open('menntun.csv', 'r') as csvfile:
+with open('menntun.csv', 'r', encoding="utf8") as csvfile:
     # Use sniffer to find dialect
     currdialect = csv.Sniffer().sniff(csvfile.read(1024))
     # Use seek to go back to beginning of data.csv
@@ -73,10 +73,11 @@ with open('menntun.csv', 'r') as csvfile:
     for row in dictreader:
         menntun.append(row)
         menntun_menntun.add(row['Menntun'])
-        menntun_aldurbus.add(row['Aldursflokkur/Búseta'])
+        menntun_aldurbus.add(row['Aldursflokkur/Búseta'])     
+
         menntun_kyn.add(row['Kyn'])
 
-with open('laun_alm_vinnum.csv', 'r') as csvfile:
+with open('laun_alm_vinnum.csv', 'r', encoding="utf8") as csvfile:
     # Sniff
     currdialect = csv.Sniffer().sniff(csvfile.read(1024))
     # Go back
@@ -110,5 +111,3 @@ vinna_vinnuhlutf.sort()
 vinna_ar.sort()
 vinna_kyn.sort()
 vinna_starfsstett.sort()
-
-
