@@ -9,36 +9,28 @@ data.print_keys()
 Konur = dict()
 Karlar = dict()
 
+#Breytur sem fara inn í plot
 Ment = 'Háskólamenntun - ISCED 5, 6'
-Ald = '16 til 74 ára'
+Ald = 'Höfuðborgarsvæði 16-74 ára'
 
 for row in menntun:
 	if row['Menntun'] == Ment and row ['Aldursflokkur/Búseta'] == Ald and row['Kyn'] == 'Karlar' :
 		Karlar = row
 
 for row in menntun:
-	if row['Menntun'] == 'Háskólamenntun - ISCED 5, 6' and row ['Aldursflokkur/Búseta'] == '16 til 74 ára' and row['Kyn'] == 'Konur' :
+	if row['Menntun'] == Ment and row ['Aldursflokkur/Búseta'] == Ald and row['Kyn'] == 'Konur' :
 		Konur = row
 
 Karlar = dict_sort.key_sort(Karlar)
 Konur = dict_sort.key_sort(Konur)
 
-try:
-	Karlar = lti.tuple2_toint(Karlar)
-	Konur = lti.tuple2_toint(Konur)
-
-except:
-	pass
-
-print(Karlar)
-print('----------')
-print(Konur)
+Karlar = lti.tuple2_toint(Karlar)
+Konur = lti.tuple2_toint(Konur)
 
 ArKK = list()
 FjKK = list()
 ArKvK = list()
 FjKvK = list()
-
 
 for x,y in Karlar:
 	ArKK.append(x)
@@ -48,13 +40,16 @@ for z,k in Konur:
 	ArKvK.append(z)
 	FjKvK.append(k)
 
-
 plot.plot(ArKK, FjKK)
-plot.title(Ment)
+plot.title(str.join('\n', (Ment,Ald)))
 plot.xticks([year for year in ArKK])
-plot.xlim(min(ArKK)-1, max(ArKK)+1)
+plot.xlabel('Ár')
+plot.ylabel('Fjöldi brautskráðra')
 
-plot.plot(ArKvK, FjKvK)
-plot.legend(('Karlar','Konur'))
+plot.plot(ArKvK,FjKvK)
+plot.legend(('Karlar','Konur'),loc='lower right')
+plot.xlim(min(ArKK)-0.5, max(ArKK)+0.5)
+plot.ylim(min(min(FjKK),min(FjKvK))-500,max(max(FjKK),max(FjKvK))+500)
+
 plot.show()
 
