@@ -17,6 +17,9 @@ serfr_all = dict()
 serfr_kk = dict()
 serfr_kvk = dict()
 
+legend_handles = list()
+plot_title = list()
+
 # Get data
 for row in data.vinna:
     if row['Starfsstétt'] == 'Alls':
@@ -83,6 +86,8 @@ def plot_avg_all():
         x.append(avg_all[i][0])
         y.append(avg_all[i][1])
     plt.plot(x, y)#, align = 'center')
+    plot_title.append('Alls - Alls')
+    legend_handles.append('Alls - Alls')
 
 def plot_avg_kk():
     xkk = list()
@@ -91,6 +96,8 @@ def plot_avg_kk():
         xkk.append(avg_kk[i][0])
         ykk.append(avg_kk[i][1])
     plt.plot(xkk, ykk)#,align = 'center')
+    plot_title.append('Alls - Karlar')
+    legend_handles.append('Alls - Karlar')
 
 def plot_avg_kvk():
     xkvk = list()
@@ -99,6 +106,8 @@ def plot_avg_kvk():
         xkvk.append(avg_kvk[i][0])
         ykvk.append(avg_kvk[i][1])
     plt.plot(xkvk, ykvk)#,align = 'center')
+    plot_title.append('Alls - Konur')
+    legend_handles.append('Alls - Konur')
 
 def plot_avg2_all():
     x2 = list()
@@ -107,6 +116,8 @@ def plot_avg2_all():
         x2.append(avg2_all[i][0])
         y2.append(avg2_all[i][1])
     plt.plot(x2, y2)
+    plot_title.append('Sérgögn - Alls')
+    legend_handles.append('Sérgögn - Alls')
 
 def plot_avg2_kk():
     x2kk = list()
@@ -115,6 +126,8 @@ def plot_avg2_kk():
         x2kk.append(avg2_kk[i][0])
         y2kk.append(avg2_kk[i][1])
     plt.plot(x2kk, y2kk)
+    plot_title.append('Sérgögn - Karlar')
+    legend_handles.append('Sérgögn - Karlar')
 
 def plot_avg2_kvk():
     x2kvk = list()
@@ -123,6 +136,8 @@ def plot_avg2_kvk():
         x2kvk.append(avg2_kvk[i][0])
         y2kvk.append(avg2_kvk[i][1])
     plt.plot(x2kvk, y2kvk)
+    plot_title.append('Sérgögn - Konur')
+    legend_handles.append('Sérgögn - Konnur')
 
 def plot_stjorn_all():
     xstjorn = list()
@@ -131,6 +146,8 @@ def plot_stjorn_all():
         xstjorn.append(stjorn_all[i][0])
         ystjorn.append(stjorn_all[i][1])
     plt.plot(xstjorn, ystjorn)
+    plot_title.append('Stjórnendur - Alls')
+    legend_handles.append('Stjórnendur - Alls')
 
 def plot_stjorn_kk():
     xstjornkk = list()
@@ -139,6 +156,8 @@ def plot_stjorn_kk():
         xstjornkk.append(stjorn_kk[i][0])
         ystjornkk.append(stjorn_kk[i][1])
     plt.plot(xstjornkk, ystjornkk)
+    plot_title.append('Stjórnendur - Karlar')
+    legend_handles.append('Stjórnendur - Karlar')
 
 def plot_stjorn_kvk():
     xstjornkvk = list()
@@ -147,6 +166,8 @@ def plot_stjorn_kvk():
         xstjornkvk.append(stjorn_kvk[i][0])
         ystjornkvk.append(stjorn_kvk[i][1])
     plt.plot(xstjornkvk, ystjornkvk)
+    plot_title.append('Stjórnendur - Konur')
+    legend_handles.append('Stjórnendur - Konur')
 
 def plot_serfr_all():
     xserfr = list()
@@ -155,6 +176,8 @@ def plot_serfr_all():
         xserfr.append(serfr_all[i][0])
         yserfr.append(serfr_all[i][1])
     plt.plot(xserfr, yserfr)
+    plot_title.append('Sérfræðingar - Alls')
+    legend_handles.append('Sérfræðingar - Alls')
 
 def plot_serfr_kk():
     xserfrkk = list()
@@ -163,6 +186,8 @@ def plot_serfr_kk():
         xserfrkk.append(serfr_kk[i][0])
         yserfrkk.append(serfr_kk[i][1])
     plt.plot(xserfrkk, yserfrkk)
+    plot_title.append('Sérfræðingar - Karlar')
+    legend_handles.append('Sérfræðingar - Karlar')
 
 def plot_serfr_kvk():
     xserfrkvk = list()
@@ -171,41 +196,58 @@ def plot_serfr_kvk():
         xserfrkvk.append(serfr_kvk[i][0])
         yserfrkvk.append(serfr_kvk[i][1])
     plt.plot(xserfrkvk, yserfrkvk)
+    plot_title.append('Sérfræðingar - Konur')
+    legend_handles.append('Sérfræðingar - Konur')
 
 # Create plots
+# Figure 1
 plt.figure()
 
+# Subplot 1.1
 plt.subplot(2,1,1)
 plot_avg_all()
 plot_avg_kk()
 plot_avg_kvk()
-plt.title('Heildarlaun - Meðaltal í fullri vinnu milli ára í þús. kr.')
-plt.legend( ('Alls', 'Karlar', 'Konur'), loc = 'upper left' )
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
 
+# Subplot 1.2
 plt.subplot(2,1,2)
 plot_avg2_all()
 plot_avg2_kk()
 plot_avg2_kvk()
-plt.title('Skrifstofufólk, Stjórnendur, Sérfræðingar, Tæknar og sérmenntað starfsfólk, Þjónustu-, sölu- og afgreiðslufólk')
-plt.legend( ('Alls', 'Karlar', 'Konur'), loc = 'upper left' )
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
 
 
+# Figure 2
 plt.figure()
 
+# Subplot 2.1
 plt.subplot(2,1,1)
 plot_stjorn_all()
 plot_stjorn_kk()
 plot_stjorn_kvk()
-plt.legend( ('Alls', 'Karlar', 'Konur'), loc = 'upper left' )
-plt.title('Stjórnendur')
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
 
+# Subplot 2.2
 plt.subplot(2,1,2)
 plot_serfr_all()
 plot_serfr_kk()
 plot_serfr_kvk()
-plt.legend( ('Alls', 'Karlar', 'Konur'), loc = 'upper left' )
-plt.title('Sérfræðingar')
+plt.title(', '.join(plot_title))
+plt.legend(legend_handles, loc = 'upper left')
+plot_title = list()
+legend_handles = list()
 
+# Show plot
 plt.show()
         
 # Print keys and relevant information
