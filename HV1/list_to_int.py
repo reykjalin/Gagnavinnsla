@@ -15,3 +15,12 @@ def tuple2_toint(l):
         except:
             pass
     return newl
+
+def tuple2_tofloat(l):
+    newl = list()
+    for x, y in l:
+        try:
+            newl.append((float(x),float(y)))
+        except:
+            pass
+    return newl
