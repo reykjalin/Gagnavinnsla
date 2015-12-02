@@ -3,7 +3,7 @@
 # Reads file
 fname = input("Filename: ")
 data = str()
-with open(fname, 'r') as fstream:
+with open(fname, 'r', encoding="utf8") as fstream:
     data = fstream.read()
 
 # Change letters
@@ -62,7 +62,7 @@ else:
             newf += fname[i]
 
 # Write data to new file
-with open(newf, 'w+') as ostream:
+with open(newf, 'w+', encoding="utf8") as ostream:
     ostream.write(data)
 
 print('Data saved in file: ', newf)
