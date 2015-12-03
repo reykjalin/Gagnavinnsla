@@ -45,7 +45,7 @@ def aldurshop_mentun():
 			plt.legend((Mentun_ar),loc='upper right')
 				
 			plt.xlim(np.amin(x)-2, np.amax(x)+2)
-			plt.ylim(np.amin(y)-1000,np.amax(y)+5000)
+			plt.ylim(np.amin(y)-1000,np.amax(y)+1000)
 			plt.grid(True)
 			plt.tight_layout()
 
