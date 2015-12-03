@@ -17,7 +17,7 @@ plt.figure(5)
 avg.plot_avg()
 plt.ylabel('Heildarlaun í þús. kr.')
 plt.xlabel('Ár')
-plt.legend(['Alls - Alls', 'Alls - Karlar', 'Alls - Konur'], loc='upper left')
+plt.legend(['Laun - Alls', 'Laun - Karlar', 'Laun - Konur'], loc='upper left')
 
 plt.twinx()
 
