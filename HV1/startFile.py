@@ -4,7 +4,7 @@ from spurningarvladimir import aldurshop_mentun
 from read_csv import print_keys
 from avg_sal import average_sal
 from spurningarhaukur import innanh_vs_utanh
-from q1-q3_munur import average_and_std_laun
+from q1_q3_munur import average_and_std_laun
 
 # start skjal
 print_keys()
