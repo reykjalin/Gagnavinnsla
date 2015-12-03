@@ -15,11 +15,11 @@
 % note the use of the two-letters 
 % The three-letters are for in a fixme environment
 
-\author{AuthorFirst1 AuthorLast1, AuthorFirst2 AuthorLast2}  % My name, for the titlepage
+\author{Haukur Hlíðberg, Jón Kr. Helgason, Kristófer Reykjalín, Vladimir Omelianov, Róbert B. Ólafsson}  % My name, for the titlepage
 \title{Basic Report Template}  % The title, for the titlepage
 %\course{VT 1013 Hönnun}  % pick your class
 %\course{T-411-MECH Mechatronics 1}
-\instructor{Joseph Timothy Foley}
+\instructor{Eyjólfur Ingi Ásgeirsson}
 \graphicspath{{graphics/}{Graphics/}{./}}
 %% declare the paths(s) where you graphics files can be found
 
@@ -39,83 +39,20 @@
 \maketitle  % make a title page from the Title, Date, and Author
 \listoffixmes{}
 %\section*{Errata} %%section* avoids putting a number 
-This template is heavily derived from one by Markéta Foley for the
-T-106-LIFV Molecular biology course.
-
-The report is an group assignment. Each group must write their own
-report. You may discuss how to interpret the results of the experiment
-with your classmates, but the report must be written in your own
-words. If any part of your report is plagiarized (from another group,
-the internet, or anywhere else) or your references are not properly
-cited, you will receive a grade of zero on the entire assignment. This
-is in compliance with Reykjav\'ik University's Code of
-Ethics\footnote{\url{http://en.ru.is/the-university/ru-code-of-ethics/}
-  -- see Item 8 and General Rules on Study and Examinations}
-\footnote{\url{http://en.ru.is/studies/study--and-examination-rules/}
-  -- see Article 4.5} \footnote{see also the document "Your Work -
-  Your Contribution" \url{http://www.ru.is/hugverk}, available only in
-  Icelandic}. For your reference, here is a link to guidelines
-defining plagiarism and discussing how to avoid it (from the
-University of Oxford):
-
-\url{http://www.ox.ac.uk/students/academic/goodpractice/about/}
-
-The report must be written in English in the form of a short technical
-communication. Use full sentences and paragraphs; the report should
-not be a collection of notes. The report should be in 11 or 12-pt
-font, 1.5 line spacing.  This template document demonstrates some of
-the structure expected in the report.
-
-The report must consist of the following sections:
-
-\section{Introduction} % sections break up the document into pieces
-State the objective(s) of the exercise. Ask yourself: \underline{Why}
-did I design/create the item? What did I aim to achieve? What is the
-problem I am trying to solve?  How is my solution novel?
-
-\subsection{Background}
-Provide background about the subject matter (How was morse code
-developed?  How is it used today?). Include the purpose of the
-different equipment and your design intent. Include references to
-relevant scientific/technical work and books.  You must include at
-least one reference other than \cite{carryer2011IntroMechatronics},
-the textbook.
-
-If you have specifications or related standards, these must be
-described and cited also.
 
 
-\section{Design}
-How was your system developed?  Where did the concept come from?  If
-it went through multiple stages of design, describe them. Describe any
-assumptions you make about how the system will be used and its
-environment.
-
-\subsection{Requirements}
-What are the requirements for the system?\footnote{What is the minimum
-capabilities that are needed for ``success.''}  What is the strategy
-for meeting this requirements?
+\section{Inngangur} % sections break up the document into pieces
+Í þessu verkefni áttu nemendur að setja fram spurningar sem þeir gætu svarað með gögnum frá Hagstofu Íslands. Áður en hafist var handa byrjuðum við að setja fram nokkuð opnar spurningar sem snérust að menntun, menntunnar stigum, launum fyrir mismunandi aldurshópa og hvort mætti finna eitthverja fylgni í þessum gögnum.
 
 
-\subsection{Limitations\label{Limitations}}
-If there are certain environments/conditions that your system is
-unable to reliably function within, describe them.  Explain why these
-limitations do not cause it to fail your stated requirements.
+
+\section{Framkvæmd}
+Til að byrja með skrifaði Team leader Reykjalín forrit sem tók inn öllgögnin, setti inn í viðeigandi breytur sem allir innan hópsins nutu góðs af en lykilatriðið sem stitti okkur gríðarlegan tíma var að í forritinu var prentaður út listi með öllum lykil nöfnum á breytum(keys)\fxnote{Skýra þetta eh annað ?}. Eftir það settist hópurinn niður og skrifaði spurningar sem okkur fannst áhugaverða og líklegt að það kæmi spennandi niðurstöður úr.
 
 \section{Testing}
 What was your testing strategy?  What kinds of tests were performed? Be very specific.  How did your system perform?  Make sure that there is a table/list indicating your system's quantitative performance. As a simple example, refer to Table~\ref{table:testing}
 
-\begin{table}
-\centering
-\begin{tabular}{|l|l|l|}\hline
-{\bf Feature} &{\bf State} &{\bf Explanation}\\\hline
-Ball rolls down \SI{30}{\degree} slope &Pass &\\\hline
-Ball rolls up 10 stairs   &Fail &Motor failed, replacement expected January 2013\\\hline
-Ball stays inflated for 24 hours &Pass &\\\hline
-Ball floats in water for 24 hours &Pass &\\\hline
-\end{tabular}
-\caption{Happy Fun Ball test results \label{table:testing}}
-\end{table}
+
 
 \section{Usage}
 
