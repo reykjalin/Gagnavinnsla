@@ -1,28 +1,16 @@
 import read_csv as data
 import dict_sort
 import matplotlib.pyplot as plt
+import avg_sal as avg
 
-AKKHeildFullMedal = dict()
+#avg.prepare_data()
 
-for row in data.vinna:
-    if row['Starfsstétt'] == 'Alls' and row['Kyn'] == 'Alls':
-        AKKHeildFullMedal[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
+plt.figure()
+avg.plot_avg()
+plt.grid()
 
-AKKHeildFullMedal = dict_sort.sort(AKKHeildFullMedal)
+plt.twinx()
+avg.plot_ar()
 
-x = list()
-y = list()
-for key in list(AKKHeildFullMedal.keys()):
-    x.append(int(key))
-    y.append(int(AKKHeildFullMedal[key]))
 
-plt.bar(x, y, align = 'center')
-plt.title('Heildarlaun - Meðaltal í fullri vinnu milli ára í þús. kr.')
-plt.xticks([year for year in x if year % 2 == 0])
-plt.xlim(1997, 2015)
 plt.show()
-        
-
-print()
-print()
-data.print_keys()
