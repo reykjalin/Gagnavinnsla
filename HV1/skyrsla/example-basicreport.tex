@@ -1,38 +1,5 @@
-\documentclass[12pt, svn, draft]{rureport}
-\svnid{$Id: example-techreport.tex 48 2014-10-23 15:40:52Z foley $}
-\svnidlong{$HeadURL: https://projects.cs.ru.is/svn/mechatronics/templates/techreport/example-techreport.tex $}
-{$LastChangedDate: 2014-10-23 15:40:52 +0000 (fim., 23 okt. 2014) $}
-{$LastChangedRevision: 48 $}
-{$LastChangedBy: foley $}
-% if you'd like the above information to be updated,
-% use svn properties to set svn:keywords to for Id and URL (or HeadURL)
-% Don't forget to set the draft to final before submitting
+\documentclass[12pt, git, draft]{rureport}
 
-%% The default fixmes are:  \fxnote{} \fxwarning{} \fxerror{} \fxfatal{} (same as \fixme{})
-% if you want personalized fixmes, then register the authors here
-\FXRegisterAuthor{jf}{jtf}{foley}
-% this registers \jfnote{}, \jfwarning{}, \jferror{}, \jffatal{}
-% note the use of the two-letters 
-% The three-letters are for in a fixme environment
-
-\author{Haukur Hlíðberg, Jón Kr. Helgason, Kristófer Reykjalín, Róbert B. Ólafsson, Vladimir Omelianov,}  % My name, for the titlepage
-\title{Basic Report Template}  % The title, for the titlepage
-%\course{VT 1013 Hönnun}  % pick your class
-%\course{T-411-MECH Mechatronics 1}
-\instructor{Eyjólfur Ingi Ásgeirsson}
-\graphicspath{{graphics/}{Graphics/}{./}}
-%% declare the paths(s) where you graphics files can be found
-
-\usepackage[backend=biber, bibencoding=utf8, style=ieee]{biblatex}
-%\DeclareLanguageMapping{american}{american-apa}  % needed for style=apa
-% If you set backend=bibtex, it will use bibtex for processing (old way)
-% if you set backend=biber, you can use UTF8 characters such as Þ and ð but you will have to remember to switch from using bibtex to biber in your client
-% See Chapter 7 of http://afs.rnd.ru.is/project/htgaru/trunk/how-to-get-around-projects.pdf 
-% If you just want to use bibtex directly without using BibLaTeX, then comment out the line.
-\addbibresource{references.bib}
-
-\usepackage[final,hidelinks]{hyperref} % must be last package loaded
-% it makes hyper-references (citations, URLs, etc) clickable
 
 \begin{document} % this tells the compiler that it is time to make
                  % text to print instead of just getting ready.
@@ -119,13 +86,13 @@ Hérna er þróunin frekar jöfn en eftir árið 2001 þá eykst munurinn en min
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{graphics/heildar_laun.png}
-	\caption{Modular dependency diagram for the electrical circuit \label{fig:heildarlaun}}
+	\caption{Meðaltal heildarlauna karla, kvenna og beggja í skrifstofustarfi \label{fig:heildarlaun}}
 \end{figure}
 
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{graphics/heildar_laun_og_haskolamentun.png}
-	\caption{Modular dependency diagram for the electrical circuit \label{fig:heildarhask}}
+	\caption{Meðaltal heildarlauna karla, kvenna og beggja á vinnumarkaði ásamt háskólamenntun \label{fig:heildarhask}}
 \end{figure}
 
 \begin{figure}

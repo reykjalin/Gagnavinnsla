@@ -40,3 +40,26 @@
 \caption{#2\label{fig:#1}}%
 \end{figure}%
 }
+
+\FXRegisterAuthor{jf}{jtf}{foley}
+\author{Haukur Hlíðberg, Jón Kr. Helgason, Kristófer Reykjalín, Róbert B. Ólafsson, Vladimir Omelianov,}  % My name, for the titlepage
+\title{Basic Report Template}  % The title, for the titlepage
+%\course{VT 1013 Hönnun}  % pick your class
+%\course{T-411-MECH Mechatronics 1}
+\instructor{Eyjólfur Ingi Ásgeirsson}
+\graphicspath{{graphics/}{Graphics/}{./}}
+%% declare the paths(s) where you graphics files can be found
+
+\usepackage[backend=biber, bibencoding=utf8, style=ieee]{biblatex}
+%\DeclareLanguageMapping{american}{american-apa}  % needed for style=apa
+% If you set backend=bibtex, it will use bibtex for processing (old way)
+% if you set backend=biber, you can use UTF8 characters such as Þ and ð but you will have to remember to switch from using bibtex to biber in your client
+% See Chapter 7 of http://afs.rnd.ru.is/project/htgaru/trunk/how-to-get-around-projects.pdf 
+% If you just want to use bibtex directly without using BibLaTeX, then comment out the line.
+\addbibresource{references.bib}
+
+\usepackage{caption}
+\captionsetup[figure]{name=Mynd}
+
+\usepackage[final,hidelinks]{hyperref} % must be last package loaded
+% it makes hyper-references (citations, URLs, etc) clickable
