@@ -1,4 +1,5 @@
 import sys
+#import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
 from PyQt4 import QtCore, QtGui
 from form import Ui_MainWindow
 
@@ -82,5 +83,6 @@ class MyDialog(QtGui.QMainWindow):
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     myapp = MyDialog()
+#    app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
     myapp.show()
     sys.exit(app.exec_())
