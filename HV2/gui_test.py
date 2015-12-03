@@ -4,16 +4,20 @@ from form import Ui_MainWindow
 
 class MyDialog(QtGui.QMainWindow):
     def __init__(self, parent=None):
+        # Initialize window
         QtGui.QWidget.__init__(self,parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
+        # Initialize search list (on left)
         self.lstSearch = self.ui.lstSearch
         self.modelSearch = QtGui.QStandardItemModel(self.lstSearch)
-
+        
+        # Initialize similar list (on right)
         self.lstSimilar = self.ui.lstSimilar
         self.modelSimilar = QtGui.QStandardItemModel(self.lstSimilar)
-
+    
+        # Define functions for buttons
         self.ui.btnDone.clicked.connect(self.close)
         self.ui.btnSearch.clicked.connect(self.search)
         self.ui.btnAdd.clicked.connect(self.add)
