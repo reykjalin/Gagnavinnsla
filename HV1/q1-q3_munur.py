@@ -64,6 +64,6 @@ mp.bar(x,plot2,align = 'center')
 mp.title('Samanburður á meðaltali og Staðalfráviki')
 mp.xticks(x,label1)
 mp.xlim(0,3)
-mp.show()
+
 
 

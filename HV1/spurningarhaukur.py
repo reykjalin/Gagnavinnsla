@@ -99,4 +99,4 @@ for illad in range(2):
 	mp.xticks(xas, label)
 	mp.xlim(0,3)
 	
-mp.show()
+
