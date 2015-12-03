@@ -17,7 +17,7 @@ def average_and_std_laun():
 
 	test = ds.key_sort(test)
 
-	print('-------------------------q1-------------------------')
+	
 	for q,(w,e) in test:
 		q1.append(e)
 		q3.append(w)
@@ -27,9 +27,7 @@ def average_and_std_laun():
 	q1.sort()
 	q3.sort() # just cuz I caann
 
-	print(q1)
-	print('---------------------------------------------------')
-	print(q3)
+	
 
 	listq1 = numpy.array(q1)
 	stdevq1 = listq1.std()
@@ -39,8 +37,6 @@ def average_and_std_laun():
 	avnedri = numpy.mean(q1)
 	avefri  = numpy.mean(q3)
 
-	print()
-	print(stdevq1,stdevq3,avnedri,avefri)
 
 	prosq1 = stdevq1/avnedri
 	prosq3 = stdevq3/avefri

@@ -87,8 +87,8 @@ def innanh_vs_utanh():
 		plot1 = avhas/avall
 		plot2 = avhasland/avallirland
 
-		print(plot1*100, ' prósent innan höfuðborgarsvæðisins fá sé háskólamenntun ')
-		print(plot2*100, ' prósent utan höfuðborgarsvæðisins fá sé háskólamenntun ')
+		# print(plot1*100, ' prósent innan höfuðborgarsvæðisins fá sé háskólamenntun ')
+		# print(plot2*100, ' prósent utan höfuðborgarsvæðisins fá sé háskólamenntun ')
 
 		plot = [plot1,plot2]
 		xas = [1,2]
