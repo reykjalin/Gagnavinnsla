@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'form.ui'
 #
-# Created: Thu Dec  3 21:05:58 2015
+# Created: Thu Dec  3 22:40:04 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,6 +51,16 @@ class Ui_MainWindow(object):
         self.lstSimilar.setObjectName(_fromUtf8("lstSimilar"))
         self.searchtext = QtGui.QPlainTextEdit(self.centralwidget)
         self.searchtext.setGeometry(QtCore.QRect(10, 10, 681, 31))
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.searchtext.sizePolicy().hasHeightForWidth())
+        self.searchtext.setSizePolicy(sizePolicy)
+        self.searchtext.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.searchtext.setAcceptDrops(True)
+        self.searchtext.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.searchtext.setFrameShadow(QtGui.QFrame.Sunken)
+        self.searchtext.setTabChangesFocus(True)
         self.searchtext.setLineWrapMode(QtGui.QPlainTextEdit.NoWrap)
         self.searchtext.setObjectName(_fromUtf8("searchtext"))
         self.btnRem = QtGui.QPushButton(self.centralwidget)
