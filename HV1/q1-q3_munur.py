@@ -49,19 +49,20 @@ prosstd = stdevq3/stdevq1
 plot1 = [prosq1,prosq3]
 plot2 = [prosfact,prosstd]
 x = [1,2]
-label = ["Neðri fjórðungsmörk","Efri fjórðungsmörk","Some shit"]
+label = ["Neðri fjórðungsmörk","Efri fjórðungsmörk"]
+label1 = ['Hlutfall milli meðaltals','Hlutfall milli Staðalfráviks']
 
-mp.figure()
-mp.subplot(2,1,1)
-mp.bar(x,plot1,align = 'center)'
-mp.title('Som serious Shit')
+mp.figure(8)
+mp.subplot(2,1,2)
+mp.bar(x,plot1,align = 'center')
+mp.title('Prósentutala Staðalfráviks á meðaltali ')
 mp.xlim(0,3)
 mp.xticks(x,label)
 
-mp.subplot(2,1,2)
+mp.subplot(2,1,1)
 mp.bar(x,plot2,align = 'center')
-mp.title('Som serious Shit')
-mp.xticks(x,label)
+mp.title('Samanburður á meðaltali og Staðalfráviki')
+mp.xticks(x,label1)
 mp.xlim(0,3)
 mp.show()
 
