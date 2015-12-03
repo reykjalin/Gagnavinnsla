@@ -38,16 +38,16 @@ for z,k in Konur:
 
 Fj = [x + y for x, y in zip(FjKK, FjKvK)]
 
-plot.plot(ArKK, FjKK)
-plot.title(str.join('\n', (Ment,Ald)))
-plot.xticks([year for year in ArKK])
-plot.xlabel('Ár')
-plot.ylabel('Fjöldi')
-plot.plot(ArKvK,FjKvK)
-plot.plot(ArKK, Fj)
-plot.legend(('Karlar','Konur','Heild'),loc='lower right')
-plot.xlim(min(ArKK)-0.5, max(ArKK)+0.5)
-plot.ylim(0,max(Fj)+1000)
+# plot.plot(ArKK, FjKK)
+# plot.title(str.join('\n', (Ment,Ald)))
+# plot.xticks([year for year in ArKK])
+# plot.xlabel('Ár')
+# plot.ylabel('Fjöldi')
+# plot.plot(ArKvK,FjKvK)
+# plot.plot(ArKK, Fj)
+# plot.legend(('Karlar','Konur','Heild'),loc='lower right')
+# plot.xlim(min(ArKK)-0.5, max(ArKK)+0.5)
+# plot.ylim(0,max(Fj)+1000)
 
-plot.show()
+# plot.show()
 
