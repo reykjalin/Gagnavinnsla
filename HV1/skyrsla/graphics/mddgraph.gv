@@ -1,7 +1,0 @@
-digraph foo {
-toy -> ball;
-toy -> balloon
-{balloon; ball}-> red;
-{balloon; ball} -> blue;
-ball -> {football; handball};
-}
