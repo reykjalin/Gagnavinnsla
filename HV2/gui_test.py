@@ -22,6 +22,9 @@ class MyDialog(QtGui.QMainWindow):
         self.ui.btnSearch.clicked.connect(self.search)
         self.ui.btnAdd.clicked.connect(self.add)
         self.ui.btnRem.clicked.connect(self.rem)
+        
+        # KeyEvent filter to filter out when you press the return key
+        self.ui.searchtext.installEventFilter(self)
                 
 
     def search(self):
@@ -66,7 +69,15 @@ class MyDialog(QtGui.QMainWindow):
         # Move to search list
         self.modelSearch.appendRow(newitem)
         self.lstSearch.setModel(self.modelSearch)
-
+        
+    def eventFilter(self, obj, event):
+        # Call the search function if you press Return
+        if event.type() == QtCore.QEvent.KeyPress and event.key() == QtCore.Qt.Key_Return:
+            self.search()
+            return True
+        # Default case, writes text to the textbox
+        QtGui.QWidget.eventFilter(self, obj, event)
+        return False
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
