@@ -1,3 +1,5 @@
+
+# Er munur á fjölda útskrifta úr háksóla eftir kynjum?
 import read_csv as data
 import dict_sort
 import list_to_int as lti
@@ -24,7 +26,7 @@ Konur = dict_sort.key_sort(Konur)
 Karlar = lti.tuple2_toint(Karlar)
 Konur = lti.tuple2_toint(Konur)
 
-ArKK = list(); FjKK = list(); ArKvK = list(); FjKvK = list()
+ArKK = list(); FjKK = list(); ArKvK = list(); FjKvK = list(); Fj = list()
 
 for x,y in Karlar:
 	ArKK.append(x)
@@ -34,17 +36,18 @@ for z,k in Konur:
 	ArKvK.append(z)
 	FjKvK.append(k)
 
+Fj = [x + y for x, y in zip(FjKK, FjKvK)]
 
 plot.plot(ArKK, FjKK)
 plot.title(str.join('\n', (Ment,Ald)))
 plot.xticks([year for year in ArKK])
 plot.xlabel('Ár')
-plot.ylabel('Fjöldi brautskráðra')
-
+plot.ylabel('Fjöldi')
 plot.plot(ArKvK,FjKvK)
-plot.legend(('Karlar','Konur'),loc='lower right')
+plot.plot(ArKK, Fj)
+plot.legend(('Karlar','Konur','Heild'),loc='lower right')
 plot.xlim(min(ArKK)-0.5, max(ArKK)+0.5)
-plot.ylim(min(min(FjKK),min(FjKvK))-500,max(max(FjKK),max(FjKvK))+500)
+plot.ylim(0,max(Fj)+1000)
 
 plot.show()
 

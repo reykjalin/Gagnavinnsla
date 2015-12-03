@@ -1,32 +1,56 @@
 import read_csv as data
 import dict_sort as ds
 import matplotlib.pyplot as plt
-import list_to_int as lt
-import plotter 
-
-
+import list_to_float as fl
+#-----------------------------------------------------------------------------
+Allir = dict()
 KK = dict()
-
+KVK = dict()
+#-----------------------------------------------------------------------------
 for row in data.vinna:
-	if row['Starfsstétt'] == 'Sérfræðingar' and row['Kyn'] == 'Karlar':
+	if row['Starfsstétt'] == 'Alls' and row['Kyn'] == 'Alls':
+		Allir[row['Ár']] = row['Greiddar stundir - fullvinnandi Meðaltal']
+	elif row['Starfsstétt'] == 'Alls' and row['Kyn'] == 'Karlar':
 		KK[row['Ár']] = row['Greiddar stundir - fullvinnandi Meðaltal']
-
-print('KK 1:',KK)
+	elif row['Starfsstétt'] == 'Alls' and row['Kyn'] == 'Konur':
+		KVK[row['Ár']] = row['Greiddar stundir - fullvinnandi Meðaltal']
+#-----------------------------------------------------------------------------
+Allir = ds.key_sort(Allir)
 KK = ds.key_sort(KK)
-print('KK 2:',KK)
-IKK = lt.tuple2_toint(KK)
-print('KK 3:', IKK)
+KVK = ds.key_sort(KVK)
+#-----------------------------------------------------------------------------
+Allir = fl.tuple2_tofloat(Allir)
+KK = fl.tuple2_tofloat(KK)
+KVK = fl.tuple2_tofloat(KVK)
+#-----------------------------------------------------------------------------
+print('Allir: ', Allir)
+print('KK: ',KK)
+print('KVK: ', KVK)
+#-----------------------------------------------------------------------------
+xA = list()
+yA = list()
+xK = list()
+yK = list()
+xKV = list()
+yKV = list()
+#-----------------------------------------------------------------------------
+for i in range(len(Allir)):
+	xA.append(Allir[i][0])
+	yA.append(Allir[i][1])
 
-x = list()
-y = list()
+for i in range(len(KK)):
+	xK.append(KK[i][0])
+	yK.append(KK[i][1])
 
-for i in range(len(IKK)):
-	x.append(KK[i][0])
-	y.append(KK[i][1])
+for i in range(len(KVK)):
+	xKV.append(KVK[i][0])
+	yKV.append(KVK[i][1])
+#-----------------------------------------------------------------------------
+plt.plot(xA,yA)
+plt.xticks([year for year in xK])
+plt.plot(xK,yK)
+plt.plot(xKV,yKV)
 
-
-plt.plot(x,y)
-plt.xticks([year for year in x])
 plt.show()
 
 print()
