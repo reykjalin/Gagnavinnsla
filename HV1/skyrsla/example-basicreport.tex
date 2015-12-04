@@ -11,11 +11,11 @@
 
 \section{Inngangur} % sections break up the document into pieces
 
-Í þessu verkefni áttu nemendur að setja fram rannsóknarspurningar sem þeir gætu svarað með gögnum frá Hagstofu Íslands \cite{H}. 
+Í þessu verkefni áttu nemendur að setja fram rannsóknarspurningar sem þeir gætu svarað með gögnum frá Hagstofu Íslands\cite{H}. 
 %Fyrst var spurt, hvað er það sem okkur finnst áhugavert, þar sem við allir eru nemendur við Háskóla Reykjavíkur þá fannst okkur tilvalið að fjalla um  menntun og laun ýmissia starfsstétta. 
-Ákveðið var að skoða meðaltal heildarlauna eftir starfstétt og kyni.\\
-Spurningin sem sett var fram: Er launamunur á kynjunum? \\
-
+Ákveðið var að skoða meðaltal heildarlauna eftir starfstétt og kyni.
+Spurningin sem sett var fram: Er launamunur á kynjunum?
+\\
 Eftir að gögnin höfðu verið skoðuð vöknuðu fleiri spurningar.
 \begin{itemize} 
 	\item Er munur á fjölda vinnustunda karla og kvenna?
@@ -26,7 +26,7 @@ Eftir að gögnin höfðu verið skoðuð vöknuðu fleiri spurningar.
 \end{itemize}
 
 
-Gögnin voru þannig að hægt var að svara mörgum spurningum og túlka á margan hátt. Markið var sett á að skoða hvernig menntun og laun dreifðust á milli kynja og svo útfrá þeim gögnum var hægt að spyrja sig að enn fleiri spurningum eins og nefnt er að ofan. \\
+Gögnin voru þannig að hægt var að svara mörgum spurningum og túlka á margan hátt. Markið var sett á að skoða hvernig menntun og laun dreifðust á milli kynja og út frá þeim gögnum var hægt að spyrja sig að enn fleiri spurningum eins og nefnt er að ofan.
 
 %Í þessu verkefni áttu nemendur að setja fram rannsóknarspurningar sem þeir gætu svarað með gögnum frá Hagstofu Íslands. Fyrst var spurt, hvað er það sem okkur finnst áhugavert, þar sem við allir eru nemendur við Háskóla Reykjavíkur þá fannst okkur tilvalið að fjalla um  menntun og laun ýmissia starfsstétta.// 
 
@@ -36,15 +36,18 @@ Gögnin voru þannig að hægt var að svara mörgum spurningum og túlka á mar
 
 \section{Framkvæmd}
 
-Gögnin sem voru notuð til að svara spurningunni voru tvær csv skrár. Annars vegar ,,Laun á almennum vinnumarkaði eftir starfsstétt og kyni 1998-2014" \cite{HG1} og hins vegar ,,Mannfjöldi eftir menntunarstöðu 2003-2013'' \cite{HG2}.
+Gögnin sem voru notuð til að svara spurningunni voru tvær csv skrár. Annars vegar "Laun á almennum vinnumarkaði eftir starfsstétt og kyni 1998-2014"\cite{HG1} og hins vegar "Mannfjöldi eftir menntunarstöðu 2003-2013"\cite{HG2}.
 
-Gögnin voru tekin inn og unnið með þau í Pyhton 3 \cite{pyhton3}. Sett voru upp nokkur forrit sem gætu unnið sjálfstætt til að einfalda ferlið, t.d. var eitt forrit sem tók gögnin inn úr csv skránum og skilaði þeim á dictionary formi. Þetta forrit innihélt einnig fall sem prentaði út alla lykla í þessu dictionary til þess að ekki þyrfti að eyða tíma í að leita í gegnum skrár.
-Einnig voru gerð forrit sem gátu raðað gildunum í dictionary eftir key's eða values og forrit sem breytti lista í heiltölu.
-Með þessum verkfærum ásamt Matplotlib \cite{lib} var hægt að vinna með gögnin og teikna gröf á auðveldan máta. 
+Gögnin voru tekin inn og unnið með þau í Pyhton 3\cite{python3}. Sett voru upp nokkur forrit sem gætu unnið sjálfstætt til að einfalda ferlið, t.d. var eitt forrit sem tók gögnin inn úr csv skránum og skilaði þeim á dictionary formi. Þetta forrit innihélt einnig fall sem prentaði út alla lykla í þessu dictionary til þess að ekki þyrfti að eyða tíma í að lesa hrágögnin og leita að þeim þannig.
+Einnig voru gerð forrit sem gátu raðað gildunum í dictionary eftir keys eða values og forrit sem tekur inn lista og breytir gögnunum í listanum í heiltölur. Með þessum verkfærum ásamt Matplotlib\cite{lib} var hægt að vinna með gögnin og teikna gröf á auðveldan máta. 
 
 %Þegar búið var að velja hvaða gögn kæmu til með að vera notuð byrjaði einn hópmeðlimur (K.R.Þ.) að forvinna gögnin í python til að einfalda vinnuna fyrir alla og spara þar með tíma. Inni í þessari forvinnu voru meðal annars búnar til breytur og prentaður út listi með öllum lyklum (keys) í dictionary sem sett var upp. 
 
 %Eftir það settist hópurinn niður og skrifaði spurningar sem okkur fannst áhugaverða og líklegt að það kæmi spennandi niðurstöður úr.
+
+Ferlið sem hrágögnin fara í gegnum er ekki langt. Fyrst eru hrágögnin lesin inn í dictionary, því næst eru viðeigandi gögn síuð út. Þar á eftir er gögnunum raðað og breytt úr strengjum yfir í tölur. Lokaskrefið er þá að teikna upplýsingarnar inn á gröf.
+
+Flóknasti hlutinn kemur til þegar bera á saman gögn úr tveim mismunandi gagnasöfnum á sama grafi, sbr. Mynd \ref{fig:heildarhask} þar sem bæta þurfti við auka y-ás.
 
 Þá tóku allir meðlimir hópsins að sér 1-3 spurningar og skrifuðu kóða fyrir þær. Því næst voru gerð föll fyrir hvern og einn kóða sem skiluðu viðeigandi niðurstöðum og var ein yfirskrá gerð sem birti allar niðurstöðurnar, í þessu tilfelli línu- og súlurit sem birt eru í kafla \ref{nidurstodur} hér að neðan.
 
@@ -60,22 +63,22 @@ Með þessum verkfærum ásamt Matplotlib \cite{lib} var hægt að vinna með g�
 \section{Niðurstöður}\label{nidurstodur}
 %vladimir
 \subsection{Menntunarstig aldurshópa milli ára}
-Á Mynd [\ref{fig:menntunall}] getum við séð að flestir sem lokið hafa einhverskonar menntun á Íslandi eru á bilinu 30 og 49 ára, næst fjölmennasti aldurshópurinn er 50 til 64 ára.
+Á Mynd \ref{fig:menntunall} getum við séð að flestir sem lokið hafa einhverskonar menntun á Íslandi eru á bilinu 30 og 49 ára, næst fjölmennasti aldurshópurinn er 50 til 64 ára.
 Áhugavert að skoða hvernig fjöldi menntaðs fólks skiptist á milli kynjanna, menntunnar og aldursflokks. Til dæmis:
 \begin{itemize}  
 	
-	\item Breytingin hjá konum með grunnmenntun árið 2008 þar sem konur í aldursflokki 50 - 64 ára urðu fleiri en þær sem voru 30 - 49 ára eins og sést á Mynd [\ref{fig:menntungrunn}]
+	\item Breytingin hjá konum með grunnmenntun árið 2008 þar sem konur í aldursflokki 50 - 64 ára urðu fleiri en þær sem voru 30 - 49 ára eins og sést á Mynd \ref{fig:menntungrunn}.
 	
-	\item Það eru fleiri konur með háskólamenntun en karlar skv. Mynd [\ref{fig:menntunhs}], en það virðist vera vaxandi flokkur hjá konum á aldrinum 30 - 49 ára.
+	\item Það eru fleiri konur með háskólamenntun en karlar skv. Mynd \ref{fig:menntunhs}, en það virðist vera vaxandi flokkur hjá konum á aldrinum 30 - 49 ára.
 	
 	
-	\item Það er minna bil á milli aldursflokkanna 30 - 49 og 50 - 69 ára hjá báðum kynjum þegar kemur að starfs- og framhaldsmenntun. Einnig sést að fjöldi kvenna er mjög svipaður á milli aldursflokkanna 20 - 24 og 50 - 64 ára, miðað við karla skv. Mynd [\ref{fig:menntunfram}] 
+	\item Það er minna bil á milli aldursflokkanna 30 - 49 og 50 - 69 ára hjá báðum kynjum þegar kemur að starfs- og framhaldsmenntun. Einnig sést að fjöldi kvenna er mjög svipaður á milli aldursflokkanna 20 - 24 og 50 - 64 ára, miðað við karla skv. Mynd \ref{fig:menntunfram}.
 	
-	\item Einhverja hluta vegna vantar upplýsingar um menntun hjá fleiri körlum en konum skv. Mynd [\ref{fig:menntunvantar}]
+	\item Einhverja hluta vegna vantar upplýsingar um menntun hjá fleiri körlum en konum skv. Mynd \ref{fig:menntunvantar}.
 	
 \end{itemize}
 %Haukur
-Einnig var hlutfall milli karla og kvenna sem öfluðu sér háskólamenntunnar, innan og utan höfuðborgarsvæðisins, skoðað, sbr. Mynd \ref{fig:menntukarla} \& Mynd \ref{fig:menntunkonur}. Við var að búast að konur væru í meiri hluta eftir skimun yfir gögn og er um 4-6 \% sem aðskilja kynin í samanburði á gögnunum. Það sem vakti mikla athygli var að tæplega tvöfalt fleiri karlar sækja sér háskólamenntun innan höfuðborgarsvæðisins en á landsbyggðinni.
+Einnig var hlutfall milli karla og kvenna sem öfluðu sér háskólamenntunnar, innan og utan höfuðborgarsvæðisins, skoðað, sbr. Mynd \ref{fig:menntukarla} \& Mynd \ref{fig:menntunkonur}. Við var að búast að konur væru í meiri hluta eftir skimun yfir gögn og eru um 4-6\% sem aðskilja kynin í samanburði á gögnunum. Það sem vakti mikla athygli var að tæplega tvöfalt fleiri karlar sækja sér háskólamenntun innan höfuðborgarsvæðisins en á landsbyggðinni.
 
 %Kristófer
 \input{heildarlaun}
@@ -83,26 +86,24 @@ Einnig var hlutfall milli karla og kvenna sem öfluðu sér háskólamenntunnar,
 %Róbert
 \subsection{Kynjahlutfall vinnustunda milli ára}
 Þegar skoðaðar voru greiddar stundir (meðaltal yfir árið) á viku fyrir fulla vinnu þá var skoðað hvort mikill munur væri á greiddum vinnustundum á viku milli kynjanna og hvernig það dreifðist yfir árin. 
-Það kom í ljós, þegar um var verið að ræða allar starfsstéttir, að mismunur á milli karla og kvenna árið 1998 var um 4,2 klukkustundir fyrir greiddar vinnustundir í fullri vinnu en árið 2014 var þessi mismunur kominn niður í um 2,5 greiddar vinnustundir í fullri vinnu.
-Það sést á grafinu að mismunurinn minnkar til ársins 2002, eykst svo til ársins 2008 og minnkar loks aftur, sbr. Mynd [\ref{fig:unnirtimar1}]. 
-\newline
-\newline
+
+Það kom í ljós, þegar um var að ræða allar starfsstéttir, að munur á milli karla og kvenna árið 1998 var um 4,2 klukkustundir fyrir greiddar vinnustundir í fullri vinnu en árið 2014 var þessi mismunur kominn niður í um 2,5 greiddar vinnustundir í fullri vinnu.
+Það sést á grafinu að mismunurinn minnkar til ársins 2002, eykst svo til ársins 2008 og minnkar loks aftur, sbr. Mynd \ref{fig:unnirtimar1}.
+
 Þegar einungis skrifstofustörf voru skoðuð þá sást að munurinn árið 1998 var tæp ein greidd vinnustund. Árið 2014 þá var munurinn svipaður en það var nákvæmlega 1 vinnustund sem skildi kynin að.
-Þróunin var frekar jöfn en munurinn eykst frá árinu 2001  til ársins 2009 og minnkar síðan aftur, sbr. Mynd [\ref{fig:unnirtimar1}].
-\newline
-\newline
-Þegar greiddar vinnustundir á viku voru skoðaðar hjá sérfræðimenntuðu fólki þá er mismunurinn ekki mikill og er hann mestur rúm ein greidd vinnustund milli ára. Árið 2000 þá tóku konurnar fram úr karlmönnunum og fengu fleiri greiddar vinnustundir, en fljótlega eftir 2001 þá tóku karlmennirnir aftur fram úr, sbr. Mynd [\ref{fig:unnirtimar2}].
-\newline
-\newline
-Þegar greiddar stundir fyrir stjórnendur voru skoðaðar þá er mismunurinn milli greiddra vinnustunda minna en hálf klukkustund árið 1998. Frá 1999 til 2007 fengu konur fleiri greiddar vinnustundir heldur en karlar. Þegar liðið er á árið 2007 þá fara karlar framúr konum og fá fleiri greiddar vinnustundir en munurinn er innan við ein vinnustund, sbr. Mynd [\ref{fig:unnirtimar2}]. 
+Þróunin var frekar jöfn en munurinn eykst frá árinu 2001  til ársins 2009 og minnkar síðan aftur, sbr. Mynd \ref{fig:unnirtimar1}.
+
+Þegar greiddar vinnustundir á viku voru skoðaðar hjá sérfræðimenntuðu fólki þá er mismunurinn ekki mikill og er hann mestur rúm ein greidd vinnustund milli ára. Árið 2000 þá tóku konurnar fram úr karlmönnunum og fengu fleiri greiddar vinnustundir, en fljótlega eftir 2001 þá tóku karlmennirnir aftur fram úr, sbr. Mynd \ref{fig:unnirtimar2}.
+
+Þegar greiddar stundir fyrir stjórnendur voru skoðaðar þá er mismunurinn milli greiddra vinnustunda minna en hálf klukkustund árið 1998. Frá 1999 til 2007 fengu konur fleiri greiddar vinnustundir heldur en karlar. Þegar liðið er á árið 2007 þá fara karlar framúr konum og fá fleiri greiddar vinnustundir en munurinn er innan við ein vinnustund, sbr. Mynd \ref{fig:unnirtimar2}. 
 
 \section{Samantekt}
 
-Samkvæmt gögnum frá Hagstofunni \cite{H} er greinilega launamunur á kynjunum sem nemur um 130 þús. kr. á mánuði, þar sem karlar eru með hærri laun, sbr. Mynd [\ref{fig:heildarhask}]. Einnig kom í ljós að karlar vinna að meðaltali um 2,5 klst meira á viku en það gæti til dæmis stafað af fæðingarorlofi þar sem konur taka í flestum tilfellum lengri fæðingarorlof, sbr. Mynd [\ref{fig:unnirtimar1}]). \\
+Samkvæmt gögnum frá Hagstofunni\cite{H} er greinilega launamunur á kynjunum sem nemur að meðaltali um 130 þús. kr. á mánuði, þar sem karlar eru með hærri laun, sbr. Mynd \ref{fig:heildarhask}. Einnig kom í ljós að karlar vinna að meðaltali um 2,5 klst meira á viku en það gæti til dæmis stafað af fæðingarorlofi þar sem konur taka í flestum tilfellum lengri fæðingarorlof, sbr. Mynd \ref{fig:unnirtimar1}.
 
-Greinilega sést á gögnunum að það aldursbil sem líklegast er að hafa menntun er 30 - 49 ára í öllum tilvikum nema grunnmenntun en það bendir til þess að fleiri ljúka grunnmenntun nú en á árum áður, sbr. Mynd [\ref{fig:menntungrunn}]. Einnig eru fleiri sem stunda háskólamenntun innan höfuðborgarsvæðisins en utan þess. Þetta stafar líklega af fjölda námsmöguleika sem höfuðborgin hefur fram yfir landsbyggðina, sbr.  Mynd \ref{fig:menntukarla} \& Mynd \ref{fig:menntunkonur}.\\
+Greinilega sést á gögnunum að það aldursbil sem líklegast er að hafa menntun er 30 - 49 ára í öllum tilvikum nema grunnmenntun en það bendir til þess að fleiri ljúka grunnmenntun nú en á árum áður, sbr. Mynd \ref{fig:menntungrunn}. Einnig eru fleiri sem stunda háskólamenntun innan höfuðborgarsvæðisins en utan þess. Þetta stafar líklega af fjölda námsmöguleika sem höfuðborgin hefur fram yfir landsbyggðina, sbr.  Mynd \ref{fig:menntukarla} \& Mynd \ref{fig:menntunkonur}.
 
-Þegar laun á vinnumarkaðinum eru skoðuð ásamt gögnum um háskólamenntun virðist vera einhver tenging þar á milli. Það sést á Mynd [\ref{fig:heildarhask}] að fjöldi háskólamenntaðra fylgir eftir launum á vinnumarkaði þ.e. súluritið hefur svipaða lögun og línuritið en er hliðrað til hægri. Þetta sýnir að fjöldi fólks með háskólamenntun er háð heildarlaunum.
+Þegar laun á vinnumarkaðinum eru skoðuð ásamt gögnum um háskólamenntun virðist vera einhver tenging þar á milli. Það sést á Mynd \ref{fig:heildarhask} að fjöldi háskólamenntaðra fylgir eftir launum á vinnumarkaði þ.e. súluritið hefur svipaða lögun og línuritið en er hliðrað til hægri. Þetta sýnir að fjöldi fólks með háskólamenntun er háð heildarlaunum.
 
 \pagebreak
 
