@@ -4,14 +4,12 @@ import matplotlib.pyplot as plt
 import list_to_int as lti
 import numpy as np
 
-
-
-from read_csv import menntun_kyn
 from read_csv import menntun_menntun
 
 # Hver er algengasta aldurshóp, mismentaða fólk?
 def aldurshop_mentun():
 	Mentun_ar = ('20 til 24 ára','25 til 29 ára','30 til 49 ára','50 til 64 ára','65 til 74 ára')
+	menntun_kyn = ('Karlar','Konur')
 	AllsMentun = {}
 
 	for menntun in range (len(menntun_menntun)):
@@ -36,7 +34,7 @@ def aldurshop_mentun():
 
 			for i in range(len(Mentun_ar)):
 				plt.figure(menntun)
-				plt.subplot(3,1,kyn+1)	
+				plt.subplot(2,1,kyn+1)	
 				plt.plot(x[i],y[i])
 				plt.title('Aldursflokkar ({})/ menntun: {}'.format(menntun_kyn[kyn],menntun_menntun[menntun]))
 
