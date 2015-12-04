@@ -257,11 +257,12 @@
       \author@rureport\\
       \vspace{\baselineskip}
       \course@rureport\\
-      Instructor: \instructor@rureport\\
+      Kennari: \instructor@rureport\\
     }
     {\large
       \vfil
-      \today\\
+%      \today\\
+		4. Desember 2015
         \ifthenelse{\boolean{svn}}{SVN Revision \svnrev}{}  
       \vfil
     }
