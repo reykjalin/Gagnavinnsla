@@ -7,7 +7,7 @@ import spurningarjon as sj
 
 
 
-# Declare all dictionaries that will store data
+######################### Declare all dictionaries that will store data #########################
 avg_all = dict()
 avg_kvk = dict()
 avg_kk = dict()
@@ -39,8 +39,8 @@ solu_kvk = dict()
 legend_handles = list()
 plot_title = list()
 
-#def prepare_data():
-# Get data
+
+############################################# Get data #############################################
 arkk = sj.ArKK
 fjkk = sj.FjKK
 arkvk = sj.ArKvK
@@ -55,6 +55,7 @@ for i in range(len(fjkvk)):
 for i in range(len(fjall)):
     arall[i] += 0.075
 
+# Filter out relevant data and store in dictionaries - copy paste of 7 lines with different keys #
 for row in data.vinna:
     if row['Starfsstétt'] == 'Alls':
         if row['Kyn'] == 'Alls':
@@ -120,7 +121,7 @@ for row in data.vinna:
         elif row['Kyn'] == 'Konur':
             solu_kvk[row['Ár']] = row['Heildarlaun - fullvinnandi Meðaltal']
 
-# Sort dictionaries and get lists
+############################## Sort dictionaries and get lists ###################################
 avg_all = dict_sort.key_sort(avg_all)
 avg_kk = dict_sort.key_sort(avg_kk)
 avg_kvk = dict_sort.key_sort(avg_kvk)
@@ -149,7 +150,7 @@ solu_all = dict_sort.key_sort(solu_all)
 solu_kk = dict_sort.key_sort(solu_kk)
 solu_kvk = dict_sort.key_sort(solu_kvk)
 
-# Change lists to int
+######################################## Change lists to int ########################################
 avg_all = lti.tuple2_toint(avg_all)
 avg_kk = lti.tuple2_toint(avg_kk)
 avg_kvk = lti.tuple2_toint(avg_kvk)
@@ -178,7 +179,7 @@ solu_all = lti.tuple2_toint(solu_all)
 solu_kk = lti.tuple2_toint(solu_kk)
 solu_kvk =lti.tuple2_toint(solu_kvk)
 
-####################################################################################################
+####################### Plotting functions - they all do the same thing ##########################
 
 def plot_skrifst_all():
     x = list()
@@ -508,7 +509,7 @@ def plot_ar():
     plot_ar_kk()
     plot_ar_kvk()
 
-####################################################################################################
+############################### Examples of how to use plot functions ################################
 
 # Create plots
 # Figure 1
@@ -516,17 +517,14 @@ def plot_ar():
 
 # # # Subplot 1.1
 # # plt.subplot(2,1,1)
-# plot_avg_all()
-# plot_avg_kk()
-# plot_avg_kvk()
+# plot_avg()
 # plt.legend(legend_handles, loc = 'upper left')
 # plt.ylabel('Meðallaun í þús. kr.')
 
 # plt.twinx()
 # plt.ylabel('Fjöldi háskólamenntaðra einstaklinga')
-# plt.bar(arkk, fjkk, width=0.1)
-# plt.bar(arkvk, fjkvk, width=0.1, align='center', color = 'red')
-# plt.legend(('Fj. Hásk.mennt. Karla','Fj. Hásk.mennt. Kvenna'), loc='center left')
+# plot_ar()
+# plt.legend(legend_handles, loc = 'center left')
 # plt.title(', '.join(plot_title))
 # plot_title = list()
 # legend_handles = list()
@@ -543,93 +541,9 @@ def plot_ar():
 # legend_handles = list()
 
 
-# # Figure 2
-# plt.figure()
-
-# # Subplot 2.1
-# plt.subplot(2,1,1)
-# plot_stjorn_all()
-# plot_stjorn_kk()
-# plot_stjorn_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-# # Subplot 2.2
-# plt.subplot(2,1,2)
-# plot_serfr_all()
-# plot_serfr_kk()
-# plot_serfr_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-
-# # Figure 3
-# plt.figure()
-
-# # Subplot 3.1
-# plt.subplot(2,1,1)
-# plot_idnad_all()
-# plot_idnad_kk()
-# plot_idnad_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-# # Subplot 3.2
-# plt.subplot(2,1,2)
-# plot_skrifst_all()
-# plot_skrifst_kk()
-# plot_skrifst_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-
-# # Figure 4
-# plt.figure()
-
-# # Subplot 4.1
-# plt.subplot(2,1,1)
-# plot_taeknar_all()
-# plot_taeknar_kk()
-# plot_taeknar_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-# # Subplot 4.2
-# plt.subplot(2,1,2)
-# plot_verka_all()
-# plot_verka_kk()
-# plot_verka_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-
-# # Figure 5
-# plt.figure()
-
-# plot_solu_all()
-# plot_solu_kk()
-# plot_solu_kvk()
-# plt.title(', '.join(plot_title))
-# plt.legend(legend_handles, loc = 'upper left')
-# plot_title = list()
-# legend_handles = list()
-
-# # Show plot
 # plt.show()
 
-# Print keys and relevant information
+########################### Print keys and relevant information ##################################
 # print()
 # print()
 # data.print_keys()
