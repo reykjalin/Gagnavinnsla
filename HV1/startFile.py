@@ -35,6 +35,19 @@ plt.legend(['Alls', 'Karlar', 'Konur'], loc='upper left')
 plt.title('Heildarlaun skrifstofufólks')
 plt.grid()
 
+plt.figure(10)
+plt.subplot(2,1,1)
+avg.plot_serfr()
+plt.legend(['Laun - Alls', 'Laun - Karlar', 'Laun - Konur'], loc='upper left')
+plt.title('Heildarlaun Sérfræðinga')
+plt.grid(axis='y')
+
+plt.subplot(2,1,2)
+avg.plot_stjorn()
+plt.legend(['Laun - Alls', 'Laun - Karlar', 'Laun - Konur'], loc='upper left')
+plt.title('Heildarlaun Stjórnenda')
+plt.grid(axis='y')
+
 # Haukur
 innanh_vs_utanh()
 average_and_std_laun()
