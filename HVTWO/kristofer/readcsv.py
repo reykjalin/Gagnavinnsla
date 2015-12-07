@@ -70,7 +70,7 @@ for i in links.index:
 for i in set(tags.index):
     tlist = tags[tags.index == i].values
     for t in tlist:
-        outs.write("insert into tags (movieid, userid, tag) values ('{}', '{}', '{}')\n".format(i, t[0], t[1]))
+        outs.write("insert into tags (movieid, userid, tag) values ('{}', '{}', '{}')\n".format(i, t[0], t[1].replace("'", "''")))
 
 for i in genres.keys():
     glist = genres[i]
