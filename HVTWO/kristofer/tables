@@ -1,0 +1,30 @@
+create table movies (
+id varchar(250) unique,
+title varchar(250),
+year varchar(250),
+rating float
+);
+
+create table ratings (
+movieid varchar(250) references movies(id),
+userid varchar(250),
+rating float,
+primary key (movieid, userid)
+);
+
+create table links (
+movieid varchar(250) references movies(id) unique,
+imdbid varchar(250),
+tmdbid varchar(250)
+);
+
+create table tags (
+movieid varchar(250) references movies(id),
+userid varchar(250),
+tag varchar(250)
+);
+
+create table genres (
+genre varchar(250) unique,
+movieid varchar(250) references movies(id)
+);
