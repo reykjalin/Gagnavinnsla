@@ -21,3 +21,8 @@ print(MoviesDatabse.head())
 print(MoviesLinks.head())
 print(MoviesRatings.head())
 print(MoviesTags.head())
+
+
+MoviesMerge = pd.concat([MoviesDatabse, MoviesLinks, MoviesRatings, MoviesTags ], ignore_index=True)
+# MoviesMerge = pd.concat([MoviesDatabse, MoviesLinks], axis=1, join='inner')
+MoviesMerge.to_csv('test.csv', sep=',', encoding='utf-8',index_col=0)
