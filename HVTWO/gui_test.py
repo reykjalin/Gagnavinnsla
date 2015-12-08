@@ -1,7 +1,10 @@
 import sys
-#import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
+import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
 from PyQt4 import QtCore, QtGui
 from form import Ui_MainWindow
+import psycopg2
+import getpass
+import pprint as pp
 
 class MyDialog(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -27,15 +30,55 @@ class MyDialog(QtGui.QMainWindow):
         # KeyEvent filter to filter out when you press the return key
         self.ui.searchtext.installEventFilter(self)
                 
+    # Go into the database and get list
+    def getdat(self,inputdata):
+        host = 'localhost'
+        dbname = 'gavi'
+
+        #username = input('User name for {}.{}: '.format(host,dbname))
+        username = 'jonkristinnhelgason'
+        #pw = getpass.getpass()
+        pw = ''
+
+        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(host, dbname, username, pw)
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor()
+
+        #print("Connected!\n")
+
+        s = ("""select name
+        from drinkers
+        where lower(name) like '{}%';""".format(inputdata))
+
+
+        cursor.execute(s)
+
+        #pp.pprint(cursor.fetchall())
+
+        return cursor.fetchall()
+
 
     def search(self):
+        #  
+        self.modelSearch.clear()
+
         # Get text from textbox and clear it
         txt = self.ui.searchtext.toPlainText()
         self.ui.searchtext.clear()
+
+        # Get data from sql database
+        movielistoftuple = self.getdat(txt)
         
-        # Create item from text and add to list
-        item = QtGui.QStandardItem(txt)
-        self.modelSearch.appendRow(item)
+        for i in movielistoftuple:
+            # Get each line of text
+            txt = i[0]
+
+            # Create item from text and add to list
+            item = QtGui.QStandardItem(txt)
+
+            #Add to the list
+            self.modelSearch.appendRow(item)
+
         # Make sure list appears
         self.lstSearch.setModel(self.modelSearch)
 
@@ -83,6 +126,10 @@ class MyDialog(QtGui.QMainWindow):
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     myapp = MyDialog()
-#    app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+    app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
     myapp.show()
     sys.exit(app.exec_())
+
+    # Close the sql connection
+    cursor.close()
+    conn.close()
