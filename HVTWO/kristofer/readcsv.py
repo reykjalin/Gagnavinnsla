@@ -51,6 +51,20 @@ for i in movies.index:
 ############################## Create genre dict ##############################
 
 
+############################## Create tag sets ##############################
+tmdict = {}
+for i in tags.index:
+    tlist = tags[tags.index == i].values
+    for t in tlist:
+        if i not in tmdict.keys():
+            tmdict[i] = [t[1],]
+        else:
+            tmdict[i].append(t[1])
+for k in tmdict.keys():
+    tmdict[k] = set(tmdict[k])
+############################## Create tag sets ##############################
+
+
 ############################## Create sql commands ##############################
 outs = open('insert_to_movielens.sql', 'w')
 
@@ -77,6 +91,10 @@ for i in genres.keys():
     for g in glist:
         outs.write("insert into genres (genre, movieid) values ('{}', '{}')\n".format(i, g))
 
+for i in tmdict.keys():
+    tlist = tmdict[i]
+    for t in tlist:
+        outs.write("insert into mtags (movieid, tag) values ('{}', '{}')\n".format(i, t.replace("'", "''")))
 
 outs.close()
 ############################## Create sql commands ##############################
