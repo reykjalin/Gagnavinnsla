@@ -33,12 +33,12 @@ class MyDialog(QtGui.QMainWindow):
     # Go into the database and get list
     def getdat(self,inputdata):
         host = 'localhost'
-        dbname = 'gavi'
+        dbname = 'movielens_sm'
 
         #username = input('User name for {}.{}: '.format(host,dbname))
-        username = 'jonkristinnhelgason'
+        username = 'kristofer'
         #pw = getpass.getpass()
-        pw = ''
+        pw = 'Krissicool2'
 
         conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(host, dbname, username, pw)
         conn = psycopg2.connect(conn_string)
@@ -46,9 +46,9 @@ class MyDialog(QtGui.QMainWindow):
 
         #print("Connected!\n")
 
-        s = ("""select name
-        from drinkers
-        where lower(name) like '{}%';""".format(inputdata))
+        s = ("""select title, year
+        from movies
+        where lower(title) like '%{}%';""".format(inputdata.lower()))
 
 
         cursor.execute(s)
@@ -59,7 +59,7 @@ class MyDialog(QtGui.QMainWindow):
 
 
     def search(self):
-        #  
+        # Clear listbox
         self.modelSearch.clear()
 
         # Get text from textbox and clear it
@@ -71,10 +71,11 @@ class MyDialog(QtGui.QMainWindow):
         
         for i in movielistoftuple:
             # Get each line of text
-            txt = i[0]
+            txt = i[0] + ' ({})'.format(i[1])
 
             # Create item from text and add to list
             item = QtGui.QStandardItem(txt)
+            item.setEditable(False)
 
             #Add to the list
             self.modelSearch.appendRow(item)
@@ -89,7 +90,8 @@ class MyDialog(QtGui.QMainWindow):
         # Get item associated with selected index
         item = self.modelSearch.itemFromIndex(index)
         newitem = QtGui.QStandardItem(item.text())
-        
+        newitem.setEditable(False)
+
         # Remove item from search list
         self.modelSearch.removeRow(index.row())
         self.lstSearch.setModel(self.modelSearch)
@@ -105,6 +107,7 @@ class MyDialog(QtGui.QMainWindow):
         # Get item associated with selected index
         item = self.modelSimilar.itemFromIndex(index)
         newitem = QtGui.QStandardItem(item.text())
+        newitem.setEditable(False)
         
         # Remove item from similar list
         self.modelSimilar.removeRow(index.row())
