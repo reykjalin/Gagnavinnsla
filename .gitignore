@@ -193,3 +193,6 @@ sympy-plots-for-*.tex/
 
 # PDF files
 *.pdf
+
+# SQL files
+*.sql
