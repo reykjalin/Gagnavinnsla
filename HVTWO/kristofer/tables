@@ -21,10 +21,18 @@ tmdbid varchar(250)
 create table tags (
 movieid varchar(250) references movies(id),
 userid varchar(250),
-tag varchar(250)
+tag varchar(250),
+primary key (movieid, userid, tag)
+);
+
+create table mtags (
+movieid varchar(250) references movies(id),
+tag varchar(250),
+primary key (movieid, tag)
 );
 
 create table genres (
 genre varchar(250),
-movieid varchar(250) references movies(id)
+movieid varchar(250) references movies(id),
+primary key (genre, movieid)
 );
