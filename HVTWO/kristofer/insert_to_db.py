@@ -18,6 +18,8 @@ sqlcmds = open('insert_to_movielens.sql', 'r')
 for line in sqlcmds:
     cursor.execute(line.strip())
 
+print('Done!')
+
 sqlcmds.close()
 conn.commit()
 cursor.close()
