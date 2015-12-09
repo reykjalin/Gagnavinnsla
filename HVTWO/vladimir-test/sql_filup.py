@@ -27,6 +27,14 @@ MoviesTags.to_sql('tags', engine, if_exists='replace')
 
 # select m.title, m.year, avg(r.rating) as average ,sum(r.userid) as number_of_users_voted, m.genres
 # from ratings r, movies m
-# where m.movieid = r.movieid and lower(m.genres) like '%action%' and lower(m.genres) like '%%'
+# where m.movieid = r.movieid 
+# and lower(m.genres) like '%action%' and lower(m.genres) like '%sci%' and lower(m.genres) like '%dra%' and lower(m.genres) like '%%'
 # group by m.title, m.year, m.genres 
+# order by average desc, m.year desc;
+
+# select m.title, m.year, avg(r.rating) as average ,count(r.userid) as number_of_users_voted, m.genres, t.tag 
+# from ratings r, movies m, tags t
+# where m.movieid = r.movieid and m.movieid = t.movieid
+# and lower(m.genres) like '%action%' and lower(m.genres) like '%sci%' and lower(m.genres) like '%dra%' and lower(m.genres) like '%%'
+# group by m.title, m.year, m.genres, t.tag 
 # order by average desc, m.year desc;
