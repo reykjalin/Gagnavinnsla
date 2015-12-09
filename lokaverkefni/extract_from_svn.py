@@ -1,20 +1,29 @@
 import numpy as np
 import pandas as pd
-import datetime as dt
+import datetime
+
 
 
 
 eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month','calendardate_day',\
-	'greatesteclipse_dt','luna_num','saros_num','ecl_type',\
+	'greatesteclipse_td','dT','luna_num','saros_num','ecl_type',\
 	'qle','gamma','ecl_mag',\
 	'lat','long','sun_alt',\
-	'path_width','central_d')
+	'path_width','central_dur')
 
-parser = lambda date: pd.datetime.strptime(date, '%d %b %Y')
 
 eclipse1900_2001 = pd.read_csv('eclipse_1901_2000.csv', sep="[  ]+", engine='python'\
-	,encoding='UTF-8',names=eclipse_column_names)
-eclipse1900_2001.index.name = 'index'
+	,encoding='UTF-8',names=eclipse_column_names,index_col=0)
+# eclipse1900_2001.index.name = 'index'
+
+
+eclipse1900_2001['calendardate_month'] = '-' + eclipse1900_2001['calendardate_month'].astype(str)
+eclipse1900_2001['calendardate_day'] = '-' + eclipse1900_2001['calendardate_day'].astype(str)
+
+eclipse1900_2001["calendardate"] = eclipse1900_2001["calendardate_year"].map(str) +  \
+eclipse1900_2001["calendardate_month"].map(str) + eclipse1900_2001["calendardate_day"].map(str)
+
+# print(datetime.strptime("19", "%d/%m/%Y").strftime('%Y-%m-%d'))
 
 
 eclipse1900_2001.to_csv('output.csv',sep=';', encoding='utf-8')
