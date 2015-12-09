@@ -48,7 +48,8 @@ class MyDialog(QtGui.QMainWindow):
 
         s = ("""select title, year
         from movies
-        where lower(title) like '%{}%';""".format(inputdata.lower()))
+        where lower(title) like '%{}%'
+        order by title;""".format(inputdata.lower()))
 
 
         cursor.execute(s)
