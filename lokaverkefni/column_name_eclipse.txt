@@ -1,0 +1,1 @@
+CatalogNumber	CalendarDate	GreatestEclipse_dT	Luna_Num	Saros_Num	Ecl_type	QLE	Gamma	Ecl_mag	Lat	Long	sun_alt	path_width	central_d
