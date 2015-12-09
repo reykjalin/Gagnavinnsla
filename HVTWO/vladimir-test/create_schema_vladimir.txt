@@ -1,0 +1,30 @@
+create table movies (
+movieId varchar(250),
+title varchar(250),
+genres varchar(250),
+year char(250),
+primary key (movieId));
+
+create table links (
+movieId varchar(250),
+imdbId varchar(250),
+tmdbId varchar(250),
+primary key (movieId));
+
+create table ratings (
+indexRating varchar(250),
+userId varchar(250),
+movieId varchar(250),
+rating char(5),
+primary key (indexRating));
+
+create table tags (
+indexTags varchar(250),
+userId varchar(250),
+movieId varchar(250),
+tag varchar(250),
+primary key (indexTags));
+
+
+
+
