@@ -61,14 +61,6 @@ Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat 
 09331  1921 Oct 01  12:35:58     22   -968  123   T   -p  -0.9383  1.0293  66S  56W  20  291  01m52s
 09332  1922 Mar 28  13:05:26     23   -962  128   A   nn   0.1711  0.9381  12N  18W  80  233  07m50s
 
-Catalog of Solar Eclipses: 1901 to 2000
-
-
-                      TD of
-Catalog  Calendar   Greatest          Luna Saros Ecl.               Ecl.            Sun Path  Central
-Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat Long Alt Width   Dur.
-                                 s                                          °    °    °   km
-
 09333  1922 Sep 21  04:40:31     23   -956  133   T   -n  -0.2130  1.0678  11S 105E  78  226  05m59s
 09334  1923 Mar 17  12:44:58     23   -950  138   A   p-  -0.5438  0.9310  33S   2E  57  305  07m51s
 09335  1923 Sep 10  20:47:29     23   -944  143   T   p-   0.5149  1.0430  35N 122W  59  167  03m37s
@@ -124,13 +116,6 @@ Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat 
 09381  1942 Sep 10  15:39:32     26   -709  153   P   t-   1.2571  0.5230  72N  50E   0             
 09382  1943 Feb 04  23:38:10     26   -704  120   T   -p   0.8734  1.0331  44N 175E  29  229  02m39s
 
-Catalog of Solar Eclipses: 1901 to 2000
-
-
-                      TD of
-Catalog  Calendar   Greatest          Luna Saros Ecl.               Ecl.            Sun Path  Central
-Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat Long Alt Width   Dur.
-                                 s                                          °    °    °   km
 
 09383  1943 Aug 01  04:16:13     26   -698  125   A   -p  -0.8041  0.9409  35S 109E  36  367  06m59s
 09384  1944 Jan 25  15:26:42     26   -692  130   T   -n   0.2025  1.0428   8S  50W  78  146  04m09s
@@ -187,14 +172,6 @@ Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat 
 09431  1964 Dec 04  01:31:54     36   -434  122   P   -t   1.1193  0.7518  64N 173W   0             
 09432  1965 May 30  21:17:31     36   -428  127   T   -p  -0.4225  1.0544   2S 134W  65  198  05m15s
 
-Catalog of Solar Eclipses: 1901 to 2000
-
-
-                      TD of
-Catalog  Calendar   Greatest          Luna Saros Ecl.               Ecl.            Sun Path  Central
-Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat Long Alt Width   Dur.
-                                 s                                          °    °    °   km
-
 09433  1965 Nov 23  04:14:51     36   -422  132   A   -n   0.3906  0.9656   2N 120E  67  134  04m02s
 09434  1966 May 20  09:39:02     37   -416  137   A   n-   0.3467  0.9991  39N  26E  70    3  00m05s
 09435  1966 Nov 12  14:23:28     37   -410  142   T   n-  -0.3300  1.0234  36S  48W  71   84  01m57s
@@ -250,14 +227,6 @@ Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat 
 09481  1987 Sep 23  03:12:22     56   -152  134   A   -n   0.2787  0.9634  14N 138E  74  137  03m49s
 09482  1988 Mar 18  01:58:56     56   -146  139   T   n-   0.4188  1.0464  21N 140E  65  169  03m46s
 
-Catalog of Solar Eclipses: 1901 to 2000
-
-
-                      TD of
-Catalog  Calendar   Greatest          Luna Saros Ecl.               Ecl.            Sun Path  Central
-Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat Long Alt Width   Dur.
-                                 s                                          °    °    °   km
-
 09483  1988 Sep 11  04:44:29     56   -140  144   A   p-  -0.4681  0.9377  20S  94E  62  258  06m57s
 09484  1989 Mar 07  18:08:41     56   -134  149   P   t-   1.0981  0.8268  61N 170W   0             
 09485  1989 Aug 31  05:31:47     57   -128  154   P   t-  -1.1928  0.6344  61S  24E   0             
@@ -287,4 +256,4 @@ Number     Date      Eclipse    ΔT     Num  Num  Type QLE  Gamma    Mag.   Lat 
 09507  2000 Feb 05  12:50:27     64      1  150   P   t-  -1.2233  0.5795  70S 134E   0             
 09508  2000 Jul 01  19:33:34     64      6  117   P   -t  -1.2821  0.4768  67S 109W   0             
 09509  2000 Jul 31  02:14:08     64      7  155   P   t-   1.2166  0.6034  70N  60W   0             
-09510  2000 Dec 25  17:35:57     64     12  122   P   -t   1.1367  0.7228  66N  74W   0             s
+09510  2000 Dec 25  17:35:57     64     12  122   P   -t   1.1367  0.7228  66N  74W   0             
