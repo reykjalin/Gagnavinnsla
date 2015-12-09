@@ -6,6 +6,7 @@ from dbDialog import Ui_dbDialog
 import psycopg2
 import getpass
 import pprint as pp
+moviesselected = list()
 
 class DBInfo(QtGui.QWidget):
     def __init__(self, parent):
@@ -64,7 +65,7 @@ class MyDialog(QtGui.QMainWindow):
         self.modelSimilar = QtGui.QStandardItemModel(self.lstSimilar)
     
         # Define functions for buttons
-        self.ui.btnDone.clicked.connect(self.close)
+        self.ui.btnDone.clicked.connect(self.popupwindow)
         self.ui.btnSearch.clicked.connect(self.search)
         self.ui.btnAdd.clicked.connect(self.add)
         self.ui.btnRem.clicked.connect(self.rem)
@@ -136,13 +137,18 @@ class MyDialog(QtGui.QMainWindow):
         newitem = QtGui.QStandardItem(item.text())
         newitem.setEditable(False)
 
+        if newitem.text() not in moviesselected:
+            # Add to the list of values selected
+            test = self.addtolist(newitem.text())
+            #print(test)
+            
+            # Move to similar list
+            self.modelSimilar.appendRow(newitem)
+            self.lstSimilar.setModel(self.modelSimilar)
+
         # Remove item from search list
         self.modelSearch.removeRow(index.row())
         self.lstSearch.setModel(self.modelSearch)
-        
-        # Move to similar list
-        self.modelSimilar.appendRow(newitem)
-        self.lstSimilar.setModel(self.modelSimilar)
         
     def rem(self):
         # Get index for selected item
@@ -153,6 +159,9 @@ class MyDialog(QtGui.QMainWindow):
         newitem = QtGui.QStandardItem(item.text())
         newitem.setEditable(False)
         
+        # Remove from the list of values selected
+        test = self.removefromlist(newitem.text())
+
         # Remove item from similar list
         self.modelSimilar.removeRow(index.row())
         self.lstSimilar.setModel(self.modelSimilar)
@@ -169,6 +178,28 @@ class MyDialog(QtGui.QMainWindow):
         # Default case, writes text to the textbox
         QtGui.QWidget.eventFilter(self, obj, event)
         return False
+
+    def popupwindow(self):   
+         
+        # The QWidget widget is the base class of all user interface objects in PyQt4.
+        w = QtGui.QWidget()
+
+        # Show a message box
+        result = QtGui.QMessageBox.question(w, "Movies you might like", "Movies you might like:\n\n {} \n\n {} \n\n {} \n\n {} \n\n {} \n\n\n\n\n\n Do you want to try again? ".format(*[moviesselected[i] for i in range(5)]), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+
+        if result == QtGui.QMessageBox.Yes:
+            print('Yes')
+
+        else:
+            print('No')  
+
+    def addtolist(self,movie):
+        moviesselected.append(movie)
+        return moviesselected
+
+    def removefromlist(self,movie):
+        moviesselected.remove(movie)
+        return moviesselected
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
