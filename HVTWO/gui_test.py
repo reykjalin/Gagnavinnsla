@@ -33,12 +33,12 @@ class MyDialog(QtGui.QMainWindow):
     # Go into the database and get list
     def getdat(self,inputdata):
         host = 'localhost'
-        dbname = 'movielens_sm'
+        dbname = 'myndir'
 
         #username = input('User name for {}.{}: '.format(host,dbname))
-        username = 'kristofer'
+        username = 'postgres'
         #pw = getpass.getpass()
-        pw = 'Krissicool2'
+        pw = 'Hjol5106'
 
         conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(host, dbname, username, pw)
         conn = psycopg2.connect(conn_string)
@@ -48,7 +48,8 @@ class MyDialog(QtGui.QMainWindow):
 
         s = ("""select title, year
         from movies
-        where lower(title) like '%{}%';""".format(inputdata.lower()))
+        where lower(title) like '%{}%' or year like'%{}%'
+        order by title;""".format(inputdata.lower(),inputdata))
 
 
         cursor.execute(s)
