@@ -6,7 +6,7 @@ from dbDialog import Ui_dbDialog
 import psycopg2
 import getpass
 import pprint as pp
-moviesselected = list()
+
 
 class DBInfo(QtGui.QWidget):
     def __init__(self, parent):
@@ -76,6 +76,9 @@ class MyDialog(QtGui.QMainWindow):
         self.db = ''
         self.usr = 'postgres'
         self.pw = ''
+        
+        self.moviesselected = list()
+
 
     def edit(self):
         self.wedit = DBInfo(self)
@@ -116,7 +119,7 @@ class MyDialog(QtGui.QMainWindow):
         
         for i in movielistoftuple:
             # Get each line of text
-            txt = i[0] + ' ({})'.format(i[1])
+            txt = i[0]# + ' ({})'.format(i[1])
 
             # Create item from text and add to list
             item = QtGui.QStandardItem(txt)
@@ -137,9 +140,9 @@ class MyDialog(QtGui.QMainWindow):
         newitem = QtGui.QStandardItem(item.text())
         newitem.setEditable(False)
 
-        if newitem.text() not in moviesselected:
+        if newitem.text() not in self.moviesselected:
             # Add to the list of values selected
-            test = self.addtolist(newitem.text())
+            test = self.moviesselected.append(newitem.text())
             #print(test)
             
             # Move to similar list
@@ -160,7 +163,7 @@ class MyDialog(QtGui.QMainWindow):
         newitem.setEditable(False)
         
         # Remove from the list of values selected
-        test = self.removefromlist(newitem.text())
+        test = self.moviesselected.remove(item.text())
 
         # Remove item from similar list
         self.modelSimilar.removeRow(index.row())
@@ -170,36 +173,71 @@ class MyDialog(QtGui.QMainWindow):
         self.modelSearch.appendRow(newitem)
         self.lstSearch.setModel(self.modelSearch)
         
-    def eventFilter(self, obj, event):
-        # Call the search function if you press Return
-        if event.type() == QtCore.QEvent.KeyPress and event.key() == QtCore.Qt.Key_Return:
-            self.search()
-            return True
-        # Default case, writes text to the textbox
-        QtGui.QWidget.eventFilter(self, obj, event)
-        return False
+    def popupwindow(self):
+        # Connect to db
+        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.host, self.db, self.usr, self.pw)
+        conn = psycopg2.connect(conn_string)
+        cursor = conn.cursor()
 
-    def popupwindow(self):   
-         
+        # Create sql command to get genres
+        sqlcmd = """select distinct lower(g.genre)
+        from genres g, movies m
+        where m.id = g.movieid
+        and ("""
+        for i in range(len(self.moviesselected) - 2):
+            sqlcmd += "lower(m.title) = '" + self.moviesselected[i].replace("'","''").lower() + "' or "
+        sqlcmd += "lower(m.title) = '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "') order by lower(g.genre);"
+
+        # Get genres
+        cursor.execute(sqlcmd)
+        genres = cursor.fetchall()        
+
+        # Create sql command to get tags
+        sqlcmd = """select distinct lower(mt.tag)
+        from genres g, movies m, mtags mt
+        where m.id = g.movieid and m.id = mt.movieid
+        and ("""
+        for i in range(len(self.moviesselected) - 2):
+            sqlcmd += "lower(m.title) = '" + self.moviesselected[i].replace("'","''").lower() + "' or "
+        sqlcmd += "lower(m.title) = '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "') order by lower(mt.tag);"
+        
+        # Get tags
+        cursor.execute(sqlcmd)
+        tags = cursor.fetchall()
+
+
+        # Get similar movies
+        sqlcmd = """select m.title, count(m.title)
+        from genres g, movies m, mtags mt
+        where m.id = g.movieid and m.id = mt.movieid
+        and ("""
+        for i in range(len(genres) - 2):
+            sqlcmd += "lower(g.genre) = '" + genres[i][0].replace("'","''") + "' or "
+        sqlcmd += "lower(g.genre) = '" + genres[len(genres) - 1][0].replace("'","''") + "')\nand ("
+
+        for i in range(len(tags) - 2):
+            sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "' or "
+        sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "') group by m.title order by count(m.title) desc limit {};".format(5)
+
+        # Get similar movies
+        cursor.execute(sqlcmd)
+        similar = cursor.fetchall()
+        
+        # Show movies in messagebox
+        moviestr = 'Movies you might like:\n\n'
+        for i in range(len(similar)):
+            moviestr += similar[i][0] + '\n'
+        moviestr += '\nWould you like to try again?'
+
         # The QWidget widget is the base class of all user interface objects in PyQt4.
         w = QtGui.QWidget()
 
         # Show a message box
-        result = QtGui.QMessageBox.question(w, "Movies you might like", "Movies you might like:\n\n {} \n\n {} \n\n {} \n\n {} \n\n {} \n\n\n\n\n\n Do you want to try again? ".format(*[moviesselected[i] for i in range(5)]), QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+        result = QtGui.QMessageBox.question(w, "Movies you might like", moviestr, QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
 
-        if result == QtGui.QMessageBox.Yes:
-            print('Yes')
+        if result != QtGui.QMessageBox.Yes:
+            self.close()
 
-        else:
-            print('No')  
-
-    def addtolist(self,movie):
-        moviesselected.append(movie)
-        return moviesselected
-
-    def removefromlist(self,movie):
-        moviesselected.remove(movie)
-        return moviesselected
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
