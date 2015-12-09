@@ -20,13 +20,33 @@ class DBInfo(QtGui.QWidget):
         self.ui.txtPwd.insert(parent.pw)
         
         self.ui.btnOk.clicked.connect(self.saveinfo)
+        self.ui.btnTest.clicked.connect(self.test)
 
-    def saveinfo(self, parent):
+    def saveinfo(self):
         self.parent.host = self.ui.txtHost.text()
         self.parent.db = self.ui.txtDb.text()
         self.parent.usr = self.ui.txtUser.text()
         self.parent.pw = self.ui.txtPwd.text()
         self.close()
+    def test(self):
+        self.parent.host = self.ui.txtHost.text()
+        self.parent.db = self.ui.txtDb.text()
+        self.parent.usr = self.ui.txtUser.text()
+        self.parent.pw = self.ui.txtPwd.text()
+        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.parent.host, self.parent.db, self.parent.usr, self.parent.pw)
+        conninfo = str()
+        
+        try:
+            conn = psycopg2.connect(conn_string)
+            cursor = conn.cursor()
+            cursor.close()
+            conn.close()
+            conninfo = 'Success! You can now connect to your database'
+        except:
+            conninfo = 'Something went wrong. Are you sure the information you entered is correct?'
+        
+        QtGui.QMessageBox.information(self, 'Connection info', conninfo)
+        
 
 class MyDialog(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -50,9 +70,6 @@ class MyDialog(QtGui.QMainWindow):
         self.ui.btnRem.clicked.connect(self.rem)
         self.ui.actionEdit_info.triggered.connect(self.edit)
         
-        # KeyEvent filter to filter out when you press the return key
-        self.ui.searchtext.installEventFilter(self)
-
         # Defualt db info
         self.host = 'localhost'
         self.db = ''
