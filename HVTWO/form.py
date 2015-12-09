@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'form.ui'
 #
-# Created: Wed Dec  9 15:32:07 2015
+# Created: Wed Dec  9 16:00:18 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,14 +37,6 @@ class Ui_MainWindow(object):
         MainWindow.setAutoFillBackground(False)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.btnSearch = QtGui.QPushButton(self.centralwidget)
-        self.btnSearch.setGeometry(QtCore.QRect(700, 0, 90, 30))
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btnSearch.sizePolicy().hasHeightForWidth())
-        self.btnSearch.setSizePolicy(sizePolicy)
-        self.btnSearch.setObjectName(_fromUtf8("btnSearch"))
         self.lstSearch = QtGui.QListView(self.centralwidget)
         self.lstSearch.setGeometry(QtCore.QRect(10, 40, 260, 525))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
@@ -93,6 +85,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.searchtext.sizePolicy().hasHeightForWidth())
         self.searchtext.setSizePolicy(sizePolicy)
         self.searchtext.setObjectName(_fromUtf8("searchtext"))
+        self.btnSearch = QtGui.QPushButton(self.centralwidget)
+        self.btnSearch.setGeometry(QtCore.QRect(700, 0, 90, 30))
+        self.btnSearch.setObjectName(_fromUtf8("btnSearch"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtGui.QMenuBar(MainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 27))
@@ -107,17 +102,23 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.searchtext, self.btnSearch)
+        MainWindow.setTabOrder(self.btnSearch, self.lstSearch)
+        MainWindow.setTabOrder(self.lstSearch, self.lstSimilar)
+        MainWindow.setTabOrder(self.lstSimilar, self.btnAdd)
+        MainWindow.setTabOrder(self.btnAdd, self.btnRem)
+        MainWindow.setTabOrder(self.btnRem, self.btnDone)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "What should you watch?", None))
-        self.btnSearch.setText(_translate("MainWindow", "Search", None))
-        self.btnSearch.setShortcut(_translate("MainWindow", "Return", None))
         self.btnAdd.setText(_translate("MainWindow", "Add -->", None))
         self.btnAdd.setShortcut(_translate("MainWindow", "Ctrl+A", None))
         self.btnRem.setText(_translate("MainWindow", "<-- Remove", None))
         self.btnRem.setShortcut(_translate("MainWindow", "Ctrl+R", None))
         self.btnDone.setText(_translate("MainWindow", "Done", None))
         self.btnDone.setShortcut(_translate("MainWindow", "Ctrl+D", None))
+        self.btnSearch.setText(_translate("MainWindow", "Search", None))
+        self.btnSearch.setShortcut(_translate("MainWindow", "Return", None))
         self.menuDatabase.setTitle(_translate("MainWindow", "Database", None))
         self.actionEdit_info.setText(_translate("MainWindow", "Edit info...", None))
         self.actionEdit_info.setShortcut(_translate("MainWindow", "Ctrl+E", None))

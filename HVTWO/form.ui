@@ -36,28 +36,6 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnSearch">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>0</y>
-      <width>90</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="text">
-     <string>Search</string>
-    </property>
-    <property name="shortcut">
-     <string>Return</string>
-    </property>
-   </widget>
    <widget class="QListView" name="lstSearch">
     <property name="geometry">
      <rect>
@@ -172,7 +150,22 @@
      </sizepolicy>
     </property>
    </widget>
-   <zorder>btnSearch</zorder>
+   <widget class="QPushButton" name="btnSearch">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>0</y>
+      <width>90</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+    <property name="shortcut">
+     <string>Return</string>
+    </property>
+   </widget>
    <zorder>lstSearch</zorder>
    <zorder>btnAdd</zorder>
    <zorder>lstSimilar</zorder>
@@ -180,6 +173,7 @@
    <zorder>btnDone</zorder>
    <zorder>searchtext</zorder>
    <zorder>horizontalLayoutWidget</zorder>
+   <zorder>btnSearch</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -207,6 +201,15 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>searchtext</tabstop>
+  <tabstop>btnSearch</tabstop>
+  <tabstop>lstSearch</tabstop>
+  <tabstop>lstSimilar</tabstop>
+  <tabstop>btnAdd</tabstop>
+  <tabstop>btnRem</tabstop>
+  <tabstop>btnDone</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
