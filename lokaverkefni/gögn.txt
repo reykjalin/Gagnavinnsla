@@ -1,0 +1,31 @@
+Skoðum gögn fyrir árið 1901-2100
+
+Solar eclipses: http://eclipse.gsfc.nasa.gov/SEcat5/SE1901-2000.html
+				http://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html
+
+vopnsala:  http://armstrade.sipri.org/armstrade/page/values.php
+striðsaga: http://www.pcr.uu.se/research/ucdp/datasets/ucdp_prio_armed_conflict_dataset/
+
+svara á spurntingar:
+
+		top (n) ár með Mest solar eclipse
+
+		Algengasti -> rare, tegund af solar eclipsum 
+
+		top (n) Lengsta strið listi
+
+		top (n) Lönd sem eru oftast í striði
+
+		top (n) ár með flestum striðum
+
+		top (n) Mest vopnsala eftir árum
+
+		top (n) vopnsala vs strið og ár
+
+		corelance á milli solar ecliple og sstrið
+
+		skoða sig hvort tegund af eclipse miðað við strið
+
+		corelance á milli solar ecliple og vopnsölu
+
+		skoða sig hvort tegund af eclipse miðað við strið
