@@ -12,21 +12,25 @@ eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month'
 	'path_width','central_dur')
 
 
-eclipse1900_2001 = pd.read_csv('eclipse_1901_2000.csv', sep="[  ]+", engine='python'\
+eclipse = pd.read_csv('eclipse.csv', sep="[  ]+", engine='python'\
 	,encoding='UTF-8',names=eclipse_column_names,index_col=0)
-# eclipse1900_2001.index.name = 'index'
+# eclipse.index.name = 'index'
 
 
-eclipse1900_2001['calendardate_month'] = '-' + eclipse1900_2001['calendardate_month'].astype(str)
-eclipse1900_2001['calendardate_day'] = '-' + eclipse1900_2001['calendardate_day'].astype(str)
+eclipse['calendardate_month'] = '-' + eclipse['calendardate_month'].astype(str)
+eclipse['calendardate_day'] = '-' + eclipse['calendardate_day'].astype(str)
 
-eclipse1900_2001["calendardate"] = eclipse1900_2001["calendardate_year"].map(str) +  \
-eclipse1900_2001["calendardate_month"].map(str) + eclipse1900_2001["calendardate_day"].map(str)
+eclipse["calendardate"] = eclipse["calendardate_year"].map(str) +  \
+eclipse["calendardate_month"].map(str) + eclipse["calendardate_day"].map(str)
 
 # print(datetime.strptime("19", "%d/%m/%Y").strftime('%Y-%m-%d'))
 
+eclipse["calendardate"] = pd.to_datetime(eclipse["calendardate"])
 
-eclipse1900_2001.to_csv('output.csv',sep=';', encoding='utf-8')
-print(eclipse1900_2001.head())
+eclipse = eclipse.drop(eclipse.columns[[0, 1, 2]], axis=1)
+
+eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
+
+print(eclipse.head())
 
 # 'calendardate_year','calendardate_month','calendardate_day'
