@@ -1,8 +1,9 @@
 create table movies (
-id varchar(250) unique,
+id varchar(250),
 title varchar(250),
 year varchar(250),
-rating float
+rating float,
+primary key id
 );
 
 create table ratings (
@@ -13,9 +14,10 @@ primary key (movieid, userid)
 );
 
 create table links (
-movieid varchar(250) references movies(id) unique,
+movieid varchar(250) references movies(id),
 imdbid varchar(250),
-tmdbid varchar(250)
+tmdbid varchar(250),
+unique
 );
 
 create table tags (
