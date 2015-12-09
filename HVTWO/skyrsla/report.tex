@@ -18,20 +18,57 @@ Nemendur eiga svo að skrifa python forrit sem tala við postgresqsl sem geymir 
 \newline
 Fljótlega og við byrjuðum að hefjast handa þá vildum við útfæra forritið okkur með graphical user interface til að hafa þetta snyrtilegt og eins 'user friendly' og við gátum á þessum stutta tíma sem nemendur höfðu til að klára verkefnið.
 \section{Framkvæmd}
-
-blabla
+Byrjað var að taka minna gagnasettið sem inniheldur "aðeins" 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með hann í byrjun áður en farið var að ná í stærra gagnasettið.
+\begin{itemize} 
+	\item Fyrst var náð í minna gagnasettið á http://grouplens.org/datasets/movielens/ sen innheldur 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með það til að byrja með.
+	\item Við lesum inn 3 skrár og setjum movieId sem index.
+	\item Splittum dálkinum upp sem er bæði með ár og titil.
+	\item Bætum ratings við movie 
+	\item 
+\end{itemize}
+ 
+\section{Hönnun og virkni}
+Það var ákveðið að hafa GUI mjög einfalt en notendavænt því var búinn til sprettigluggi (sjá mynd \ref{fig:cdbf}), sá gluggi hefur 2 dálka, eina leitarstiku og 5 takka. 
+Notandinn skrifar þá mynd sem hann leitar eftir í leitarstikuna (sjá mynd \ref{fig:dbf4}) og ýtir svo á search, niðurstöðurnar birtast svo í vinstri dálknum (sjá mynd \ref{fig:dbf5}) ef notendanum líst svo á einhverja mynd sem kom upp við leitina  getur hann bætt henni við á listan yfir myndir sem hann vill fá frekari upplýsingar við, með því að ýta á á 'add' hnappinn og þá dettur myndin í vinstri dálkinn(sjá mynd \ref{fig:dbf6})
 
 \section{Niðurstöður}\label{nidurstodur}
 blabla
 
 
-
 \section{Samantekt}
-
+%
 blabla
 
 \pagebreak
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth]{../graphics/ds.pdf}
+	\caption{Database schema \label{fig:dataschema}}
+\end{figure}
 
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth]{../graphics/cdbf.png}
+	\caption{Sprettiglugginn \label{fig:cdbf}}
+\end{figure}
+
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth]{../graphics/dbf4.png}
+	\caption{Sprettiglugginn \label{fig:dbf4}}
+\end{figure}
+
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth]{../graphics/dbf5.png}
+	\caption{Sprettiglugginn \label{fig:dbf5}}
+\end{figure}
+
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth]{../graphics/dbf6.png}
+	\caption{Sprettiglugginn \label{fig:dbf6}}
+\end{figure}
 
 
 %
