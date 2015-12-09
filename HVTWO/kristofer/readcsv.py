@@ -1,10 +1,27 @@
 import pandas as pd
 import pprint as pp
 
-movies = pd.read_csv('../ml-latest-small/movies.csv', index_col = 'movieId')
-links = pd.read_csv('../ml-latest-small/links.csv', index_col = 'movieId')
-ratings = pd.read_csv('../ml-latest-small/ratings.csv', index_col = 'movieId')
-tags = pd.read_csv('../ml-latest-small/tags.csv', index_col = 'movieId')
+
+############################## Column names for dataframes ##############################
+mcols = ['movieId', 'title', 'genres']
+rcols = ['userId', 'movieId', 'rating', 'timestamp']
+tcols = ['userId', 'movieId', 'tag', 'timestamp']
+############################## Column names for dataframes ##############################
+
+
+############################## Read data from dat files ##############################
+movies = pd.read_csv('../ml-10M100K/movies.dat', sep = '::', names = mcols, engine = 'python', keep_default_na = False)
+#links = pd.read_csv('../ml-10M100K/links.csv', engine = 'python')
+ratings = pd.read_csv('../ml-10M100K/ratings.dat', sep = '::', names = rcols, engine = 'python', keep_default_na = False)
+tags = pd.read_csv('../ml-10M100K/tags.dat', sep = '::', names = tcols, engine = 'python', keep_default_na = False)
+############################## Read data from dat files ##############################
+
+
+############################## Fix indexes and add column keys ##############################
+movies.set_index('movieId', inplace = True)
+ratings.set_index('movieId', inplace = True)
+tags.set_index('movieId', inplace = True)
+############################## Fix indexes and add column keys ##############################
 
 
 ############################## Split year from movie titles ##############################
@@ -77,9 +94,9 @@ for i in set(ratings.index):
     for r in rlist:
         outs.write("insert into ratings (movieid, userid, rating) values ('{}', '{}', {})\n".format(i, r[0], r[1]))
 
-for i in links.index:
-    l = links[links.index == i].values[0]
-    outs.write("insert into links (movieid, imdbid, tmdbid) values ('{}', '{}', '{}')\n".format(i, l[0], l[1]))
+# for i in links.index:
+#     l = links[links.index == i].values[0]
+#     outs.write("insert into links (movieid, imdbid, tmdbid) values ('{}', '{}', '{}')\n".format(i, l[0], l[1]))
 
 for i in set(tags.index):
     tlist = tags[tags.index == i].values

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Kristófer, Nonni</author>
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
@@ -38,11 +39,17 @@
    <widget class="QPushButton" name="btnSearch">
     <property name="geometry">
      <rect>
-      <x>697</x>
-      <y>10</y>
-      <width>91</width>
-      <height>29</height>
+      <x>700</x>
+      <y>0</y>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Search</string>
@@ -55,20 +62,32 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
-      <width>261</width>
-      <height>531</height>
+      <y>40</y>
+      <width>260</width>
+      <height>525</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAdd">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>230</y>
-      <width>88</width>
-      <height>29</height>
+      <x>305</x>
+      <y>220</y>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Add --&gt;</string>
@@ -80,55 +99,33 @@
    <widget class="QListView" name="lstSimilar">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>50</y>
-      <width>241</width>
-      <height>521</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="searchtext">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>681</width>
-      <height>31</height>
+      <x>430</x>
+      <y>40</y>
+      <width>260</width>
+      <height>525</height>
      </rect>
     </property>
     <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::WheelFocus</enum>
-    </property>
-    <property name="acceptDrops">
-     <bool>true</bool>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Sunken</enum>
-    </property>
-    <property name="tabChangesFocus">
-     <bool>true</bool>
-    </property>
-    <property name="lineWrapMode">
-     <enum>QPlainTextEdit::NoWrap</enum>
     </property>
    </widget>
    <widget class="QPushButton" name="btnRem">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>330</y>
-      <width>88</width>
-      <height>29</height>
+      <x>305</x>
+      <y>320</y>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>&lt;-- Remove</string>
@@ -141,10 +138,16 @@
     <property name="geometry">
      <rect>
       <x>700</x>
-      <y>540</y>
-      <width>91</width>
-      <height>29</height>
+      <y>535</y>
+      <width>90</width>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="text">
      <string>Done</string>
@@ -153,8 +156,56 @@
      <string>Ctrl+D</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="searchtext">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>681</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+   </widget>
+   <zorder>btnSearch</zorder>
+   <zorder>lstSearch</zorder>
+   <zorder>btnAdd</zorder>
+   <zorder>lstSimilar</zorder>
+   <zorder>btnRem</zorder>
+   <zorder>btnDone</zorder>
+   <zorder>searchtext</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatabase">
+    <property name="title">
+     <string>Database</string>
+    </property>
+    <addaction name="actionEdit_info"/>
+   </widget>
+   <addaction name="menuDatabase"/>
+  </widget>
+  <action name="actionEdit_info">
+   <property name="text">
+    <string>Edit info...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
