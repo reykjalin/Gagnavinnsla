@@ -2,9 +2,31 @@ import sys
 import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
 from PyQt4 import QtCore, QtGui
 from form import Ui_MainWindow
+from dbDialog import Ui_dbDialog
 import psycopg2
 import getpass
 import pprint as pp
+
+class DBInfo(QtGui.QWidget):
+    def __init__(self, parent):
+        QtGui.QWidget.__init__(self)
+        self.ui = Ui_dbDialog()
+        self.ui.setupUi(self)
+
+        self.parent = parent
+        self.ui.txtHost.insert(parent.host)
+        self.ui.txtDb.insert(parent.db)
+        self.ui.txtUser.insert(parent.usr)
+        self.ui.txtPwd.insert(parent.pw)
+        
+        self.ui.btnOk.clicked.connect(self.saveinfo)
+
+    def saveinfo(self, parent):
+        self.parent.host = self.ui.txtHost.text()
+        self.parent.db = self.ui.txtDb.text()
+        self.parent.usr = self.ui.txtUser.text()
+        self.parent.pw = self.ui.txtPwd.text()
+        self.close()
 
 class MyDialog(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -26,21 +48,25 @@ class MyDialog(QtGui.QMainWindow):
         self.ui.btnSearch.clicked.connect(self.search)
         self.ui.btnAdd.clicked.connect(self.add)
         self.ui.btnRem.clicked.connect(self.rem)
+        self.ui.actionEdit_info.triggered.connect(self.edit)
         
         # KeyEvent filter to filter out when you press the return key
         self.ui.searchtext.installEventFilter(self)
-                
+
+        # Defualt db info
+        self.host = 'localhost'
+        self.db = ''
+        self.usr = 'postgres'
+        self.pw = ''
+
+    def edit(self):
+        self.wedit = DBInfo(self)
+        self.wedit.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+        self.wedit.show()
+        
     # Go into the database and get list
     def getdat(self,inputdata):
-        host = 'localhost'
-        dbname = 'myndir'
-
-        #username = input('User name for {}.{}: '.format(host,dbname))
-        username = 'postgres'
-        #pw = getpass.getpass()
-        pw = 'Hjol5106'
-
-        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(host, dbname, username, pw)
+        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.host, self.db, self.usr, self.pw)
         conn = psycopg2.connect(conn_string)
         cursor = conn.cursor()
 
@@ -64,7 +90,7 @@ class MyDialog(QtGui.QMainWindow):
         self.modelSearch.clear()
 
         # Get text from textbox and clear it
-        txt = self.ui.searchtext.toPlainText()
+        txt = self.ui.searchtext.text()
         self.ui.searchtext.clear()
 
         # Get data from sql database
