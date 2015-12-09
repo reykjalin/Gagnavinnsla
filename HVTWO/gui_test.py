@@ -184,7 +184,7 @@ class MyDialog(QtGui.QMainWindow):
         from genres g, movies m
         where m.id = g.movieid
         and ("""
-        for i in range(len(self.moviesselected) - 2):
+        for i in range(len(self.moviesselected) - 1):
             sqlcmd += "lower(m.title) = '" + self.moviesselected[i].replace("'","''").lower() + "' or "
         sqlcmd += "lower(m.title) = '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "') order by lower(g.genre);"
 
@@ -197,7 +197,7 @@ class MyDialog(QtGui.QMainWindow):
         from genres g, movies m, mtags mt
         where m.id = g.movieid and m.id = mt.movieid
         and ("""
-        for i in range(len(self.moviesselected) - 2):
+        for i in range(len(self.moviesselected) - 1):
             sqlcmd += "lower(m.title) = '" + self.moviesselected[i].replace("'","''").lower() + "' or "
         sqlcmd += "lower(m.title) = '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "') order by lower(mt.tag);"
         
@@ -211,13 +211,17 @@ class MyDialog(QtGui.QMainWindow):
         from genres g, movies m, mtags mt
         where m.id = g.movieid and m.id = mt.movieid
         and ("""
-        for i in range(len(genres) - 2):
+        for i in range(len(genres) - 1):
             sqlcmd += "lower(g.genre) = '" + genres[i][0].replace("'","''") + "' or "
         sqlcmd += "lower(g.genre) = '" + genres[len(genres) - 1][0].replace("'","''") + "')\nand ("
 
-        for i in range(len(tags) - 2):
+        for i in range(len(tags) - 1):
             sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "' or "
-        sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "') group by m.title order by count(m.title) desc limit {};".format(5)
+        sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "')\nand ("
+
+        for i in range(len(self.moviesselected) - 1):
+            sqlcmd += "lower(m.title) != '" + self.moviesselected[i].replace("'","''").lower() + "' and "
+        sqlcmd += "lower(m.title) != '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "') group by m.title order by count(m.title) desc limit {};".format(5)
 
         # Get similar movies
         cursor.execute(sqlcmd)
