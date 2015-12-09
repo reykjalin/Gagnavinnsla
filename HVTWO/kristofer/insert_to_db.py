@@ -3,7 +3,7 @@ import getpass
 
 host = 'localhost'
 dbname = 'movielens_sm'
-username = 'kristofer'
+username = 'postgres'
 pw = getpass.getpass()
 
 conn_string = "host = '{}' dbname = '{}' user = '{}' password = '{}'".format(host, dbname, username, pw)
@@ -14,7 +14,7 @@ cursor = conn.cursor()
 
 print("Connected!\n")
 
-sqlcmds = open('insert_to_movielens.sql', 'r')
+sqlcmds = open('insert_to_movielens.sql', 'r', encoding = 'UTF-8')
 for line in sqlcmds:
     cursor.execute(line.strip())
 
