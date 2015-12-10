@@ -25,18 +25,17 @@ sqltable['data'] = data
 sqltable.index.name = 'index_export'
 # remove total price
 sqltable = sqltable[sqltable.year != 'total']
-print(sqltable)
+
 
 # create schema
-outs = open('scehma.txt', 'w',encoding = "UTF-8")
+outs = open('scehma_export.txt', 'w',encoding = "UTF-8")
 outs.write(\
 """create table Export (
 type varchar(250),
 year date,
 data real,
 index_export real,
-primary key (index_export)
-);
+primary key (index_export));
 """)
 
 outs.close()

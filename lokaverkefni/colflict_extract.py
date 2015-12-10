@@ -6,42 +6,41 @@ conflict = pd.read_csv('armed-conflict-dataset.csv', sep=",", engine='python'\
 	,encoding='UTF-8')
 conflict.index.name = 'index_conflict'
 
-outs = open('scehma.txt', 'a',encoding = "UTF-8")
+outs = open('scehma_conflict.txt', 'w',encoding = "UTF-8")
 outs.write(\
 """create table conflict (
-index_conflict 
-conflictid
-year
-location
-sidea
-sidea2nd
-sideb
-sidebid
-sideb2nd
-incompatibility
-territoryname
-intensitylevel
-cumulativeintensity
+index_conflict real,
+conflictid varchar(250),
+year date,
+location varchar(250),
+sidea varchar(250),
+sidea2nd varchar(250),
+sideb varchar(250),
+sidebid real,
+sideb2nd real,
+incompatibility real,
+territoryname varchar(250),
+intensitylevel real,
+cumulativeintensity real,
 typeofconflict
-startdate
-startprec
-startdate2
-startprec2
-epend
-ependdate
-ependprec
-gwnoa
-gwnoa2nd
-gwnob
-gwnob2nd
-gwnoloc
-region
-version
-primary key (index_conflict)
-);
+startdate date,
+startprec real,
+startdate2 date,
+startprec2 real,
+epend real,
+ependdate date,
+ependprec real,
+gwnoa real,
+gwnoa2nd real,
+gwnob real,
+gwnob2nd real,
+gwnoloc real,
+region real,
+version varchar(250),
+primary key (index_conflict));
 """)
 
 outs.close()
+conflict.to_csv("confclit_out.csv",encoding="utf-8",sep = ";")
 
-print(conflict.head())
 
