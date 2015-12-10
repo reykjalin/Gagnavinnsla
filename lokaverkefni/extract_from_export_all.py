@@ -8,27 +8,7 @@ export.set_index('type', inplace = True)
 export = export.drop('deleteme', 1)
 export.fillna('0', inplace=True)
 
-
-
-outs = open('scehma.txt', 'w',encoding = "UTF-8")
-outs.write("""create table Export (""")
-
-# types = export['type'].values.tolist()
-years = str([x for x in range(1950,2014)]).strip('[]')
-
-for i in range (1950,2014):    
-	outs.write("""{} date,\n""".format(i))
-
-outs.write("""{} character(250),
-			primary key ({}) """.format('type','type'))
-
-outs.close()
-
-
-print(export.head())
-print(export.columns)
-
-
+#rearenge the table
 types = []
 years = []
 data = []
@@ -43,11 +23,25 @@ sqltable['type'] = types
 sqltable['year'] = years
 sqltable['data'] = data
 sqltable.index.name = 'index_export'
+# remove total price
+sqltable = sqltable[sqltable.year != 'total']
 print(sqltable)
-# export2 = export.stack()
+
+# create schema
+outs = open('scehma.txt', 'w',encoding = "UTF-8")
+outs.write(\
+"""create table Export (
+type varchar(250),
+year date,
+data real,
+index_export real,
+primary key (year)
+);""")
+
+outs.close()
 
 
-# print(types)
+
 # create table movies (
 # id varchar(250),
 # title varchar(250),
