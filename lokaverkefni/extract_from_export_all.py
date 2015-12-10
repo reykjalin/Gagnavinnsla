@@ -24,12 +24,25 @@ outs.write("""{} character(250),
 
 outs.close()
 
-
+export.set_index('type', inplace = True)
 print(export.head())
-print(years)
+print(export.columns)
 
 
-
+types = []
+years = []
+data = []
+for col in export.columns:
+        for i in export.index:
+                types.append(i)
+                years.append(col)
+                data.append(export[col][i])
+               
+sqltable = pd.DataFrame()
+sqltable['type'] = types
+sqltable['year'] = years
+sqltable['data'] = data
+print(sqltable)
 # export2 = export.stack()
 
 
