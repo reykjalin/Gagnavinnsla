@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import datetime
+from geopy.geocoders import Nominatim 
+import pprint as pp
 
 
 
@@ -29,8 +31,48 @@ eclipse["calendardate"] = pd.to_datetime(eclipse["calendardate"])
 
 eclipse = eclipse.drop(eclipse.columns[[0, 1, 2]], axis=1)
 
-eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
 
-print(eclipse.head())
+geolocator = Nominatim()
+
+
+lat = eclipse['lat'].tolist()
+lon = eclipse['long'].tolist()
+land = eclipse['lat'].tolist()
+
+for i in range(len(eclipse)):
+
+	if lat[i].endswith('N'):
+		lat[i] =lat[i][:-1]
+	else:		
+		lat[i] = '-' + lat[i][:-1]
+
+	if lon[i].endswith('E'):
+		lon[i] =lon[i][:-1]
+	else:		
+		lon[i] = '-' + lon[i][:-1]
+	
+
+
+for i in range(len(lat)):
+	location = geolocator.reverse("{}.0,{}.0".format(lat[i],lon[i]))
+	try:
+ 		land[i] = location.address.rsplit(", ",1)[1]
+ 		print(land[i])
+	except:
+		pass
+	print(i)
+
+
+print(lat[0],lon[0])
+
+print(land)
+
+
+
+
+
+#eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
+
+#print(eclipse.head())
 
 # 'calendardate_year','calendardate_month','calendardate_day'
