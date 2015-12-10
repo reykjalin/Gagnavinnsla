@@ -1,0 +1,49 @@
+1:
+
+select d.phone
+from drinkers d, frequents f
+where lower(f.bar) like 'electric psychedelic pussycat swingers club%';
+
+2:	
+
+select distinct d.name as "Superhero", b.name as "Bar", b.addr as "TVShow"
+from drinkers d, frequents f, bars b
+where b.addr like 'How I Met Your Mother' 
+and lower(d.addr) like '%east%'
+order by d.name;
+
+3:
+
+select distinct d1.name, d2.name
+from drinkers d1 cross join drinkers d2;
+
+4:
+
+select avg(s.price)as "Average price", max(s.price)as "Maximum price", 
+min(s.price) as "Minimum price", s.beer
+from sells s
+where lower(s.beer) like '%ipa%'
+group by s.beer;
+
+
+5:
+
+select distinct s.beer,b.manf ,s.bar,ba.addr
+from sells s, beers b, bars ba  
+where (select max(price) from sells) = s.price
+and lower(s.beer) like '%ipa%'; 
+
+6:
+
+select distinct b.name
+from frequents f, bars b 
+where b.name not in
+(SELECT b.name
+FROM frequents f
+INNER JOIN bars b
+ON f.bar = b.name);
+
+7:
+
+
+
