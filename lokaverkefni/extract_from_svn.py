@@ -51,11 +51,15 @@ for i in range(len(eclipse)):
 	else:		
 		lon[i] = '-' + lon[i][:-1]
 	
-
+print(lat[52],lon[52])
 
 for i in range(len(lat)):
-	location = geolocator.reverse("{}.0,{}.0".format(lat[i],lon[i]))
 	try:
+		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
+	except:
+		pass
+	try:
+		
  		land[i] = location.address.rsplit(", ",1)[1]
  		print(land[i])
 	except:
@@ -65,7 +69,7 @@ for i in range(len(lat)):
 
 print(lat[0],lon[0])
 
-print(land)
+
 
 
 
