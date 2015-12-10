@@ -1,5 +1,5 @@
 import sys
-import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
+# import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
 from PyQt4 import QtCore, QtGui
 from form import Ui_MainWindow
 from dbDialog import Ui_dbDialog
@@ -92,7 +92,7 @@ class MyDialog(QtGui.QMainWindow):
     ######################### Open dialog for editing database info #########################
     def edit(self):
         self.wedit = DBInfo(self)
-        self.wedit.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+        # self.wedit.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
         self.wedit.show()
         
     ######################### Go into the database and get searched movies #########################
@@ -269,6 +269,6 @@ class MyDialog(QtGui.QMainWindow):
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     myapp = MyDialog()
-    app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+    # app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
     myapp.show()
     sys.exit(app.exec_())
