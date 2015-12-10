@@ -28,4 +28,22 @@ group by s.beer;
 
 5:
 
+select distinct s.beer,b.manf ,s.bar,ba.addr
+from sells s, beers b, bars ba  
+where (select max(price) from sells) = s.price
+and lower(s.beer) like '%ipa%'; 
+
+6:
+
+select distinct b.name
+from frequents f, bars b 
+where b.name not in
+(SELECT b.name
+FROM frequents f
+INNER JOIN bars b
+ON f.bar = b.name);
+
+7:
+
+
 
