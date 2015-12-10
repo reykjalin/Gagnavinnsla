@@ -7,7 +7,7 @@ import psycopg2
 import getpass
 import pprint as pp
 
-NROFMOVIES = 5
+NROFMOVIES = 10
 
 ######################################## Dialog for database info code ########################################
 class DBInfo(QtGui.QWidget):
@@ -32,10 +32,13 @@ class DBInfo(QtGui.QWidget):
         self.parent.db = self.ui.txtDb.text()
         self.parent.usr = self.ui.txtUser.text()
         self.parent.pw = self.ui.txtPwd.text()
-        self.close()
+        closer = self.test()
+        if closer:
+            self.close()
 
     ######################### Code for testing database connetion #########################
     def test(self):
+        closer = False
         self.parent.host = self.ui.txtHost.text()
         self.parent.db = self.ui.txtDb.text()
         self.parent.usr = self.ui.txtUser.text()
@@ -49,11 +52,13 @@ class DBInfo(QtGui.QWidget):
             cursor.close()
             conn.close()
             conninfo = 'Success! You can now connect to your database'
+            closer = True
         except:
             conninfo = 'Something went wrong. Are you sure the information you entered is correct?'
         
         QtGui.QMessageBox.information(self, 'Connection info', conninfo)
         
+        return closer
 
 
 ######################################## Main window code ########################################
@@ -98,9 +103,13 @@ class MyDialog(QtGui.QMainWindow):
     ######################### Go into the database and get searched movies #########################
     def getdat(self,inputdata):
         ######################### Connect to database #########################
-        conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.host, self.db, self.usr, self.pw)
-        conn = psycopg2.connect(conn_string)
-        cursor = conn.cursor()
+        try:
+            conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.host, self.db, self.usr, self.pw)
+            conn = psycopg2.connect(conn_string)
+            cursor = conn.cursor()
+        except:
+            errorstr = 'You are not connected to the database, \n\n press CTRL + E to access database settings'
+            QtGui.QMessageBox.information(self, 'Error', errorstr)
 
         ######################### Create sql command #########################
         s = ("""select title, year
@@ -192,6 +201,7 @@ class MyDialog(QtGui.QMainWindow):
         
     def popupwindow(self):
         ######################### Connect to db #########################
+        
         conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(self.host, self.db, self.usr, self.pw)
         conn = psycopg2.connect(conn_string)
         cursor = conn.cursor()
@@ -261,7 +271,7 @@ class MyDialog(QtGui.QMainWindow):
         # Close application if user chooses no
         if result != QtGui.QMessageBox.Yes:
             self.close()
-        
+
         cursor.close()
         conn.close()
 
