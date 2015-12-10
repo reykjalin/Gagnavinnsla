@@ -1,5 +1,5 @@
 import sys
-# import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
+import qdarkstyle # For dark style. pip install qdarkstyle. requires PySide
 from PyQt4 import QtCore, QtGui
 from form import Ui_MainWindow
 from dbDialog import Ui_dbDialog
@@ -97,7 +97,7 @@ class MyDialog(QtGui.QMainWindow):
     ######################### Open dialog for editing database info #########################
     def edit(self):
         self.wedit = DBInfo(self)
-        # self.wedit.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+        self.wedit.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
         self.wedit.show()
         
     ######################### Go into the database and get searched movies #########################
@@ -238,17 +238,20 @@ class MyDialog(QtGui.QMainWindow):
         from genres g, movies m, mtags mt
         where m.id = g.movieid and m.id = mt.movieid
         and ("""
-        for i in range(len(genres) - 1):
-            sqlcmd += "lower(g.genre) = '" + genres[i][0].replace("'","''") + "' or "
-        sqlcmd += "lower(g.genre) = '" + genres[len(genres) - 1][0].replace("'","''") + "')\nand ("
+        if len(genres) > 0:
+            for i in range(len(genres) - 1):
+                sqlcmd += "lower(g.genre) = '" + genres[i][0].replace("'","''") + "' or "
+            sqlcmd += "lower(g.genre) = '" + genres[len(genres) - 1][0].replace("'","''") + "')\nand ("
 
-        for i in range(len(tags) - 1):
-            sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "' or "
-        sqlcmd += "lower(mt.tag) = '" + tags[len(tags) - 1][0].replace("'","''") + "')\nand ("
+        if len(tags) > 0:
+            for i in range(len(tags) - 1):
+                sqlcmd += "lower(mt.tag) = '" + tags[i][0].replace("'","''") + "' or "
+            sqlcmd += "lower(mt.tag) = '" + tags[len(tags) - 1][0].replace("'","''") + "')\nand ("
 
-        for i in range(len(self.moviesselected) - 1):
-            sqlcmd += "lower(m.title) != '" + self.moviesselected[i].replace("'","''").lower() + "' and m.year != '" + self.movieyears[i] + "' and "
-        sqlcmd += "lower(m.title) != '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "' and m.year != '" + self.movieyears[len(self.moviesselected) - 1] + "') group by m.title, m.year order by count(m.title) desc limit {};".format(NROFMOVIES)
+        if len(self.moviesselected) > 0:
+            for i in range(len(self.moviesselected) - 1):
+                sqlcmd += "lower(m.title) != '" + self.moviesselected[i].replace("'","''").lower() + "' and m.year != '" + self.movieyears[i] + "' and "
+            sqlcmd += "lower(m.title) != '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "' and m.year != '" + self.movieyears[len(self.moviesselected) - 1] + "') group by m.title, m.year order by count(m.title) desc limit {};".format(NROFMOVIES)
 
 
         ######################### Get similar movies #########################
@@ -279,6 +282,6 @@ class MyDialog(QtGui.QMainWindow):
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     myapp = MyDialog()
-    # app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
+    app.setStyleSheet(qdarkstyle.load_stylesheet()) # For dark theme
     myapp.show()
     sys.exit(app.exec_())
