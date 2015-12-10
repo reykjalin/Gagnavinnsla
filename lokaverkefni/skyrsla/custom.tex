@@ -1,0 +1,67 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+%% custom.tex gets loaded if it exists by rureport.cls
+%% Put your local macros and shortcuts here so that when updates to rureport.cls
+%%   happen, you don't lose them.
+
+%% Commonly used notation/abbrevs, converted into latex commands:
+\renewcommand{\d}[1]{\;\textsf{d}#1}
+\newcommand{\pd}[1]{\partial #1}
+\newcommand{\D}{\;\textsf{D}}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+%% Extremely common abbreviations
+\newcommand{\kg}[1]{\SI{#1}{\kilo\gram}}
+\newcommand{\mA}[1]{\SI{#1}{\milli\ampere}}
+\newcommand{\amp}[1]{SI{#1}{\ampere\xspace}}
+
+
+\newcommand{\realset}{\ensuremath{\mathbb{R}}}
+\newcommand{\intset}{\ensuremath{\mathbb{Z}}}
+\newcommand{\ratset}{\ensuremath{\mathbb{Q}}}
+
+
+\newcommand{\adfr}{\ensuremath{\text{FR}}}
+\newcommand{\addp}{\ensuremath{\text{DP}}}
+\newcommand{\adpv}{\ensuremath{\text{PV}}}
+
+%% Common way to make a centered picture that
+%% has a caption, label, and is centered 
+\newcommand{\cfigure}[2]{\begin{figure}[h]
+\centering %
+\includegraphics{#1}%
+\caption{#2\label{fig:#1}}%
+\end{figure}%
+}
+\newcommand{\cfiguresize}[3]{\begin{figure}[h]
+\centering %
+\includegraphics[#3]{#1}%
+\caption{#2\label{fig:#1}}%
+\end{figure}%
+}
+
+\FXRegisterAuthor{jf}{jtf}{foley}
+
+
+\author{Haukur Hlíðberg, Jón Kr. Helgason, Kristófer Reykjalín, Róbert B. Ólafsson, Vladimir Omelianov,}  % My name, for the titlepage
+\title{War and Eclipse}  % The title, for the titlepage
+%\course{VT 1013 Hönnun}  % pick your class
+\course{T-316-GAVI Gagnavinnsla}
+\instructor{Eyjólfur Ingi Ásgeirsson}
+\graphicspath{{graphics/}{Graphics/}{./}}
+%% declare the paths(s) where you graphics files can be found
+
+\usepackage[backend=biber, bibencoding=utf8, style=ieee]{biblatex}
+%\DeclareLanguageMapping{american}{american-apa}  % needed for style=apa
+% If you set backend=bibtex, it will use bibtex for processing (old way)
+% if you set backend=biber, you can use UTF8 characters such as Þ and ð but you will have to remember to switch from using bibtex to biber in your client
+% See Chapter 7 of http://afs.rnd.ru.is/project/htgaru/trunk/how-to-get-around-projects.pdf 
+% If you just want to use bibtex directly without using BibLaTeX, then comment out the line.
+\addbibresource{references.bib}
+
+\usepackage{caption}
+\captionsetup[figure]{name=Mynd}
+
+\usepackage[final,hidelinks]{hyperref} % must be last package loaded
+% it makes hyper-references (citations, URLs, etc) clickable
