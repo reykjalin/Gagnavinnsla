@@ -24,6 +24,7 @@ outs.write("""{} character(250),
 
 outs.close()
 
+export.to_csv('output_export.csv',sep=';', encoding='utf-8')
 
 print(export.head())
 print(years)

@@ -4,7 +4,7 @@ import datetime
 
 export = pd.read_csv('TIV-Export-All-1950-2014.csv', sep=",", engine='python'\
 	,encoding='UTF-8', skiprows=range(0, 10))
-# export.set_index('type', inplace = True)
+export.set_index('type', inplace = True)
 export = export.drop('deleteme', 1)
 export.fillna('0', inplace=True)
 
@@ -24,7 +24,7 @@ outs.write("""{} character(250),
 
 outs.close()
 
-export.set_index('type', inplace = True)
+
 print(export.head())
 print(export.columns)
 
@@ -42,6 +42,7 @@ sqltable = pd.DataFrame()
 sqltable['type'] = types
 sqltable['year'] = years
 sqltable['data'] = data
+sqltable.index.name = 'index_export'
 print(sqltable)
 # export2 = export.stack()
 
