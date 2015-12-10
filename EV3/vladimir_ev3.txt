@@ -45,5 +45,17 @@ ON f.bar = b.name);
 
 7:
 
+select distinct  d.addr, d.name
+from drinkers d, likes l, beers b
+where d.name = l.drinker and 
+b.name = l.beer and
+d.addr like '% 1__th%' and
+lower(b.manf) like '%brasserie cant%';
 
+8:
 
+select distinct b.name
+from likes l, beers b
+where l.beer = b.name
+group by b.name
+having count(l.beer) = 10;
