@@ -14,29 +14,33 @@
 Hópverkefni 2 gengur út á það að fara inn á síðuna http://grouplens.org/datasets/movielens/ og ná þar í gagnasett sem inniheldur 10 milljón einkunnargjafir, 100 þúsund 'tags' á 10 þúsund myndum frá 72 þúsund notendum.
 \newline
 Nemendur eiga svo að skrifa python forrit sem tala við postgresqsl sem geymir MovieLens gagnagrunninn. Forritið á að virka á þann hátt að þegar notandi slær inn heiti á kvikmynd þá á einhvern máta á að birtast notandanum viðbótarupplýsingar þar sem stungið er upp á sambærilegum myndum og myndinni sem var slegin inn í upphafi í forritið.
-\newline
-\newline
-Fljótlega og við byrjuðum að hefjast handa þá vildum við útfæra forritið okkur með graphical user interface til að hafa þetta snyrtilegt og eins 'user friendly' og við gátum á þessum stutta tíma sem nemendur höfðu til að klára verkefnið.
 \section{Framkvæmd}
 Byrjað var að taka minna gagnasettið sem inniheldur "aðeins" 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með hann í byrjun áður en farið var að ná í stærra gagnasettið.
 \begin{itemize} 
 	\item Fyrst var náð í minna gagnasettið á http://grouplens.org/datasets/movielens/ sen innheldur 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með það til að byrja með.
 	\item Við lesum inn 3 skrár og setjum movieId sem index.
 	\item Splittum dálkinum upp sem er bæði með ár og titil.
-	\item 
-	\item 
+	\item Krill
+	\item krill
+	\item krill 
+	\item krill krill
+	\item krillvél
+	\item krill maskína
 \end{itemize}
  
-\section{Hönnun}
-Það var ákveðið að hafa GUI mjög einfalt en notendavænt því var búinn til sprettigluggi (sjá mynd \ref{fig:cdbf}), sá gluggi hefur 2 dálka, eina leitarstiku og 5 takka. Til að búa til og hanna graphical user interface var notast við Qt4 designer sem kemur í "app store" á linux kerfinu, það var valið með þeim áherslum að það var auðvelt í notkun og ekki þurfti að forrita alla valmöguleikana heldur var hægt að draga til kassa til að hanna GUI. Krill Krill þú skrifar kannski meira 
+
 
 \section{Niðurstöður}\label{nidurstodur}
+\subsection{Hönnun}
+Það var ákveðið að hafa GUI og markmiðið var að hafa það einfalt og sem notendavænast því var búinn til sprettigluggi (sjá mynd \ref{fig:cdbf}), sá gluggi hefur 2 dálka, eina leitarstiku og 5 hnappa. Notast var við Qt4 designer til að hanna GUI, það var valið með þeim áherslum að það var auðvelt í notkun og við yrðum hlutfallslega fljótir að hanna GUI útaf þeim stutta tíma sem nemendur höfðu til að skila verkefninu.
 \subsection {Virkni}
-Til að sem flestir gætu notað þetta, þá er möguleiki og nokkuð öruggt að gagnagrunnurinn heitir ekki það sama hjá tölvunotendunum og eða allir noti sama lykilorð til að komast inn í hann og því var gripið til þess ráðs að við gætum ýtt á á takka og þá myndi opnast lítill sprettigluggi þar sem nafnið á grunninum og lykilorð væru skrifuð inn til þess að geta tengt forritið við tölvuna (sjá mynd \ref{fig:dbf}).
-Eftir að búið er að slá inn viðeigandi upplýsingar (sjá mynd \ref{fig:dbf2}) þá er hægt að ýta á 'test connection' hnappinn og ef upplýsingarnar eru rétt slegnar inn þá birtist annar sprettigluggi sem lætur notendan vita að tenging við gagnagrunn hafi tekist (sjá mynd \ref{fig:pdf3}), hinsvegar ef notandin slær inn vitlausar upplýsingar þá birtist annar sprettigluggi með upplýsingum að tenging hafi mistekist (sjá mynd \ref {fig:dbf3}).
+Eftir að búið er að keyra gui\_test.py skránna þá opnast gluggi og ýtt er á ctrl+E eða ýtt á Database uppi í hægra horninu og þá myndi opnast annar lítill sprettigluggi þar sem viðeigandi upplýsingar eru skráðar inn til að geta tengst gagnagrunninum í gegnum GUI (sjá mynd \ref{fig:dbf2}), ef það er ekki gert þá poppar upp annar sprettigluggi sem lætur notandan vita að hann eigi eftir að slá inn notendaupplýsingu.
+\\newline
+\\newline
+Eftir að búið er að slá inn viðeigandi upplýsingar og þær eru réttar þá birtist annar sprettigluggi sem lætur notendan vita að tenging við gagnagrunn hafi tekist, ef upplýsingarnar eru rangar þá kemur sprettiglugginn með upplýsingar að tenging hafi ekki tekist.
 \newline
 \newline
-Þegar notandinn er búinn að ná að tengjast gagnagrunni þá getur hann skrifað þá mynd sem hann leitar eftir í leitarstikuna (sjá mynd \ref{fig:dbf4}) og ýtir svo á search, niðurstöðurnar birtast svo í vinstri dálknum (sjá mynd \ref{fig:dbf5}) ef notendanum líst svo á einhverja mynd sem kom upp við leitina  getur hann bætt henni við á listan yfir myndir sem hann vill velja, með því að ýta á á 'add' hnappinn og þá dettur myndin í vinstri dálkinn (sjá mynd \ref{fig:dbf6}), þegar ýtt er svo á done þá poppar upp annar spretti gluggi sem kemur með myndir sem þér líkar við. 
+Þegar notandinn er búinn nær að tengjast gagnagrunninum þá getur hann skrifað þá mynd sem hann leitar eftir í leitarstikuna og ýtir svo á search, niðurstöðurnar birtast svo í vinstri dálknum ef notendanum líst svo á einhverja mynd sem koma upp við leitina  getur hann bætt henni við á listan yfir myndir sem hann vill velja, með því að ýta á á 'add' hnappinn og þá dettur myndin í vinstri dálkinn (sjá mynd \ref{fig:dbf6}), þegar ýtt er á 'done' hnappinn þá poppar upp annar spretti gluggi sem kemur með myndir sem þér líkar við (sjá mynd \ref{fig:dbf10}), eftir það er hægt að prófa aðrar myndir með því að ýta á 'yes' hnappinn annar ýtir notandinn á 'no' hnappinn og þá ferðu út úr GUI.
 
 \pagebreak
 \begin{figure}
@@ -48,31 +52,7 @@ Eftir að búið er að slá inn viðeigandi upplýsingar (sjá mynd \ref{fig:db
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{../graphics/cdbf.png}
-	\caption{Sprettiglugginn \label{fig:cdbf}}
-\end{figure}
-
-\begin{figure}
-	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf4.png}
-	\caption{Sprettiglugginn \label{fig:dbf4}}
-\end{figure}
-
-\begin{figure}
-	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf5.png}
-	\caption{Sprettiglugginn \label{fig:dbf5}}
-\end{figure}
-
-\begin{figure}
-	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf6.png}
-	\caption{Sprettiglugginn\label{fig:dbf6}}
-\end{figure}
-
-\begin{figure}
-	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf.png}
-	\caption{Sprettiglugginn sem vantar upplýsingar  \label{fig:dbf}}
+	\caption{Sprettigluggi \label{fig:cdbf}}
 \end{figure}
 
 \begin{figure}
@@ -81,19 +61,18 @@ Eftir að búið er að slá inn viðeigandi upplýsingar (sjá mynd \ref{fig:db
 	\caption{Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
 \end{figure}
 
+
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/pdf3.png}
-	\caption{Sprettigluggin sem segir að tenging hafi tekist \label{fig:pdf3}}
+	\includegraphics[width=\textwidth]{../graphics/dbf6.png}
+	\caption{Niðurstöðrnar úr leitinni\label{fig:dbf6}}
 \end{figure}
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf3.png}
-	\caption{Sprettiglugginn sem segir að tenging hafi mistekist \label{fig:dbf3}}
+	\includegraphics[width=\textwidth]{../graphics/dbf10.png}
+	\caption{Niðurstöðrnar úr leitinni\label{fig:dbf10}}
 \end{figure}
-
-
 
 \clearpage
 \printbibliography
