@@ -35,8 +35,9 @@ type varchar(250),
 year date,
 data real,
 index_export real,
-primary key (year)
-);""")
+primary key (index_export)
+);
+""")
 
 outs.close()
 

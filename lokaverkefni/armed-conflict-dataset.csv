@@ -1,4 +1,4 @@
-ConflictId,Year,Location,SideA,SideA2nd,SideB,SideBID,SideB2nd,Incompatibility,TerritoryName,IntensityLevel,CumulativeIntensity,TypeOfConflict,StartDate,StartPrec,StartDate2,StartPrec2,EpEnd,EpEndDate,EpEndPrec,GWNoA,GWNoA2nd,GWNoB,GWNoB2nd,GWNoLoc,Region,Version
+conflictid,year,location,sidea,sidea2nd,sideb,sidebid,sideb2nd,incompatibility,territoryname,intensitylevel,cumulativeintensity,typeofconflict,startdate,startprec,startdate2,startprec2,epend,ependdate,ependprec,gwnoa,gwnoa2nd,gwnob,gwnob2nd,gwnoloc,region,version
 1-1,1946,Bolivia,Government of Bolivia,,Popular Revolutionary Movement,1580,,2,,2,1,3,1946-06-30,4,1946-06-30,4,1,1946-07-21,1,145,,,,145,5,4.0-2015
 1-1,1952,Bolivia,Government of Bolivia,,MNR,1581,,2,,1,1,3,1946-06-30,4,1952-04-09,1,1,1952-04-12,1,145,,,,145,5,4.0-2015
 1-1,1967,Bolivia,Government of Bolivia,,ELN,1582,,2,,1,1,3,1946-06-30,4,1967-03-31,3,1,1967-10-16,1,145,,,,145,5,4.0-2015
