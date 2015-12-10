@@ -1,0 +1,71 @@
+Nr. 1
+
+select d.phone
+from drinkers d, frequents f
+where d.name = f.drinker
+and f.bar = 'Electric Psychedelic Pussycat Swingers Club';
+
+Nr. 2
+
+select d.name as Superhero, f.bar as Bar, b.addr as TVShow
+from drinkers d, frequents f, bars b
+where d.name = f.drinker
+and f.bar = b.name
+and d.addr like '%East%'
+and b.addr like '%How I Met Your Mother%';
+
+Nr. 3
+
+select distinct d1.name, d2.name
+from drinkers d1, drinkers d2
+where (d1.name !=  d2.name) and (d1.name > d2.name)
+order by d2.name; 
+
+Nr. 4
+
+select min(s.price),max(s.price), avg(s.price)
+from sells s
+where s.beer like '%IPA%';
+
+Nr.5
+
+select s.beer, b.manf, s.bar, ba.addr
+from sells s, beers b, bars ba
+where (s.price = (select max(s1.price) from sells s1)) and s.beer like '%IPA%'
+and b.name = s.beer and ba.name = s.bar;
+
+Nr. 6 - LAGA!!!! eiga að vera sirka 128 barir
+
+select b.name
+from bars b
+where b.name not in (select distinct f1.bar from frequents f1);
+
+Nr. 7
+
+select distinct d.name
+from drinkers d, beers b, likes l
+where (cast(substring(d.addr from position('t ' in d.addr)+1 for (position('th' in d.addr) - position('t ' in d.addr))-1) as integer) > 100)
+and l.drinker = d.name 
+and l.beer = b.name
+and b.manf = 'Brasserie Cantillon';
+
+Nr. 8 
+
+select l.beer
+from likes l
+group by l.beer
+order by count(l.beer) desc
+limit 10;
+
+Nr. 9
+
+select b.manf, count(distinct(s.bar, b.manf))
+from beers b, sells s
+where b.name = s.beer
+group by b.manf
+order by count(distinct(s.bar, b.manf))  desc
+limit 10
+;
+
+
+
