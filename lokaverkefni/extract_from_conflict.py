@@ -5,6 +5,8 @@ import pandas as pd
 conflict = pd.read_csv('armed-conflict-dataset.csv', sep=",", engine='python'\
 	,encoding='UTF-8')
 conflict.index.name = 'index_conflict'
+conflict = conflict.convert_objects(convert_numeric=True)
+
 
 outs = open('scehma_conflict.txt', 'w',encoding = "UTF-8")
 outs.write(\
@@ -22,7 +24,7 @@ incompatibility real,
 territoryname varchar(250),
 intensitylevel real,
 cumulativeintensity real,
-typeofconflict
+typeofconflict real,
 startdate date,
 startprec real,
 startdate2 date,
@@ -39,7 +41,6 @@ region real,
 version varchar(250),
 primary key (index_conflict));
 """)
-
 outs.close()
 conflict.to_csv("confclit_out.csv",encoding="utf-8",sep = ";")
 
