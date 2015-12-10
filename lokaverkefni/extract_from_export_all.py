@@ -4,7 +4,7 @@ import datetime
 
 export = pd.read_csv('TIV-Export-All-1950-2014.csv', sep=",", engine='python'\
 	,encoding='UTF-8', skiprows=range(0, 10))
-export.set_index('type', inplace = True)
+# export.set_index('type', inplace = True)
 export = export.drop('deleteme', 1)
 export.fillna('0', inplace=True)
 
@@ -25,11 +25,13 @@ outs.write("""{} character(250),
 outs.close()
 
 
-
 print(export.head())
 print(years)
+
+
+
 # export2 = export.stack()
-# print(export2.head())
+
 
 # print(types)
 # create table movies (
