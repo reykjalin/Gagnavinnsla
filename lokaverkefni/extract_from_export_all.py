@@ -18,19 +18,19 @@ for col in export.columns:
                 years.append(col)
                 data.append(export[col][i])
                
-sqltable = pd.DataFrame()
-sqltable['type'] = types
-sqltable['year'] = years
-sqltable['data'] = data
-sqltable.index.name = 'index_export'
+export_sql = pd.DataFrame()
+export_sql['type'] = types
+export_sql['year'] = years
+export_sql['data'] = data
+export_sql.index.name = 'index_export'
 # remove total price
-sqltable = sqltable[sqltable.year != 'total']
+export_sql = export_sql[export_sql.year != 'total']
 
 
 # create schema
 outs = open('scehma_export.txt', 'w',encoding = "UTF-8")
 outs.write(\
-"""create table Export (
+"""create table export (
 type varchar(250),
 year date,
 data real,
