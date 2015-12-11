@@ -18,7 +18,9 @@ Windows:
 	4. Til að sækja þemað: pip install qdarkstyle
 
 Mac:
-	1. Nonni!
+	Slá eftirfarandi inn í terminal: 
+	1. brew install pyside --with-python3
+	2. pip3 install qdarkstyle
 
 Linux:
 	1. Opna package manager, sækja python3-pyside pakkann
