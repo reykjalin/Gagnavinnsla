@@ -1,5 +1,6 @@
-\documentclass[12pt, git, final]{rureport}
+\documentclass[12pt, git, draft]{rureport}
 
+\usepackage{hyperref}
 
 \begin{document} % this tells the compiler that it is time to make
                  % text to print instead of just getting ready.
@@ -7,36 +8,48 @@
 
 %\fxnote{skoða titil á skýrslu, sbr. forsíðu}
 
-%\section*{Errata} %%section* avoids putting a number 
+%\section*{Errata} %%section* avoids putting a number
+\listoffixmes 
 
 \section{Inngangur} % sections break up the document into pieces
 
-Hópverkefni 2 gengur út á það að fara inn á síðuna http://grouplens.org/datasets/movielens/ og ná þar í gagnasett sem inniheldur 10 milljón einkunnargjafir, 100 þúsund 'tags' á 10 þúsund myndum frá 72 þúsund notendum.
+Markmið verkefnisins er að nota gögn frá Grouplens \cite{movielens} og ná þar í gagnasett sem inniheldur 10 milljón einkunnagjafir og 100 þúsund 'tags' á 10 þúsund kvikmyndum frá 72 þúsund notendum.
 \newline
-Nemendur eiga svo að skrifa python forrit sem tala við postgresqsl sem geymir MovieLens gagnagrunninn. Forritið á að virka á þann hátt að þegar notandi slær inn heiti á kvikmynd þá á einhvern máta á að birtast notandanum viðbótarupplýsingar þar sem stungið er upp á sambærilegum myndum og myndinni sem var slegin inn í upphafi í forritið.
+Nemendur áttu svo að útbúa SQL gagnagrunn byggðan á þessum gögnum og skrifa python forrit sem talar við gagnagrunninn.
+
+Forritið á að virka á þann hátt að þegar notandi slær inn heiti á einni eða fleiri kvikmyndum eiga að birtast tillögur að svipuðum myndum.
 \section{Framkvæmd}
-Byrjað var að taka minna gagnasettið sem inniheldur "aðeins" 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með hann í byrjun áður en farið var að ná í stærra gagnasettið.
-\begin{itemize} 
-	\item Fyrst var náð í minna gagnasettið á http://grouplens.org/datasets/movielens/ sen innheldur 100 þúsund einkunnargjafir á 1700 kvikmyndum og unnið með það til að byrja með.
-	\item Við lesum inn 3 skrár og setjum movieId sem index.
-	\item Splittum dálkinum upp sem er bæði með ár og titil.
-	\item Krill
-	\item krill
-	\item krill 
-	\item krill krill
-	\item krillvél
-	\item krill maskína
+Byrjað var að nýta minni útgáfu af Grouplens gagnasettinu sem inniheldur "aðeins" 100 þúsund einkunnargjafir á 1700 kvikmyndum. Þetta gagnasett var notað til þess að hægt væri að þróa forrit án þess að keyrslutíminn yrði of langur.
+
+\begin{itemize}
+	\item Gögn lesinn inn og forunnin með python
+	\begin{itemize}
+		\item Gögn úr ratings notuð til að reikna meðaleinkunn hverrar myndar. Meðaleinkunn smellt aftan á upplýsingar um myndir
+		\item Genres aðskilin og allar myndir sem eiga við hvert genre sett upp í töflu
+		\item tög sett betur upp fyrir hverja mynd
+	\end{itemize}
+	\item Unnin gögn sett upp í gagnagrunn, sbr. Mynd \ref{fig:dataschema}
+	\item GUI búið til í Qt4 Designer \cite{qt4}
+	\item Queries búnar til fyrir SQL gagnagrunn
+	\begin{itemize}
+		\item leit fyrir genres
+		\item leit fyrir tags
+		\item average rating leitarmynda
+		\item leit að svipuðum myndum út frá tags, genres og rating
+	\end{itemize}
+	\item 
+	\item Gögnin innihéldu dálk með bæði titil mynda og útgáfuár en þessum upplýsingum var skipt upp í tvo dálka.
+	\item Einkunnir voru teknar saman og meðaleinkunn hverrar myndar bætt við töflu movies.
 \end{itemize}
  
 
-
 \section{Niðurstöður}\label{nidurstodur}
 \subsection{Hönnun}
-Það var ákveðið að hafa GUI og markmiðið var að hafa það einfalt og sem notendavænast því var búinn til sprettigluggi (sjá mynd \ref{fig:cdbf}), sá gluggi hefur 2 dálka, eina leitarstiku og 5 hnappa. Notast var við Qt4 designer til að hanna GUI, það var valið með þeim áherslum að það var auðvelt í notkun og við yrðum hlutfallslega fljótir að hanna GUI útaf þeim stutta tíma sem nemendur höfðu til að skila verkefninu.
+Það var ákveðið að hafa GUI (Graphical user interface) og markmiðið var að hafa það einfalt og sem notendavænast því var búinn til sprettigluggi (sjá mynd \ref{fig:cdbf}), sá gluggi hefur 2 dálka, eina leitarstiku og 5 hnappa. Notast var við Qt4 designer til að hanna GUI, það var valið með þeim áherslum að það var auðvelt í notkun og við yrðum hlutfallslega fljótir að hanna GUI útaf þeim stutta tíma sem nemendur höfðu til að skila verkefninu.
 \subsection {Virkni}
 Eftir að búið er að keyra gui\_test.py skránna þá opnast gluggi og ýtt er á ctrl+E eða ýtt á Database uppi í hægra horninu og þá myndi opnast annar lítill sprettigluggi þar sem viðeigandi upplýsingar eru skráðar inn til að geta tengst gagnagrunninum í gegnum GUI (sjá mynd \ref{fig:dbf2}), ef það er ekki gert þá poppar upp annar sprettigluggi sem lætur notandan vita að hann eigi eftir að slá inn notendaupplýsingu.
-\\newline
-\\newline
+\newline
+\newline
 Eftir að búið er að slá inn viðeigandi upplýsingar og þær eru réttar þá birtist annar sprettigluggi sem lætur notendan vita að tenging við gagnagrunn hafi tekist, ef upplýsingarnar eru rangar þá kemur sprettiglugginn með upplýsingar að tenging hafi ekki tekist.
 \newline
 \newline
@@ -52,26 +65,26 @@ Eftir að búið er að slá inn viðeigandi upplýsingar og þær eru réttar �
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{../graphics/cdbf.png}
-	\caption{Sprettigluggi \label{fig:cdbf}}
+	\caption{Aðalgluggi forritsins \label{fig:cdbf}}
 \end{figure}
 
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{../graphics/dbf2.png}
-	\caption{Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
+	\caption{\fxfatal{skipta út mynd 3, ekki lengur test connection takki} Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
 \end{figure}
 
 
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{../graphics/dbf6.png}
-	\caption{Niðurstöðrnar úr leitinni\label{fig:dbf6}}
+	\caption{Myndaleit skilar niðurstöðum í vinstri dálk\label{fig:dbf6}}
 \end{figure}
 
 \begin{figure}
 	\centering 
 	\includegraphics[width=\textwidth]{../graphics/dbf10.png}
-	\caption{Niðurstöðrnar úr leitinni\label{fig:dbf10}}
+	\caption{\fxfatal{nýja mynd, nú eru svigar utan um ár}Svipaðar myndir og þær sem settar voru í hægri dálkinn birtast í sprettiglugga\label{fig:dbf10}}
 \end{figure}
 
 \clearpage
