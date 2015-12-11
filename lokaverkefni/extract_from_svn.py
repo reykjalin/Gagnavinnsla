@@ -37,7 +37,7 @@ geolocator = Nominatim()
 
 lat = eclipse['lat'].tolist()
 lon = eclipse['long'].tolist()
-land = eclipse['lat'].tolist()
+land = list()
 
 for i in range(len(eclipse)):
 
@@ -50,25 +50,31 @@ for i in range(len(eclipse)):
 		lon[i] =lon[i][:-1]
 	else:		
 		lon[i] = '-' + lon[i][:-1]
-	
-print(lat[52],lon[52])
+
+print(type(lat))
+eclipse['land'] = lat
+print(eclipse.head())
+
+
+
 
 for i in range(len(lat)):
 	try:
 		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
 	except:
-		pass
+		land[i] = lat[i]
 	try:
-		
  		land[i] = location.address.rsplit(", ",1)[1]
  		print(land[i])
 	except:
 		pass
-	print(i)
+	
 
+print(type(land))
 
-print(lat[0],lon[0])
+eclipse['country'] = land
 
+print(eclipse)
 
 
 
