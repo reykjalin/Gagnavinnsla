@@ -24,24 +24,27 @@ Byrjað var að nýta minni útgáfu af Grouplens gagnasettinu sem inniheldur "a
 \begin{itemize}
 	\item Gögn lesinn inn og forunnin með python
 	\begin{itemize}
+		\item Ár tekið frá myndum og sett í sér dálk
 		\item Gögn úr ratings notuð til að reikna meðaleinkunn hverrar myndar. Meðaleinkunn smellt aftan á upplýsingar um myndir
-		\item Genres aðskilin og allar myndir sem eiga við hvert genre sett upp í töflu
-		\item tög sett betur upp fyrir hverja mynd
+		\item Genres við hverja mynd aðskilin og sett upp í töflu þar sem key er (genre, mynd), sbr. Mynd \ref{fig:dataschema}
+		\item Tög (e. tag) við hverja mynd aðskilin og sett upp í töflu þar sem key er (mynd, tag), sbr. Mynd \ref{fig:dataschema}
 	\end{itemize}
-	\item Unnin gögn sett upp í gagnagrunn, sbr. Mynd \ref{fig:dataschema}
+	\item Unnin gögn sett upp og hlaðið inn í SQL gagnagrunn á því formi sem sést í Mynd \ref{fig:dataschema}
 	\item GUI búið til í Qt4 Designer \cite{qt4}
-	\item Queries búnar til fyrir SQL gagnagrunn
+	\item Queries búnar til fyrir gagnagrunn
 	\begin{itemize}
-		\item leit fyrir genres
-		\item leit fyrir tags
-		\item average rating leitarmynda
-		\item leit að svipuðum myndum út frá tags, genres og rating
+		\item Leit sem finnur genre myndar út frá nafni og ári
+		\item Leit sem finnu tög myndar út frá nafni og ári
+		\item Leit að svipuðum myndum út frá genres og tags. Meðal-rating "input" mynda notað til að sía niðurstöður
 	\end{itemize}
-	\item 
-	\item Gögnin innihéldu dálk með bæði titil mynda og útgáfuár en þessum upplýsingum var skipt upp í tvo dálka.
-	\item Einkunnir voru teknar saman og meðaleinkunn hverrar myndar bætt við töflu movies.
+	\item Gluggi sem gerir notanda kleift að slá inn upplýsingar um gagnagrunn búinn til
 \end{itemize}
- 
+
+\begin{figure}
+	\centering 
+	\includegraphics[width=\textwidth, trim = 0pt 11cm 0pt 1cm, clip]{ds.pdf}
+	\caption{Database schema \label{fig:dataschema}}
+\end{figure} 
 
 \section{Niðurstöður}\label{nidurstodur}
 \subsection{Hönnun}
@@ -56,35 +59,30 @@ Eftir að búið er að slá inn viðeigandi upplýsingar og þær eru réttar �
 Þegar notandinn nær að tengjast gagnagrunninum þá getur hann skrifað þá mynd sem hann leitar eftir í leitarstikuna og ýtir svo á search, niðurstöðurnar birtast svo í vinstri dálknum ef notendanum líst svo á einhverja mynd sem koma upp við leitina  getur hann bætt henni við á listan yfir myndir sem hann vill velja, með því að ýta á á 'add' hnappinn og þá dettur myndin í vinstri dálkinn (sjá mynd \ref{fig:dbf6}), þegar ýtt er á 'done' hnappinn þá poppar upp annar spretti gluggi sem kemur með myndir sem þér líkar við (sjá mynd \ref{fig:dbf10}), eftir það er hægt að prófa aðrar myndir með því að ýta á 'yes' hnappinn annar ýtir notandinn á 'no' hnappinn og þá ferðu út úr GUI.
 
 \pagebreak
-\begin{figure}
-	\centering 
-	\includegraphics[width=\textwidth]{../graphics/ds.pdf}
-	\caption{Database schema \label{fig:dataschema}}
-\end{figure}
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/cdbf.png}
+	\includegraphics[width=\textwidth]{cdbf.png}
 	\caption{Aðalgluggi forritsins \label{fig:cdbf}}
 \end{figure}
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf2.png}
-	\caption{\fxfatal{skipta út mynd 3, ekki lengur test connection takki} Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
+	\includegraphics[width=\textwidth]{dbf2.png}
+	\caption{Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
 \end{figure}
 
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf6.png}
+	\includegraphics[width=\textwidth]{dbf6.png}
 	\caption{Myndaleit skilar niðurstöðum í vinstri dálk\label{fig:dbf6}}
 \end{figure}
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\textwidth]{../graphics/dbf10.png}
-	\caption{\fxfatal{nýja mynd, nú eru svigar utan um ár}Svipaðar myndir og þær sem settar voru í hægri dálkinn birtast í sprettiglugga\label{fig:dbf10}}
+	\includegraphics[width=\textwidth]{dbf10.png}
+	\caption{Svipaðar myndir og þær sem settar voru í hægri dálkinn birtast í sprettiglugga\label{fig:dbf10}}
 \end{figure}
 
 \clearpage
