@@ -114,13 +114,14 @@ class MyDialog(QtGui.QMainWindow):
             QtGui.QMessageBox.information(self, 'Error', errorstr)
 
         ######################### Create sql command #########################
-        s = ("""select title, year, rating
+        s = """select title, year, rating
         from movies
-        where lower(title) like '%{}%' or year like'%{}%'
-        order by title;""".format(inputdata.lower(),inputdata))
+        where lower(title) like %s or year like %s
+        order by title;"""
+        values = ('%' + inputdata.replace("'", "''").lower() + '%', '%' + inputdata.replace("'","''") + '%')
 
         ######################### Get movies from search #########################
-        cursor.execute(s)
+        cursor.execute(s, values)
         retval = cursor.fetchall()
         cursor.close()
         conn.close()
