@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dbDialog.ui'
 #
-# Created: Wed Dec  9 16:56:15 2015
+# Created: Thu Dec 10 16:53:40 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,9 +57,6 @@ class Ui_dbDialog(object):
         self.btnOk = QtGui.QPushButton(dbDialog)
         self.btnOk.setGeometry(QtCore.QRect(305, 220, 85, 27))
         self.btnOk.setObjectName(_fromUtf8("btnOk"))
-        self.btnTest = QtGui.QPushButton(dbDialog)
-        self.btnTest.setGeometry(QtCore.QRect(80, 220, 101, 27))
-        self.btnTest.setObjectName(_fromUtf8("btnTest"))
 
         self.retranslateUi(dbDialog)
         QtCore.QMetaObject.connectSlotsByName(dbDialog)
@@ -72,6 +69,4 @@ class Ui_dbDialog(object):
         self.label_4.setText(_translate("dbDialog", "DB name:", None))
         self.btnOk.setText(_translate("dbDialog", "Ok", None))
         self.btnOk.setShortcut(_translate("dbDialog", "Return", None))
-        self.btnTest.setText(_translate("dbDialog", "Test connection", None))
-        self.btnTest.setShortcut(_translate("dbDialog", "Ctrl+T", None))
 

@@ -24,8 +24,7 @@ class DBInfo(QtGui.QWidget):
         self.ui.txtPwd.insert(parent.pw)
         
         self.ui.btnOk.clicked.connect(self.saveinfo)
-        self.ui.btnTest.clicked.connect(self.test)
-
+        
     ######################### Save info from textboxes to use for connections #########################
     def saveinfo(self):
         self.parent.host = self.ui.txtHost.text()
@@ -51,7 +50,7 @@ class DBInfo(QtGui.QWidget):
             cursor = conn.cursor()
             cursor.close()
             conn.close()
-            conninfo = 'Success! You can now connect to your database'
+            conninfo = 'Success! You are now connected to your database'
             closer = True
         except:
             conninfo = 'Something went wrong. Are you sure the information you entered is correct?'
@@ -90,9 +89,12 @@ class MyDialog(QtGui.QMainWindow):
         self.usr = 'postgres'
         self.pw = ''
         
-        self.moviesselected = list()
-        self.movieyears = list()
-        self.tmpmovieyears = list()
+        # Lists used to store ratings and years
+        self.moviesselected = []
+        self.movieyears = []
+        self.movieratings = []
+        self.tmpmovieyears = []
+        self.tmpmovieratings = []
 
     ######################### Open dialog for editing database info #########################
     def edit(self):
@@ -108,11 +110,11 @@ class MyDialog(QtGui.QMainWindow):
             conn = psycopg2.connect(conn_string)
             cursor = conn.cursor()
         except:
-            errorstr = 'You are not connected to the database, \n\n press CTRL + E to access database settings'
+            errorstr = 'You are not connected to a database, \n\n press CTRL + E to access database settings'
             QtGui.QMessageBox.information(self, 'Error', errorstr)
 
         ######################### Create sql command #########################
-        s = ("""select title, year
+        s = ("""select title, year, rating
         from movies
         where lower(title) like '%{}%' or year like'%{}%'
         order by title;""".format(inputdata.lower(),inputdata))
@@ -129,6 +131,7 @@ class MyDialog(QtGui.QMainWindow):
         ######################### Clear listbox and tmpmovieyears #########################
         self.modelSearch.clear()
         self.tmpmovieyears.clear()
+        self.tmpmovieratings.clear()
 
         ######################### Get text from textbox and clear it #########################
         txt = self.ui.searchtext.text()
@@ -141,6 +144,7 @@ class MyDialog(QtGui.QMainWindow):
         for i in movielistoftuple:
             # Get each line of text
             self.tmpmovieyears.append(i[1])
+            self.tmpmovieratings.append(i[2])
             txt = i[0]
 
             # Create item from text and add to list
@@ -163,11 +167,13 @@ class MyDialog(QtGui.QMainWindow):
         newitem.setEditable(False)
 
         ######################### Add item to list #########################
-        if newitem.text() not in self.moviesselected:
+        if newitem.text() not in self.moviesselected or self.tmpmovieyears[index.row()] not in self.movieyears:
             # Add to the list of values selected
             test = self.moviesselected.append(newitem.text())
             self.movieyears.append(self.tmpmovieyears[index.row()])
+            self.movieratings.append(self.tmpmovieratings[index.row()])
             self.tmpmovieyears.pop(index.row())
+            self.tmpmovieratings.pop(index.row())
             
             # Move to similar list
             self.modelSimilar.appendRow(newitem)
@@ -193,7 +199,9 @@ class MyDialog(QtGui.QMainWindow):
         self.modelSimilar.removeRow(index.row())
         self.lstSimilar.setModel(self.modelSimilar)
         self.tmpmovieyears.append(self.movieyears[index.row()])
+        self.tmpmovieratings.append(self.movieratings[index.row()])
         self.movieyears.pop(index.row())
+        self.movieratings.pop(index.row())
 
         ######################### Move to search list #########################
         self.modelSearch.appendRow(newitem)
@@ -232,11 +240,14 @@ class MyDialog(QtGui.QMainWindow):
         cursor.execute(sqlcmd)
         tags = cursor.fetchall()
 
+        ######################### Get lowest rating from chosen movies #########################
+        avgminfive = sum(self.movieratings) / len(self.movieratings) - 0.5
 
         ######################### Create sql command to get similar movies #########################
-        sqlcmd = """select m.title, m.year, count(m.title)
+        sqlcmd = """select m.title, m.year
         from genres g, movies m, mtags mt
         where m.id = g.movieid and m.id = mt.movieid
+        and m.rating >= """  + str(avgminfive) + """
         and ("""
         if len(genres) > 0:
             for i in range(len(genres) - 1):
@@ -251,7 +262,12 @@ class MyDialog(QtGui.QMainWindow):
         if len(self.moviesselected) > 0:
             for i in range(len(self.moviesselected) - 1):
                 sqlcmd += "lower(m.title) != '" + self.moviesselected[i].replace("'","''").lower() + "' and m.year != '" + self.movieyears[i] + "' and "
-            sqlcmd += "lower(m.title) != '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "' and m.year != '" + self.movieyears[len(self.moviesselected) - 1] + "') group by m.title, m.year order by count(m.title) desc limit {};".format(NROFMOVIES)
+            sqlcmd += "lower(m.title) != '" + self.moviesselected[len(self.moviesselected) - 1].replace("'","''").lower() + "' and m.year != '" + self.movieyears[len(self.moviesselected) - 1] + "') group by m.title, m.year order by count(m.title) desc limit {}".format(NROFMOVIES)
+
+        ######################### Sort similar movies according to rating #########################
+        sqlcmd = """select m.title, m.year, m.rating
+        from movies m
+        where (m.title, m.year) in (""" + sqlcmd + """) order by m.rating desc;"""
 
 
         ######################### Get similar movies #########################
@@ -262,7 +278,7 @@ class MyDialog(QtGui.QMainWindow):
         ######################### Show movies in messagebox #########################
         moviestr = 'Movies you might like:\n\n'
         for i in range(len(similar)):
-            moviestr += similar[i][0] + '  ' + similar[i][1] + '\n'
+            moviestr += similar[i][0] + '  (' + similar[i][1] + ')\n'
         moviestr += '\nWould you like to try again?'
 
 
