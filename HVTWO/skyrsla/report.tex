@@ -72,7 +72,7 @@ Finna tillögur að myndum sem notanda gæti líkað við:
 \begin{itemize}
 	\item Finna genres, sbr.~Query \ref{lst:genre} í Appendix \ref{app:sql}
 	\begin{itemize}
-		\item Finna genres sem myndir sem notanda líkar við tilheyra
+		\item Finna genres kvikmynda/r sem notanda líkar við
 	\end{itemize}
 	\item Finna tög, sbr.~Query \ref{lst:tag} í Appendix \ref{app:sql}
 	\begin{itemize}
@@ -85,17 +85,18 @@ Finna tillögur að myndum sem notanda gæti líkað við:
 		\item Þær 10 myndir sem koma oftast fyrir er síðan raðað eftir rating
 	\end{itemize}
 \end{itemize}
+\textbf{ATH: Töflur í gagnagrunni verða að heita þeim nöfnum sem sjást á Mynd \ref{fig:dataschema} annars virka leitarquery-in ekki.}
 
 \subsection{Virkni forrits}
 Þegar gui\_test.py skráin er keyrð opnast aðalgluggi forritisins (Mynd \ref{fig:cdbf}). Til að tengjast gagnagrunni er hægt að ýta á Ctrl + E (slaufa + E á mac) eða smellt á "Database" og valið "Edit info...". Þá opnast sprettigluggi þar sem upplýsingar um gagnagrunn eru settar inn, sjá Mynd \ref{fig:dbf2}. Eftir að ýtt er á "Ok" í sprettiglugganum birtist annar sprettigluggi sem lætur notandann vita hvort tekist hafi að tengjast gagnagrunninum.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering 
 	\includegraphics[width=13cm]{cdbf.png}
 	\caption{Aðalgluggi forritsins \label{fig:cdbf}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering 
 	\includegraphics[width=13cm]{dbf2.png}
 	\caption{Sprettiglugginn með upplýsingum útfylltum \label{fig:dbf2}}
@@ -103,9 +104,9 @@ Finna tillögur að myndum sem notanda gæti líkað við:
 
 Þegar notandinn hefur tengst gagnagrunni getur hann leitað að mynd með því að skrifa nafn, eða hluta nafns, í leitarstikuna og ýtir svo á search (eða Return). Einnig er hægt að leita að útgáfuári, en þá er slegið ár inní leitarstikuna og fást þá allar myndir gefnar út á því ári.
 
-Niðurstöður þeirrar leitarinnar birtast í vinstri dálknum. Ef notandanum líst á einhverja af myndunum sem koma upp við leitina getur hann bætt henni við á listann yfir myndir sem notandanum líkar við með því að ýta á á "add" hnappinn og þá færist valda myndin í vinstri dálkinn yfir í hægri dálkinn, sjá Mynd \ref{fig:dbf6}. Ef notandinn vill taka myndir af listanum getur hann ýtt á "Remove" hnappinn og þá færist myndin úr hægri dálknum yfir í vinstri dálkinn aftur.
+Niðurstöður þeirrar leitarinnar birtast í vinstri dálknum. Ef notandanum líst á einhverja af myndunum sem koma upp við leitina getur hann bætt henni við á listann yfir myndir sem notandanum líkar við með því að ýta á á "add" hnappinn og þá færist valda myndin úr vinstri dálkinn yfir í hægri dálkinn, sjá Mynd \ref{fig:dbf6}. Ef notandinn vill taka myndir af listanum getur hann ýtt á "Remove" hnappinn og þá færist myndin úr hægri dálknum yfir í vinstri dálkinn aftur.
 
-Þegar ýtt er á "done" hnappinn sprettur upp annar sprettigluggi sem kemur tillögur að myndum sem notandanum gæti líkað við, sjá Mynd \ref{fig:dbf10}. Eftir það er hægt að prófa aðrar myndir með því að ýta á "yes" hnappinn, annars ýtir notandinn á "no" hnappinn og þá er forritinu lokað.
+Þegar ýtt er á "done" hnappinn sprettur upp annar sprettigluggi sem kemur með tillögur að myndum sem notandanum gæti líkað við, sjá Mynd \ref{fig:dbf10}. Eftir það er hægt að prófa aðrar myndir með því að ýta á "yes" hnappinn, annars ýtir notandinn á "no" hnappinn og þá er forritinu lokað.
 
 \begin{figure}
 	\centering 
