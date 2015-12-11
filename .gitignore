@@ -72,6 +72,7 @@ target/
 *.fls
 *.out
 *.toc
+*.lox
 
 ## Intermediate documents:
 *.dvi
