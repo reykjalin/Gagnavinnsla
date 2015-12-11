@@ -1,0 +1,19 @@
+create table movies (
+id varchar(250),
+title varchar(250),
+year varchar(250),
+rating float,
+primary key (id)
+);
+
+create table mtags (
+movieid varchar(250) references movies(id),
+tag varchar(250),
+primary key (movieid, tag)
+);
+
+create table genres (
+genre varchar(250),
+movieid varchar(250) references movies(id),
+primary key (genre, movieid)
+);
