@@ -154,10 +154,10 @@
 %\RequirePackage{palatino}
 %\RequirePackage{bookman}
 %\RequirePackage{newcent}
-\RequirePackage{helvet}
+%\RequirePackage{helvet} 								// commentað út //
 
 % The old template uses san-serif, let's also do so 
-\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\familydefault}{\sfdefault}				// commentað út //
 
 %% ---------------- Main Code -----------------------------
 %%  Remember that we can declar commands (to make fragile things safe)
