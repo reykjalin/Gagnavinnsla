@@ -41,40 +41,40 @@ land = list()
 
 for i in range(len(eclipse)):
 
-	if lat[i].endswith('N'):
+	if lat[i].endswith('N'): ## Norður + , Suður -
 		lat[i] =lat[i][:-1]
 	else:		
 		lat[i] = '-' + lat[i][:-1]
 
-	if lon[i].endswith('E'):
+	if lon[i].endswith('E'): # Astur +. Vestur -
 		lon[i] =lon[i][:-1]
 	else:		
 		lon[i] = '-' + lon[i][:-1]
 
-print(type(lat))
-eclipse['land'] = lat
+
+eclipse['lat'] = lat
+eclipse['long'] = lon
 print(eclipse.head())
 
-
-
-
+###########
 for i in range(len(lat)):
 	try:
 		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
 	except:
-		land[i] = lat[i]
+		pass		
 	try:
  		land[i] = location.address.rsplit(", ",1)[1]
  		print(land[i])
 	except:
 		pass
-	
 
-print(type(land))
+##########	
 
-eclipse['country'] = land
+# print(type(land))
 
-print(eclipse)
+# eclipse['country'] = land
+
+# print(eclipse)
 
 
 
