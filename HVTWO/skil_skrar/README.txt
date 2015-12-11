@@ -3,6 +3,8 @@ ATH: TÖFLUR VERÐA AÐ HEITA ÞAÐ SAMA OG Í SCHEMA, ANNARS VIRKA LEITARQUERY 
 -------------------- Í hvaða röð skal keyra skrár? --------------------
 1. readcsv.py keyrð til að búa til insert skipanir fyrir gagnagrunn.
    ATH: skráarnöfn sem lesið er úr eru harðkóðuð
+   til að spara tíma, reiknum við að ná í fail með insert skipum frá:
+   https://onedrive.live.com/redir?resid=15350A372740D62C!30403&authkey=!AM4RSLqjqnCyhUE&ithint=file%2csql  
 2. insert_to_db.py keyrt til að lesa insert skipanir í gagnagrunn.
    Ætti ekki að taka meira en 5 mínútur.
 3. MAIN_PROGRAM.py keyrt til að keyra forrit
