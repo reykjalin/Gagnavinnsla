@@ -1,4 +1,4 @@
-\documentclass[12pt, git, draft]{rureport}
+\documentclass[12pt, git, final]{rureport}
 
 \usepackage{hyperref}
 
@@ -57,16 +57,16 @@ Byrjað var að nýta minni útgáfu af Grouplens gagnasettinu sem inniheldur "a
 %-----------------------------------------------------------------------------
 \section{Aðferð}\label{nidurstodur}
 \subsection{Hönnun}
-Það var ákveðið að hafa GUI (Graphical user interface) og markmiðið var að hafa það sem einfaldast og notendavænast. Því hefur aðalgluggi forritisins (sbr.~Mynd \ref{fig:cdbf}) 2 dálka, eina leitarstiku og 5 hnappa.
+Það var ákveðið að hafa GUI (Graphical user interface) og markmiðið var að hafa það sem einfaldast og notendavænast. Því hefur aðalgluggi forritisins (sbr.~Mynd \ref{fig:cdbf}) tvo dálka, eina leitarstiku og fimm hnappa.
 
 Notast var við Qt4 Designer \cite{qt4} til að hanna GUI, það var valið með það í huga að það er auðvelt í notkun og við yrðum mun fljótari að hanna GUI á þann hátt.
 
 \subsection{Virkni leita}
-Á tveimur mismunandi stigum í forritinu er haft samband við gagnagrunninn. Annars vegar þegar leitað er að myndum sem notandanum líkar við, og hins vegar þegar leitað er að tillögum að myndum sem notandanum gæti líkað við.
+Á tveimur mismunandi stigum í forritinu er haft samband við gagnagrunninn. Annars vegar þegar leitað er að myndum sem notandinn slær inn, og hins vegar þegar leitað er að tillögum að myndum sem notandanum gæti líkað við.
 \\
-Finna myndir sem notanda líkar við, sbr.~Query \ref{lst:Search} í Appendix \ref{app:sql}:
+Finna myndir sem notandi slær inn, sbr.~Query \ref{lst:Search} í Appendix \ref{app:sql}:
 \begin{itemize}
-	\item Finna allar myndir/myndir frá ári þar sem hluti titilsins/ársins inniheldur leitarstrenginn
+	\item Finna allar myndir þar sem hluti titilsins eða ársins inniheldur leitarstrenginn
 \end{itemize}
 Finna tillögur að myndum sem notanda gæti líkað við:
 \begin{itemize}
@@ -152,7 +152,8 @@ Nokkur dæmi um notkun forritisins:
 		\item \textit{Spirited Away (Sen to Chihiro no kamikakushi)}  (2001), \textit{Lord of the Rings: The Fellowship of the Ring, The}  (2001), \textit{Lord of the Rings: The Return of the King, The}  (2003), \textit{Blade Runner}  (1982), \textit{Nausicaä of the Valley of the Winds (Kaze no tani no Naushika)}  (1984), \textit{Howl's Moving Castle (Hauru no ugoku shiro)}  (2004), \textit{Incredibles, The}  (2004), \textit{Toy Story}  (1995), \textit{Kiki's Delivery Service} (Majo no takkyûbin)  (1989), \textit{Finding Nemo}  (2003)
 	\end{itemize}
 	
-	\item Myndir sem notanda líkar við:
+	\pagebreak
+	\item Myndir sem notanda líkar við: 
 	\begin{itemize}
 		\item \textit{Lucky Number Slevin}, \textit{The Shawshank Redemption}, \textit{Back to the Future}, \textit{WALL-E}, \textit{The Sixth Sense}, \textit{Psycho}, \textit{Ocean's Eleven}, \textit{Teenage Mutant Ninja Turtles}
 	\end{itemize}
