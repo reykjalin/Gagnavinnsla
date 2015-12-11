@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 from geopy.geocoders import Nominatim 
 import pprint as pp
-
+import WorldDomination
 
 
 
@@ -23,7 +23,7 @@ eclipse['calendardate_month'] = '-' + eclipse['calendardate_month'].astype(str)
 eclipse['calendardate_day'] = '-' + eclipse['calendardate_day'].astype(str)
 
 eclipse["calendardate"] = eclipse["calendardate_year"].map(str) +  \
-eclipse["calendardate_month"].map(str) + eclipse["calendardate_day"].map(str)
+eclipse["calendardate_month"].map(str) + eclipse["calendardate_day"].map(str) + ' ' +  eclipse['greatesteclipse_td'].map(str)
 
 # print(datetime.strptime("19", "%d/%m/%Y").strftime('%Y-%m-%d'))
 
@@ -34,39 +34,41 @@ eclipse = eclipse.drop(eclipse.columns[[0, 1, 2]], axis=1)
 
 geolocator = Nominatim()
 
-
 lat = eclipse['lat'].tolist()
 lon = eclipse['long'].tolist()
-land = list()
+land = []
 
 for i in range(len(eclipse)):
 
 	if lat[i].endswith('N'): ## Norður + , Suður -
-		lat[i] =lat[i][:-1]
+		lat[i] = int(lat[i][:-1])
 	else:		
-		lat[i] = '-' + lat[i][:-1]
+		lat[i] = int('-' + lat[i][:-1])
 
 	if lon[i].endswith('E'): # Astur +. Vestur -
-		lon[i] =lon[i][:-1]
+		lon[i] = int(lon[i][:-1])
 	else:		
-		lon[i] = '-' + lon[i][:-1]
+		lon[i] = int('-' + lon[i][:-1])
+
+
 
 
 eclipse['lat'] = lat
 eclipse['long'] = lon
-print(eclipse.head())
+#print(eclipse.head())
 
 ###########
-for i in range(len(lat)):
+for i in range(10): #range(len(lat)):
 	try:
 		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
 	except:
-		pass		
+		pass	
+
 	try:
  		land[i] = location.address.rsplit(", ",1)[1]
  		print(land[i])
 	except:
-		pass
+		land.append('X')
 
 ##########	
 
@@ -76,8 +78,11 @@ for i in range(len(lat)):
 
 # print(eclipse)
 
+nr = 1
 
+x = list(eclipse["calendardate"])
 
+WorldDomination.plotme(lat[nr],lon[nr],land[nr],x[nr])
 
 
 
