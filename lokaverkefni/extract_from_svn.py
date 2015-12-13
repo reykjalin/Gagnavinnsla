@@ -5,8 +5,7 @@ import datetime
 from geopy.geocoders import Nominatim 
 import pprint as pp
 import WorldDomination
-
-
+import SpinTest
 
 eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month','calendardate_day',\
 	'greatesteclipse_td','dT','luna_num','saros_num','ecl_type',\
@@ -30,7 +29,7 @@ eclipse["calendardate_month"].map(str) + eclipse["calendardate_day"].map(str) + 
 
 eclipse["calendardate"] = pd.to_datetime(eclipse["calendardate"])
 
-eclipse = eclipse.drop(eclipse.columns[[0, 1, 2]], axis=1)
+eclipse = eclipse.drop(eclipse.columns[[0, 1, 2]], axis = 1)
 
 
 geolocator = Nominatim()
@@ -59,17 +58,17 @@ eclipse['long'] = lon
 #print(eclipse.head())
 
 ###########
-for i in range(10): #range(len(lat)):
-	try:
-		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
-	except:
-		pass	
+# for i in range(len(lat)):
+# 	try:
+# 		location = geolocator.reverse("{},{}".format(lat[i],lon[i]))
+# 	except:
+# 		pass	
 
-	try:
- 		land[i] = location.address.rsplit(", ",1)[1]
- 		print(land[i])
-	except:
-		land.append('X')
+# 	try:
+#  		land[i] = location.address.rsplit(", ",1)[1]
+#  		print(land[i])
+# 	except:
+# 		land.append('X')
 
 ##########	
 
@@ -79,13 +78,11 @@ for i in range(10): #range(len(lat)):
 
 # print(eclipse)
 
-nr = 1
 
 x = list(eclipse["calendardate"])
 
-WorldDomination.plotme(lat[nr],lon[nr],land[nr],x[nr])
-
-
+#WorldDomination.plotme(lat[nr],lon[nr],land[nr],x[nr])
+SpinTest.plotme(lat,lon,x)
 
 #eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
 
