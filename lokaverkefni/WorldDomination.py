@@ -1,3 +1,4 @@
+# coding=utf-8
 # Til að keyra þessa skrá þarf að installa:
 # Basemap í gegnum pip
 # Pillow í gegnum pip
@@ -6,8 +7,8 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
-from datetime import datetime
-
+# from datetime import datetime
+print('Hallo')
 # set up orthographic map projection with
 # perspective of satellite looking down at 66N, 30W.
 # use low resolution coastlines.
