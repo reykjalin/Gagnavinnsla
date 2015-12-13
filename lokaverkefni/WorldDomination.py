@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import PIL
 # from datetime import datetime
-print('Hallo')
 # set up orthographic map projection with
 # perspective of satellite looking down at 66N, 30W.
 # use low resolution coastlines.
