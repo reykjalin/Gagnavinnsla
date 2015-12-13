@@ -16,4 +16,6 @@ til þess þarf:
 	 	5. numpy
 	 	6. pil
 4. Ef kemur ASCII villa, þarf að bæta í efsta línu í kóðan # coding=utf-8	
-5. Til að fara ut úr enviroment slá in: NameOfEnviroment deactivate
+5. Til að fara ut úr enviroment slá in: deactivate
+
+til að activate enviroment aftur seinna, þarf að slá in: activate python27
