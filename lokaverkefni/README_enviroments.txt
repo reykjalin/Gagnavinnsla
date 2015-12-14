@@ -15,6 +15,7 @@ til þess þarf:
 	 	3. matplotlib
 	 	4. numpy
 	 	5. pil
+	 	6. sqlalchemy 
 4. Ef kemur ASCII villa, þarf að bæta í efsta línu í kóðan # coding=utf-8	
 5. Til að fara ut úr enviroment slá in: deactivate
 
