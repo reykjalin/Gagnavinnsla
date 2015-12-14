@@ -25,7 +25,7 @@ eclipse["calendardate"] = pd.to_datetime(eclipse["calendardate"])
 
 # create schema
 eclipse = eclipse.drop(eclipse.columns[[1, 2]], axis = 1)
-eclipse = eclipse.convert_objects(convert_numeric=True)
+# eclipse = eclipse.convert_objects(convert_numeric=True)
 
 
 schema_eclipse = ("""create table eclipse (

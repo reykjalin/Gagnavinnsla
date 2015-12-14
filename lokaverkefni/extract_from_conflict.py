@@ -5,7 +5,7 @@ import pandas as pd
 conflict = pd.read_csv('armed-conflict-dataset.csv', sep=",", engine='python'\
 	,encoding='UTF-8')
 conflict.index.name = 'index_conflict'
-conflict = conflict.convert_objects(convert_numeric=True)
+# conflict = conflict.convert_objects(convert_numeric=True)
 
 
 schema_conflict = ("""create table conflict (
