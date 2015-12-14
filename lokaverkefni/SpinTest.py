@@ -54,7 +54,7 @@ def plot2D(lats,lons,contries,year):
 		text = plt.text(lons[i], lats[i], contries[i],fontsize=12,fontweight='bold',color='k')
 		text.set_visible(False)
 
-	def onpick(event,countries):
+	def onpick(event):
 	    ind = event.ind
 
 	    #print('The coordinates are {}, {}'.format(lats[ind],lons[ind]))
@@ -65,7 +65,7 @@ def plot2D(lats,lons,contries,year):
 
 
 
-	fig.canvas.mpl_connect('pick_event', onpick(countries))
+	fig.canvas.mpl_connect('pick_event', onpick)
 
 	plt.show()
 	#plt.savefig("mapframes/year{0}".format((str(year)), facecolor='k')
