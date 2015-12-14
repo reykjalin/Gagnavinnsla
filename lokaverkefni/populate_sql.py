@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from extract_from_export_all import export_sql
 from extract_from_conflict import conflict
+from extract_from_eclipse import eclipse
 
 
 engine = create_engine('postgresql+psycopg2://postgres:postgres@localhost:5432/lokaverkefni')
@@ -11,4 +12,4 @@ engine = create_engine('postgresql+psycopg2://postgres:postgres@localhost:5432/l
 
 export_sql.to_sql('export', engine, if_exists='replace')
 conflict.to_sql('conflict', engine, if_exists='replace')
-
+eclipse.to_sql('eclipse', engine, if_exists='replace')
