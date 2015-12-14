@@ -197,3 +197,12 @@ sympy-plots-for-*.tex/
 
 # SQL files
 *.sql
+
+# Graphics files
+*.png
+*.PNG
+*.mp4
+*.MP4
+
+# Folders
+/HVTWO/ml-10M100K
