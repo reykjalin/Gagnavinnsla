@@ -23,14 +23,17 @@ class Main(QMainWindow, Ui_MainWindow):
         self.txtyear.editingFinished.connect(self.updSl)
         self.actionDatabase_info.triggered.connect(self.edit)
 
+        self.engine = ''
+
     ######################### Edit textbox and slider #########################
     def updTxt(self):
         self.txtyear.setText(str(self.slyear.value()))
     def updSl(self):
         self.slyear.setValue(int(self.txtyear.text()))
 
+    ######################### Create Database #########################
     def edit(self):
-        self.wedit = db.DBInfo()
+        self.wedit = db.DBInfo(self)
         self.wedit.show()
 
     ######################### Create figure #########################
