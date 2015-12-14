@@ -78,11 +78,23 @@ eclipse['long'] = lon
 
 # print(eclipse)
 
+a = 60
+b = 75
+
+count = 0
+for g in lat:
+	if ((g > a) and (g < b)) or ((g < -a) and (g > -b)):
+		count +=1
+
+# The number of solar eclipses between (lat 60 and 75) and (lat -60 and -75)
+print(count/(len(lat)))
 
 x = list(eclipse["calendardate"])
 
 #WorldDomination.plotme(lat,lon,land,x)
-SpinTest.plotme(lat,lon,x)
+#SpinTest.plotme(lat,lon)
+SpinTest.plot2D(lat,lon,land)
+
 
 #eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
 
