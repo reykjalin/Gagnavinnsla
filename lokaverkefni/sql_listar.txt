@@ -1,0 +1,41 @@
+
+
+####################################################################
+#Vill bara skoða þessa dálka og flokka þá e. árum og byrja fyrst#
+SELECT year, location, sidea, sideb, index_conflict
+FROM conflict
+order by year asc;
+####################################################################
+
+
+##################################
+#flokka dálana by years#
+SELECT year, price, type
+FROM export
+order by year asc;
+###################################
+
+
+#################################################
+#dálkarnir of interest fyrir eclipse#
+SELECT calendardate, path_width,central_dur, greatesteclipse_td
+FROM eclipse
+ORDER BY calendardate ASC;
+##################################################
+
+
+
+###################################################
+# dálkarnir of interest teknir saman  fyrir conflict og export#
+SELECT c.startdate, c.location, c.sidea, c.sideb,e.price, e.type, c.year
+FROM conflict c, export e
+WHERE c.year = e.year
+order by year ASC, price DESC ;
+###################################################
+
+
+
+
+
+
+
