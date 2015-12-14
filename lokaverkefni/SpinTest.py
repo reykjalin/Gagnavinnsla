@@ -47,7 +47,6 @@ def plot2D(lats,lons,countries,year):
 
 	# Making the plot fullscreen
 	fig = plt.figure(figsize=(20,9))
-	ax = fig.add_subplot(111)
 
 	map = Basemap(projection='cyl',resolution='c')
 	map.drawcoastlines()
