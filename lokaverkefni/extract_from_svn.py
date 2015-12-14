@@ -81,7 +81,7 @@ eclipse['long'] = lon
 
 x = list(eclipse["calendardate"])
 
-#WorldDomination.plotme(lat[nr],lon[nr],land[nr],x[nr])
+#WorldDomination.plotme(lat,lon,land,x)
 SpinTest.plotme(lat,lon,x)
 
 #eclipse.to_csv('output_eclipse.csv',sep=';', encoding='utf-8')
