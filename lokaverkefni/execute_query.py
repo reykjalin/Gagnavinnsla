@@ -6,12 +6,12 @@ import numpy as np
 def run_query(engine,column,table,where = '',group_by= '',order_by= ''):	
 	connection = engine.connect()
 	result = connection.execute("""select {} 
-		from table {} 
+		from {} 
 		{}
 		{}
 		{}
-		;""")
-	}
+		;""" .format(column,table,where,group_by,order_by))
+	
 	connection.close()
 	return result
 
