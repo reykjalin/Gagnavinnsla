@@ -8,9 +8,7 @@ conflict.index.name = 'index_conflict'
 conflict = conflict.convert_objects(convert_numeric=True)
 
 
-outs = open('scehma_conflict.txt', 'w',encoding = "UTF-8")
-outs.write(\
-"""create table conflict (
+schema_conflict = ("""create table conflict (
 index_conflict real,
 conflictid varchar(250),
 year date,
@@ -41,7 +39,8 @@ region real,
 version varchar(250),
 primary key (index_conflict));
 """)
-outs.close()
-conflict.to_csv("confclit_out.csv",encoding="utf-8",sep = ";")
 
+outs = open('scehma_conflict.txt', 'w',encoding = "UTF-8")
+outs.write(schema_conflict)
+outs.close()
 

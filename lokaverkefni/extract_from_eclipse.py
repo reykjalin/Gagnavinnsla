@@ -27,9 +27,8 @@ eclipse["calendardate"] = pd.to_datetime(eclipse["calendardate"])
 eclipse = eclipse.drop(eclipse.columns[[1, 2]], axis = 1)
 eclipse = eclipse.convert_objects(convert_numeric=True)
 
-outs = open('scehma_eclipse.txt', 'w',encoding = "UTF-8")
-outs.write(\
-"""create table eclipse (
+
+schema_eclipse = ("""create table eclipse (
 catalognumber real,
 calendardate_year real,
 greatesteclipse_td time,
@@ -49,6 +48,8 @@ calendardate date,
 primary key (calendardate_year));
 """)
 
+outs = open('scehma_eclipse.txt', 'w',encoding = "UTF-8")
+outs.write(schema_eclipse)
 outs.close()
 
 

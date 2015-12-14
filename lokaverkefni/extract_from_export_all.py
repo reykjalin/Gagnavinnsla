@@ -28,9 +28,8 @@ export_sql = export_sql[export_sql.year != 'total']
 export_sql = export_sql.convert_objects(convert_numeric=True)
 
 # create schema
-outs = open('scehma_export.txt', 'w',encoding = "UTF-8")
-outs.write(\
-"""create table export (
+
+schema_export = ("""create table export (
 type varchar(250),
 year date,
 price real,
@@ -38,14 +37,7 @@ index_export real,
 primary key (index_export));
 """)
 
+outs = open('scehma_export.txt', 'w',encoding = "UTF-8")
+outs.write(schema_export)
 outs.close()
 
-
-
-# create table movies (
-# id varchar(250),
-# title varchar(250),
-# year varchar(250),
-# rating float,
-# primary key (id)
-# );
