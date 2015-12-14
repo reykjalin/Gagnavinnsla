@@ -72,3 +72,19 @@ def plot2D(lats,lons):
     # fig.canvas.mpl_connect('pick_event', onpick)
     return fig
     #plt.show()
+
+def plotmap():
+    fig = plt.figure(figsize=(20,9))
+    ax = fig.add_axes([0.01, 0.01, 0.98, 0.98])
+
+    map = Basemap(projection='cyl',resolution='c')
+    map.drawcoastlines()
+    #map.fillcontinents(color='coral',lake_color='aqua')
+    #map.drawmapboundary(fill_color='aqua')
+    map.bluemarble()
+    #draw the edge of the map projection region
+    map.drawcountries()
+    map.drawstates()
+
+    return fig
+
