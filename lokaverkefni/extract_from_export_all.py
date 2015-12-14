@@ -11,17 +11,17 @@ export.fillna('0', inplace=True)
 #rearenge the table
 types = []
 years = []
-data = []
+price = []
 for col in export.columns:
         for i in export.index:
                 types.append(i)
                 years.append(col)
-                data.append(export[col][i])
+                price.append(export[col][i])
                
 export_sql = pd.DataFrame()
 export_sql['type'] = types
 export_sql['year'] = years
-export_sql['data'] = data
+export_sql['price'] = price
 export_sql.index.name = 'index_export'
 # remove total price
 export_sql = export_sql[export_sql.year != 'total']
@@ -33,7 +33,7 @@ outs.write(\
 """create table export (
 type varchar(250),
 year date,
-data real,
+price real,
 index_export real,
 primary key (index_export));
 """)
