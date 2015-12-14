@@ -2,7 +2,6 @@ from PyQt4.uic import loadUiType
 import sys
 from PyQt4 import QtGui
 import numpy as np
-
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas,
@@ -19,12 +18,12 @@ class Main(QMainWindow, Ui_MainWindow):
 
         self.txtyear.setText(str(self.slyear.value()))
 
-        self.slyear.valueChanged.connect(self.ud)
-        self.txtyear.editingFinished.connect(self.ud2)
+        self.slyear.valueChanged.connect(self.updTxt)
+        self.txtyear.editingFinished.connect(self.updSl)
 
-    def ud(self):
+    def updTxt(self):
         self.txtyear.setText(str(self.slyear.value()))
-    def ud2(self):
+    def updSl(self):
         self.slyear.setValue(int(self.txtyear.text()))
 
     ######################### Create figure #########################

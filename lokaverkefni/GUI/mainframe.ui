@@ -14,33 +14,16 @@
    <string>Conflict map</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="vlayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QWidget" name="mplframe" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMaximumSize</enum>
       </property>
-      <layout class="QVBoxLayout" name="mplvlayout"/>
-      <zorder>slyear</zorder>
-      <zorder>txtyear</zorder>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="hlayout">
       <item>
-       <widget class="QSlider" name="slyear">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="txtyear">
+       <widget class="QWidget" name="mplframe" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -51,24 +34,229 @@
           <height>0</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>70</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="maxLength">
-         <number>4</number>
+        <layout class="QVBoxLayout" name="mplvlayout"/>
+        <zorder>slyear</zorder>
+        <zorder>txtyear</zorder>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="hlayout">
+        <item>
+         <widget class="QSlider" name="slyear">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="txtyear">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>4</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinimumSize</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Conflict information</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QTextBrowser" name="textBrowser">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Eclipse information</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextBrowser" name="textBrowser_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinimumSize</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Export information</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextBrowser" name="textBrowser_3">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Conflicts</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextBrowser" name="textBrowser_4">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>170</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
+   <zorder>mplframe</zorder>
+   <zorder>slyear</zorder>
+   <zorder>txtyear</zorder>
+   <zorder>textBrowser</zorder>
+   <zorder>textBrowser_2</zorder>
+   <zorder>textBrowser_3</zorder>
+   <zorder>textBrowser_4</zorder>
+   <zorder></zorder>
+   <zorder>textBrowser</zorder>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1169</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuGenerate_Globe">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionGenerate_Globe"/>
+   </widget>
+   <addaction name="menuGenerate_Globe"/>
+  </widget>
+  <action name="actionGenerate_Globe">
+   <property name="text">
+    <string>Generate Globe</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
