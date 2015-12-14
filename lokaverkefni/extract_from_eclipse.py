@@ -2,10 +2,6 @@
 import numpy as np
 import pandas as pd
 import datetime
-from geopy.geocoders import Nominatim 
-import pprint as pp
-import WorldDomination
-import SpinTest
 
 eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month','calendardate_day',\
 	'greatesteclipse_td','dt','luna_num','saros_num','ecl_type',\
