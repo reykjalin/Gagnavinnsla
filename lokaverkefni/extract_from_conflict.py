@@ -1,3 +1,4 @@
+# coding=utf-8
 import numpy as np
 import pandas as pd
 
@@ -40,7 +41,7 @@ version varchar(250),
 primary key (index_conflict));
 """)
 
-outs = open('scehma_conflict.txt', 'w',encoding = "UTF-8")
+outs = open('scehma_conflict.txt', 'w')
 outs.write(schema_conflict)
 outs.close()
 

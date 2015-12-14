@@ -48,7 +48,7 @@ calendardate date,
 primary key (calendardate_year));
 """)
 
-outs = open('scehma_eclipse.txt', 'w',encoding = "UTF-8")
+outs = open('scehma_eclipse.txt', 'w')
 outs.write(schema_eclipse)
 outs.close()
 

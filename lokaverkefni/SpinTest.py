@@ -1,3 +1,4 @@
+# coding=utf-8
 # Til að keyra þessa skrá þarf að installa:
 # Basemap í gegnum pip
 # Pillow í gegnum pip

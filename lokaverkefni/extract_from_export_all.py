@@ -1,3 +1,4 @@
+# coding=utf-8
 import numpy as np
 import pandas as pd
 import datetime
@@ -37,7 +38,7 @@ index_export real,
 primary key (index_export));
 """)
 
-outs = open('scehma_export.txt', 'w',encoding = "UTF-8")
+outs = open('scehma_export.txt', 'w')
 outs.write(schema_export)
 outs.close()
 
