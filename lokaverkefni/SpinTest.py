@@ -52,9 +52,9 @@ def plot2D(lats,lons):
 
     map = Basemap(projection='cyl',resolution='c')
     map.drawcoastlines()
-    map.fillcontinents(color='coral',lake_color='aqua')
-    map.drawmapboundary(fill_color='aqua')
-
+    #map.fillcontinents(color='coral',lake_color='aqua')
+    #map.drawmapboundary(fill_color='aqua')
+    map.bluemarble()
     #draw the edge of the map projection region
     map.drawcountries()
     map.drawstates()
@@ -63,7 +63,7 @@ def plot2D(lats,lons):
     x,y = map(lons,lats)
 
     # plot filled circles at the locations of the contry.
-    map.plot(x,y,'rx', ms=5, picker=5)
+    map.plot(x,y,'rx', ms=10, picker=5,mew = 4)
 
     # for i in range(len(countries)):
     #     text = plt.text(lons[i], lats[i], countries[i],fontsize=12,fontweight='bold',color='k')
