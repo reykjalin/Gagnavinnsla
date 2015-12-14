@@ -26,7 +26,7 @@ ORDER BY calendardate ASC;
 
 
 ###################################################
-# dálkarnir of interest teknir saman  fyrir conflict og eclipse#
+# dálkarnir of interest teknir saman  fyrir conflict og export#
 SELECT c.startdate, c.location, c.sidea, c.sideb,e.price, e.type, c.year
 FROM conflict c, export e
 WHERE c.year = e.year
