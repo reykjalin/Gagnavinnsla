@@ -248,10 +248,16 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionDatabase_info"/>
     <addaction name="actionGenerate_Globe"/>
    </widget>
    <addaction name="menuGenerate_Globe"/>
   </widget>
+  <action name="actionDatabase_info">
+   <property name="text">
+    <string>Database Info</string>
+   </property>
+  </action>
   <action name="actionGenerate_Globe">
    <property name="text">
     <string>Generate Globe</string>

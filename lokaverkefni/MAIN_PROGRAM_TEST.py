@@ -6,6 +6,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
+import GUI.dbinfo as db
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
 
 class Main(QMainWindow, Ui_MainWindow):
@@ -20,11 +21,17 @@ class Main(QMainWindow, Ui_MainWindow):
 
         self.slyear.valueChanged.connect(self.updTxt)
         self.txtyear.editingFinished.connect(self.updSl)
+        self.actionDatabase_info.triggered.connect(self.edit)
 
+    ######################### Edit textbox and slider #########################
     def updTxt(self):
         self.txtyear.setText(str(self.slyear.value()))
     def updSl(self):
         self.slyear.setValue(int(self.txtyear.text()))
+
+    def edit(self):
+        self.wedit = db.DBInfo()
+        self.wedit.show()
 
     ######################### Create figure #########################
     def addmpl(self, fig):
