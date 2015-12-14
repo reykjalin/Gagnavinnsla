@@ -44,7 +44,7 @@ def plotme(lats,lons):
         plt.clf()
         plt.close(fig)
 
-def plot2D(lats,lons,countries,year):
+def plot2D(lats,lons):
 
     # Making the plot fullscreen
     fig = plt.figure(figsize=(20,9))
@@ -65,10 +65,10 @@ def plot2D(lats,lons,countries,year):
     # plot filled circles at the locations of the contry.
     map.plot(x,y,'rx', ms=5, picker=5)
 
-    for i in range(len(countries)):
-        text = plt.text(lons[i], lats[i], countries[i],fontsize=12,fontweight='bold',color='k')
-        text.set_visible(False)
+    # for i in range(len(countries)):
+    #     text = plt.text(lons[i], lats[i], countries[i],fontsize=12,fontweight='bold',color='k')
+    #     text.set_visible(False)
 
-    fig.canvas.mpl_connect('pick_event', onpick)
+    # fig.canvas.mpl_connect('pick_event', onpick)
     return fig
     #plt.show()
