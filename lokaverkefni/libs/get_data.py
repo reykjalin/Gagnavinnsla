@@ -8,7 +8,7 @@ def get_conflicts(engine, year):
     return plot2D(lats, lons)
     
 def get_maxyear(engine):
-    return run_query(engine, 'max(year)', 'conflict')
+    return run_query(engine, 'max(year)', 'conflict').fetchall()[0][0]
 
 def get_minyear(engine):
-    return run_query(engine, 'min(year)', 'conflict')
+    return run_query(engine, 'min(year)', 'conflict').fetchall()[0][0]

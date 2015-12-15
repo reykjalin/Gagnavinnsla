@@ -44,6 +44,7 @@ def plotme(lats,lons):
         plt.clf()
         plt.close(fig)
 
+
 def plot2D(lats,lons):
 
     # Making the plot fullscreen
