@@ -6,6 +6,7 @@
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import PIL
+from moviepy.editor import ImageSequenceClip
 
 
 def onpick(event):
@@ -22,7 +23,7 @@ def onpick(event):
 
 
 # Takes the lattitutes, longitudes and countries as a lists and plots
-def plotme(lats,lons):
+def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
     count = 0
 
     # Rotate the earth
@@ -33,16 +34,38 @@ def plotme(lats,lons):
         # Make the globe more realistic
         map.bluemarble()
 
-        # compute the native map projection coordinates for countries.
-        x,y = map(lons,lats)
+        if plotEclipse:
+            # compute the native map projection coordinates for countries.
+            x,y = map(Elons,Elats)
 
-        # plot solar eclipse positions
-        map.plot(x,y,'rx', ms=6)
+            # plot filled circles at the locations of the contry.
+            map.plot(x,y,'yo', ms=15, picker=5,mew = 2)
+
+        if plotConflict:
+
+            x,y = map(Clons,Clats)
+            map.plot(x,y,'rx', ms=10, picker=5,mew = 4)
+
+            # plot solar eclipse positions
+            map.plot(x,y,'rx', ms=6)
+
 
         plt.savefig("globeframes/frame{0}".format((str(count).rjust(3, "0"))), facecolor='k')
         count += 1
         plt.clf()
         plt.close(fig)
+        print(count)
+
+
+    frames = []
+
+    # Put all the frame names in a list
+    for i in range(180):
+        frames.append("./globeframes/frame{0}.png".format((str(i).rjust(3, "0"))))
+
+    # Create a video file from the frames
+    clip = ImageSequenceClip(frames, fps=20)
+    clip.write_videofile("SpinningGlobe.mp4", fps=20)
 
 
 def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
