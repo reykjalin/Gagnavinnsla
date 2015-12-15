@@ -16,6 +16,8 @@ til þess þarf:
 	 	4. numpy
 	 	5. pil
 	 	6. sqlalchemy 
+	 	7. pygeocoder
+	 	
 4. Ef kemur ASCII villa, þarf að bæta í efsta línu í kóðan # coding=utf-8	
 5. Til að fara ut úr enviroment slá in: deactivate
 
