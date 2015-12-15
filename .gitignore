@@ -206,3 +206,6 @@ sympy-plots-for-*.tex/
 
 # Folders
 /HVTWO/ml-10M100K
+
+# SQL schemas
+schema*
