@@ -25,7 +25,13 @@ Við hönnun á GUI þá var notast við Qt4 Designer \cite{qt4}. Ákveðið var
 
 
 \subsection{Gögn}
-Fyrst var farið á veraldarvefin og leitað af gögnum sem hægt væri að vinna með, gögnin voru fundin á síðu hjá NASA \cite{Eclipse}, Stockholm international peace research institution \cite{weapon} og Háskólanum í Uppsölum í Svíþjóð \cite{conflict}. Gögnin voru tekin inn á csv formi, þau voru svo hreinsuð í python og unnið með þau sem Dataframes.
+Fyrst var farið á veraldarvefin og leitað af gögnum sem hægt væri að vinna með, gögnin voru fundin á síðu hjá NASA \cite{Eclipse}, Stockholm international peace research institution \cite{weapon} og Háskólanum í Uppsölum í Svíþjóð \cite{conflict}. Gögnin voru tekin inn á csv formi, þau voru svo hreinsuð í python og unnið með þau sem Dataframes áður en þeim var flutt inn í gagnagrunninn sjálfan.
+
+
+\subsection{Á bakvið tjöldin - undirvirknir forrits}
+Þó svo að eitt forrit sé keyrt í command glugganum, þá fer óragrúinn allur af undirforritum sem fer í gang við það, keðjuverkandi útfrá aðal forritinu eins og sést á mynd xx. Aðalforritið hefur tvær leiðir til að byrja með, skrá sig inn í gagnagrunn sem er nú þegar fyrir hendi, eða búa hann til. Ef notandi velur að búa til gagnagrunn, keyrir forritið populate\_sql.py sem býr til gagnagrunninn, allar töflurnar og fyllir þær, notandinn þarf þó að vera búinn að filla út alla dálka á fyrsta spretti glugganum og passa nafnið á nýja gagnagrunninum sé ekki frátekið en ef svo er kemur villumelding.
+
+Þegar notandi er búinn að búa til gagnagrunninn og aðalglugginn opnast er fallið komið inn í GUI.py skránna, sem hefur eiginlega tvískipta virkni, að teikna staðseningar inná kort sem eru smellanlegir og að tala við gagnagrunninn og ná í upplýsingar fyrir alla viðeigandi dálka. Ef smellt er á staðsetningu, nær forritið líka í allar viðeigandi upplýsingar og birtir í viðkomandi dálkum.
 
 
 
@@ -69,6 +75,12 @@ Eftir að notandi er búinn að tengjast gagnagrunni þá getur hann skoðar ým
 	\includegraphics[width = 8cm]{logInSuccess.png}
 	\caption{Staðfestingar gluggi á innskráningu \label{fig:logsucces}}
 \end{figure} 
+
+\begin{figure}
+	\centering 
+	\includegraphics[width = 14cm,trim = 0pt 11cm 0pt 1cm, clip]{ufo.pdf}
+	\caption{Staðfestingar gluggi á innskráningu \label{fig:diagram}}
+\end{figure}
 
 \begin{figure}[t]
 	\centering 
