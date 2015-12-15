@@ -1,11 +1,16 @@
+# coding=utf-8
 from get_coords import get_coords
 import psycopg2
 import pprint as pp
+import pandas as pd
 
 host = 'localhost'
-db = input('Enter the Database name: ')
-usr = input('Username: ')
-pw = input('Password: ')
+# db = input('Enter the Database name: ')
+# usr = input('Username: ')
+# pw = input('Password: ')
+db = 'asdasd'
+usr = 'postgres'
+pw = 'postgres'
 
 conn_string = "host='{}' dbname='{}' user='{}' password='{}'".format(host, db, usr, pw)
 conn = psycopg2.connect(conn_string)
@@ -35,7 +40,26 @@ locations = list(set(templocations))
 
 [lat,lon] = get_coords(locations)
 
-loclatlon = [locations,lat,lon]
+location = [locations,lat,lon]
 
-#Skrifa loclatlon í database 
-pp.pprint(loclatlon)
+# location = pd.DataFrame(location)
+
+with open('locations_coords.csv', 'wb') as f:
+    writer = csv.writer(f)
+    for val in itertools.izip(locations,lat,lon):
+    	writer.writerow(val)
+
+
+# location_df = pd.DataFrame()
+# location_df.index.name = 'index_location'
+# location_df['location'] = location
+# location_df['lat'] = lat
+# location_df['lon'] = lon
+
+# # remove total price
+# location_df = location_df.apply(pd.to_numeric, errors='coerce')
+
+
+
+#Skrifa location í database 
+# pp.pprint(location_df)
