@@ -35,6 +35,7 @@ def sql_populate_database(user_name, password, name_of_database,host):
 	connection.execute(schema_conflict_location_cords)
 	print('...')
 	connection.execute(schema_eclipse_location_cords)
+	print('Tabels created')
 	connection.close()
 
 	print('Populating tables')

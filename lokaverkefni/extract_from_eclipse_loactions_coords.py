@@ -13,8 +13,7 @@ schema_eclipse_location_cords = ("""create table eclipselc (
 lat varchar(250),
 long varchar(250),
 location varchar(250),
-primary key (lat)
-primary key (long));
+primary key (lat,long));
 """)
 
 outs = open('schema_eclipse_location_cords.txt', 'w')
