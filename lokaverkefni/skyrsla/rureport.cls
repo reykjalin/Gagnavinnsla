@@ -261,7 +261,8 @@
     }
     {\large
       \vfil
-      \today\\
+      %\today\\
+      16. desember 2015
 		
         \ifthenelse{\boolean{svn}}{SVN Revision \svnrev}{}  
       \vfil
