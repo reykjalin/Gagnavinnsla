@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # coding=utf-8
 # Til að keyra þessa skrá þarf að installa:
 # Basemap í gegnum pip
@@ -7,6 +8,7 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import PIL
 from moviepy.editor import ImageSequenceClip
+import sys,os
 
 
 def onpick(event):
@@ -25,6 +27,10 @@ def onpick(event):
 # Takes the lattitutes, longitudes and countries as a lists and plots
 def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
     count = 0
+
+    d = os.path.dirname('globeframes/')
+    if not os.path.exists(d):
+        os.mkdir(d)
 
     # Rotate the earth
     for l in range((2*count-180),180,2):
@@ -53,7 +59,7 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         count += 1
         plt.clf()
         plt.close(fig)
-        print(count)
+        print('Percent completed: {} %'.format((count/180)*100))
 
 
     frames = []
@@ -67,13 +73,18 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
     clip.write_videofile("SpinningGlobe.mp4", fps=20)
 
 
-def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
+def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict,Plot2D):
 
     # Making the plot fullscreen
     fig = plt.figure(figsize=(20,9))
     ax = fig.add_axes([0.01, 0.01, 0.98, 0.98])
 
-    map = Basemap(projection='cyl',resolution='c')
+    if Plot2D:
+        map = Basemap(projection='cyl',resolution='c')
+
+    else:
+        map = Basemap(projection='ortho',resolution='c', lat_0 = 23.4 , lon_0 = 0 )
+
     map.drawcoastlines()
     #map.fillcontinents(color='coral',lake_color='aqua')
     #map.drawmapboundary(fill_color='aqua')
