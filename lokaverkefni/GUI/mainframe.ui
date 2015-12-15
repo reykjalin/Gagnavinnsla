@@ -94,21 +94,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="txtconflictinfo">
+       <widget class="QTextBrowser" name="txtconfinfo">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>170</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>200</width>
           <height>16777215</height>
          </size>
-        </property>
-        <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
        </widget>
       </item>
@@ -133,13 +130,13 @@
        <widget class="QTextBrowser" name="txteclipse">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>170</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>200</width>
           <height>16777215</height>
          </size>
         </property>
@@ -169,13 +166,13 @@
        <widget class="QTextBrowser" name="txtexport">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>170</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>200</width>
           <height>16777215</height>
          </size>
         </property>
@@ -194,7 +191,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Conflicts</string>
+         <string>Conflict locations</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -202,16 +199,16 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="txtconflictlist">
+       <widget class="QTextBrowser" name="txtconflist">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>170</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>200</width>
           <height>16777215</height>
          </size>
         </property>

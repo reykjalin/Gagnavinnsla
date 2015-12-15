@@ -21,11 +21,11 @@ def get_loc_geocoder(lats, longs):
             retloc.append('N/A')
     return retloc
 
-def get_locs_db(engine, tablename, wh_cond):
-    return run_query(engine, 'distinct location', tablename, wh_cond)
+def get_locs_db(engine, tablename, wh_cond, orderby = ''):
+    return run_query(engine, 'distinct location', tablename, wh_cond, orderby)
 
-def get_coords_db(engine, tablename, wh_cond):
-    coords = run_query(engine, 'distinct lat, long', tablename, wh_cond).fetchall()
+def get_coords_db(engine, tablename, wh_cond, orderby = ''):
+    coords = run_query(engine, 'distinct lat, long', tablename, wh_cond, '', orderby).fetchall()
     return coords[0][0], coords[0][1]
 
 def get_coords_from_loc_db(engine, locs, table):

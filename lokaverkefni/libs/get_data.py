@@ -20,3 +20,10 @@ def get_maxyear(engine):
 
 def get_minyear(engine):
     return run_query(engine, 'min(year)', 'conflict').fetchall()[0][0]
+
+def get_conflist(engine, year):
+    loctxt = ''
+    locs = get_locs_db(engine, 'conflict', 'where year = {}'.format(year), 'order by location').fetchall()
+    for loc in locs:
+        loctxt += loc[0] + '\n\n'
+    return loctxt
