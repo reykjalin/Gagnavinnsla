@@ -5,9 +5,13 @@ from SpinTest import plot2D
 def get_conflicts(engine, year):
     Cdata = run_query(engine, 'distinct location', 'conflict', 'where year = {}'.format(year))
     Clats, Clons = get_coords(Cdata)
-
-    Elats = run_query(engine, 'lat', 'eclipse', 'where year = {}'.format(year))
-    Elons = run_query(engine, 'long', 'eclipse', 'where year = {}'.format(year))
+    print(Clats)
+    print(Clons)
+    print('----------')
+    Elats = run_query(engine, 'lat', 'eclipse', 'where calendardate_year = {}'.format(year))
+    Elons = run_query(engine, 'long', 'eclipse', 'where calendardate_year = {}'.format(year))
+    print(Elats)
+    print(Elons)
     
     return plot2D(Elats,Elons,True,Clats,Clons,True)
     
