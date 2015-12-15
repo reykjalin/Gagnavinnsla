@@ -74,13 +74,18 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
     clip.write_videofile("SpinningGlobe.mp4", fps=20)
 
 
-def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
+def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict,Plot2D):
 
     # Making the plot fullscreen
     fig = plt.figure(figsize=(20,9))
     ax = fig.add_axes([0.01, 0.01, 0.98, 0.98])
 
-    map = Basemap(projection='cyl',resolution='c')
+    if Plot2D:
+        map = Basemap(projection='cyl',resolution='c')
+
+    else:
+        map = Basemap(projection='ortho',resolution='c', lat_0 = 23.4 , lon_0 = 0 )
+
     map.drawcoastlines()
     #map.fillcontinents(color='coral',lake_color='aqua')
     #map.drawmapboundary(fill_color='aqua')
