@@ -1,19 +1,14 @@
 from execute_query import run_query
-from libs.get_coords import get_coords
+from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords
 from SpinTest import plot2D
 
 def get_conflicts(engine, year):
-    Cdata = run_query(engine, 'distinct location', 'conflict', 'where year = {}'.format(year))
-    Clats, Clons = get_coords(Cdata)
-    print(Clats)
-    print(Clons)
-    print('----------')
-    Elats = run_query(engine, 'lat', 'eclipse', 'where calendardate_year = {}'.format(year))
-    Elons = run_query(engine, 'long', 'eclipse', 'where calendardate_year = {}'.format(year))
-    print(Elats)
-    print(Elons)
-    
+    Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
+    Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
+
+    Elats, Elons = get_eclipse_coords(engine, year)
     return plot2D(Elats,Elons,True,Clats,Clons,True)
+    
     
 def get_maxyear(engine):
     return run_query(engine, 'max(year)', 'conflict').fetchall()[0][0]
