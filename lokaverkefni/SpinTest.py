@@ -65,7 +65,7 @@ def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         x,y = map(Elons,Elats)
 
         # plot filled circles at the locations of the contry.
-        map.plot(x,y,'kx', ms=10, picker=5,mew = 4)
+        map.plot(x,y,'yo', ms=15, picker=5,mew = 2)
 
     if plotConflict:
 

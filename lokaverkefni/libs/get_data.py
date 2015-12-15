@@ -5,7 +5,6 @@ from SpinTest import plot2D
 def get_conflicts(engine, year):
     Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
     Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
-
     Elats, Elons = get_eclipse_coords(engine, year)
     return plot2D(Elats,Elons,True,Clats,Clons,True)
     
