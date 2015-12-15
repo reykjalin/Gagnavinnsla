@@ -56,11 +56,9 @@ class Main(QMainWindow, Ui_MainWindow):
             pass
         
         failed = False
-        fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
-        self.addmpl(fig1)
         try:
-            #fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
-            #self.addmpl(fig1)
+            fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
+            self.addmpl(fig1)
             print('try')
         except:
             info = "Could not connect to database. Are you sure you're connected to one?"
