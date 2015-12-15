@@ -45,7 +45,7 @@ def plotme(lats,lons):
         plt.close(fig)
 
 
-def plot2D(lats,lons):
+def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
 
     # Making the plot fullscreen
     fig = plt.figure(figsize=(20,9))
@@ -60,11 +60,17 @@ def plot2D(lats,lons):
     map.drawcountries()
     map.drawstates()
 
+    if plotEclipse:
     # compute the native map projection coordinates for countries.
-    x,y = map(lons,lats)
+        x,y = map(lons,lats)
 
-    # plot filled circles at the locations of the contry.
-    map.plot(x,y,'rx', ms=10, picker=5,mew = 4)
+        # plot filled circles at the locations of the contry.
+        map.plot(x,y,'kx', ms=10, picker=5,mew = 4)
+
+    if plotConflict:
+
+        x,y = map(lons,lats)
+        map.plot(x,y,'rx', ms=10, picker=5,mew = 4)
 
     # for i in range(len(countries)):
     #     text = plt.text(lons[i], lats[i], countries[i],fontsize=12,fontweight='bold',color='k')
