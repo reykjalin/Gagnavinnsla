@@ -8,8 +8,9 @@ from matplotlib.backends.backend_qt4agg import (
     NavigationToolbar2QT as NavigationToolbar)
 import  matplotlib.pyplot as plt
 import GUI.dbinfo as db
-from libs.get_data import get_conflicts, get_minyear, get_maxyear
+from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo
 from libs.SpinTest import plotmap
+from libs.get_coords import get_locs_db
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
 
 
@@ -55,16 +56,21 @@ class Main(QMainWindow, Ui_MainWindow):
             pass
         
         failed = False
+        fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
         try:
-            fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
+            
             self.addmpl(fig1)
-        except:
+        except Exception as e:
+            print(e)
             info = "Could not connect to database. Are you sure you're connected to one?"
             failed = True
             pass
 
         if failed:
             QtGui.QMessageBox.information(self, 'Error', info)
+        else:
+            self.updConflist()
+            self.updExplist()
  
     def onpick(self, event):
         ind = event.ind
@@ -74,9 +80,21 @@ class Main(QMainWindow, Ui_MainWindow):
 
         if ind[0] in range(len(xdata)):
             print('The coordinates are {}, {}'.format(xdata[ind[0]],ydata[ind[0]]))
+            self.updTxtinfo(ind, artist)
         return ind[0]
 
+    def updTxtinfo(self, ind, artist):
+        print('updating text boxes...')
+        self.txteclipse.setText('ecl')
+        lat = artist.get_ydata()[ind[0]]
+        lon = artist.get_xdata()[ind[0]]
+        year = int(self.txtyear.text())
+        self.txtconfinfo.setText(get_confinfo(self.engine, lat, lon, year))        
 
+    def updConflist(self):
+        self.txtconflist.setText(get_conflist(self.engine, int(self.txtyear.text())))
+    def updExplist(self):
+        self.txtexport.setText(get_exportlist(self.engine, int(self.txtyear.text())))
         
     ######################### Create Database #########################
     def edit(self):

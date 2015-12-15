@@ -22,7 +22,7 @@ def get_loc_geocoder(lats, longs):
     return retloc
 
 def get_locs_db(engine, tablename, wh_cond, orderby = ''):
-    return run_query(engine, 'distinct location', tablename, wh_cond, orderby)
+    return run_query(engine, 'distinct location', tablename, wh_cond, '', orderby).fetchall()
 
 def get_coords_db(engine, tablename, wh_cond, orderby = ''):
     coords = run_query(engine, 'distinct lat, long', tablename, wh_cond, '', orderby).fetchall()
@@ -42,7 +42,7 @@ def get_coords_from_loc_db(engine, locs, table):
 def get_loc_from_coords_db(engine, lats, lons, table):
     locs = []
     for i in range(len(lats)):
-        loc = get_locs_db(engine, table, "where lat = " + lats[i] + " and long = " + lons[i])
+        loc = get_locs_db(engine, table, "where to_char(lat, '999D9') = to_char({}, '999D9') and to_char(long, '999D9') = to_char({}, '999D9')".format(lats[i], lons[i]))
         locs.append(loc)
     return locs
 
@@ -55,3 +55,14 @@ def get_eclipse_coords(engine, year):
         lons.append(coord[1])
     lats, lons = to_num(lats, lons)
     return lats, lons
+
+def get_export_typeprice(engine, year):
+    typeprice = run_query(engine, 'type, price', 'export', 'where year = {}'.format(year)).fetchall()
+    return typeprice
+
+def get_confinfo_data(engine, lat, lon, year):
+    loc = get_loc_from_coords_db(engine, [lat,], [lon,], 'conflictlc')
+    print('loc1: ',loc)
+    loc = loc[0][0][0]
+    print('loc2: ', loc)
+    return run_query(engine, 'location, sidea, sideb, territoryname, startdate, ependdate', 'conflict', "where year = {} and location = '{}'".format(year, loc), '', 'order by location, startdate, sidea, sideb, territoryname').fetchall()
