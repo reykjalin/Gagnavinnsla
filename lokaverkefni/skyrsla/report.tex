@@ -10,11 +10,10 @@
 %\section*{Errata} %%section* avoids putting a number 
 %
 \section{Inngangur} % sections break up the document into pieces
-Himingeimurinn er fyrir mörgum jafn áhugaverður og hann er að stærð og menn hafa öldum saman spáð mikið í himintunglum og önnur fyrirbæri út í geimi. Ákveðið var því að ná í gögn fyrir sólmyrkva jarðar, ásamt því að ná í gögn fyrir stríð  sem herjað hefur jörðina og vopnasölu út um heim allan. Fyrst og fremst vildi hópurinn skoða hvernig stríð dreifist á jörðina, hversu oft og hvar lenda sólmyrkvarnari á jörðina meðan stríðin geisa og hvort það sé möguleiki á fylgni milli fjölda sólmyrkva og fjölda stríðsátaka? Þessir útgangspunktar verða skoðaðir nánar og gefin skil á niðurstöðunum. 
+Himingeimurinn er fyrir mörgum jafn áhugaverður og hann er að stærð og menn hafa öldum saman spáð mikið í himintunglum og önnur fyrirbæri út í geimi. Ákveðið var því að ná í gögn fyrir sólmyrkva jarðar, ásamt því að ná í gögn fyrir stríð  sem herjað hefur jörðina og vopnasölu út um heim allan. Fyrst og fremst vildi hópurinn skoða hvernig stríð dreifist á jörðina, hversu oft og hvar lenda sólmyrkvarnari á jörðina meðan stríðin geisa og hvort það sé möguleiki á fylgni milli fjölda sólmyrkva og fjölda stríðsátaka? Þessir útgangspunktar verða skoðaðir nánar og gefin frekari skil á niðurstöðunum.  
 \section{Framkvæmd}
 \subsection{Hnötturinn}
-Við gerð hnattarins þá var notast við Basemap sem er viðbót við matplotlib og var búið til fall sem að sér um að plotta jörðina og er það gert með falli, fallið tekur inn lönd, lengdar og breiddarbauga sem 'ints' og plottar, síðan er hnötturinn gerður raunverulegri með innbyggðu falli sem heitir map.bluemarble(). Notast var við gögn úr gagnagrunninum til að fá hnit sólmyrkvana frá 1901-2100 og til að framkalla svo snúning jarðarinnar þá búnar til 180 myndir af mismunandi staðsetningu jarðar sem síðan var notað í falli til að ganga á allar myndirnar með forlykkju og býr til annað hvort mp4 skrá eða GIF.
-
+Við gerð hnattarins þá var notast við Basemap sem er viðbót við matplotlib, til að búa til jörðina þá er notað fall sem tekur inn lönd, lengdar og breiddarbauga sem 'ints' og plottar, síðan er hnötturinn gerður raunverulegri með innbyggðu falli sem heitir map.bluemarble(). Notast var við gögn úr gagnagrunninum til að fá hnit sólmyrkvana frá 1901-2100 og til að framkalla svo snúning jarðarinnar þá búnar til 180 myndir á tveggja lengdargráðu fresti, því næst er nota Image sequence clip pakkan fyrir python sem býr til hreyfimynd.
  
 \subsection{Myndrænt notendaviðmót}
 
@@ -57,6 +56,23 @@ Hópurinn
 	\caption{Database schema \label{fig:dataschema}}
 \end{figure} 
 %
+\begin{figure}
+	\centering 
+	\includegraphics[width = 8cm]{logInScreen.png}
+	\caption{Database schema \label{fig:logScreen}}
+\end{figure} 
+
+\begin{figure}
+	\centering 
+	\includegraphics[width = 8cm]{logInSuccess.png}
+	\caption{Database schema \label{fig:logsucces}}
+\end{figure} 
+
+\begin{figure}[t]
+	\centering 
+	\includegraphics[width = 18cm]{openScreen.png}
+	\caption{Database schema \label{fig:openScreen}}
+\end{figure} 
 
 \clearpage
 
