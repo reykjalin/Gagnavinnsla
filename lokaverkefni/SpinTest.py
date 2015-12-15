@@ -62,14 +62,14 @@ def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
 
     if plotEclipse:
     # compute the native map projection coordinates for countries.
-        x,y = map(lons,lats)
+        x,y = map(Elons,Elats)
 
         # plot filled circles at the locations of the contry.
         map.plot(x,y,'kx', ms=10, picker=5,mew = 4)
 
     if plotConflict:
 
-        x,y = map(lons,lats)
+        x,y = map(Clons,Clats)
         map.plot(x,y,'rx', ms=10, picker=5,mew = 4)
 
     # for i in range(len(countries)):
