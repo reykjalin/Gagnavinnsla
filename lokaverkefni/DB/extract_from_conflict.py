@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-conflict = pd.read_csv('armed-conflict-dataset.csv', sep=",", engine='python'\
+conflict = pd.read_csv('DB/armed-conflict-dataset.csv', sep=",", engine='python'\
 	,encoding='UTF-8')
 conflict.index.name = 'index_conflict'
 # conflict = conflict.convert_objects(convert_numeric=True)
@@ -41,7 +41,7 @@ version varchar(250),
 primary key (index_conflict));
 """)
 
-outs = open('scehma_conflict.txt', 'w')
+outs = open('DB/schema_conflict.txt', 'w')
 outs.write(schema_conflict)
 outs.close()
 

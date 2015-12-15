@@ -1,7 +1,7 @@
 from PyQt4.uic import loadUiType
 import sys
 from PyQt4 import QtGui
-from populate_sql import sql_create_database, sql_populate_database
+from libs.populate_sql import sql_create_database, sql_populate_database
 from sqlalchemy import create_engine
 Ui_dbDialog, QWidget = loadUiType('GUI/dbDialog.ui')
 

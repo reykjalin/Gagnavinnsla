@@ -1,6 +1,6 @@
-from execute_query import run_query
+from libs.execute_query import run_query
 from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords
-from SpinTest import plot2D
+from libs.SpinTest import plot2D
 
 def get_conflicts(engine, year):
     Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))

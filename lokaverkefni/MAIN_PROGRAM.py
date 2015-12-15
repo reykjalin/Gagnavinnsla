@@ -9,8 +9,7 @@ from matplotlib.backends.backend_qt4agg import (
 import  matplotlib.pyplot as plt
 import GUI.dbinfo as db
 from libs.get_data import get_conflicts, get_minyear, get_maxyear
-from libs.get_coords import get_eclipse_coords
-from SpinTest import plotmap
+from libs.SpinTest import plotmap
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
 
 
@@ -59,7 +58,6 @@ class Main(QMainWindow, Ui_MainWindow):
         try:
             fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
             self.addmpl(fig1)
-            print('try')
         except:
             info = "Could not connect to database. Are you sure you're connected to one?"
             failed = True

@@ -5,7 +5,7 @@ import datetime
 from geopy.geocoders import Nominatim 
 import pprint as pp
 import WorldDomination
-import SpinTest
+import libs.SpinTest
 
 eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month','calendardate_day',\
 	'greatesteclipse_td','dT','luna_num','saros_num','ecl_type',\
@@ -14,7 +14,7 @@ eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month'
 	'path_width','central_dur')
 
 
-eclipse = pd.read_csv('eclipse.csv', sep="[  ]+", engine='python'\
+eclipse = pd.read_csv('DB/eclipse.csv', sep="[  ]+", engine='python'\
 	,encoding='UTF-8',names=eclipse_column_names,index_col=0)
 # eclipse.index.name = 'index'
 

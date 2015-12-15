@@ -1,5 +1,5 @@
 from pygeocoder import Geocoder # pip install pygeocoder
-from execute_query import run_query
+from libs.execute_query import run_query
 from libs.coord_converter import to_num
 
 def get_coords_geocoder(locs):
@@ -32,7 +32,6 @@ def get_coords_from_loc_db(engine, locs, table):
     retlat = []
     retlon = []
     for loc in locs:
-        print(loc[0])
         wh = loc[0].split(',')
         for l in wh:
             lat, lon = get_coords_db(engine, table, "where location = '" + l.strip() + "'")

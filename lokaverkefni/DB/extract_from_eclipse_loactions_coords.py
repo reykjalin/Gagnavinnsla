@@ -6,7 +6,7 @@ import datetime
 locations_cooords_column_names = ('lat','long','location')
 
 
-eclipse_location_cords = pd.read_csv('locations_eclipse.csv', sep=",", engine='python'\
+eclipse_location_cords = pd.read_csv('DB/locations_eclipse.csv', sep=",", engine='python'\
 	,encoding='UTF-8',names=locations_cooords_column_names,index_col=0)
 
 schema_eclipse_location_cords = ("""create table eclipselc (
@@ -16,6 +16,6 @@ location varchar(250),
 primary key (lat,long));
 """)
 
-outs = open('schema_eclipse_location_cords.txt', 'w')
+outs = open('DB/schema_eclipse_location_cords.txt', 'w')
 outs.write(schema_eclipse_location_cords)
 outs.close()

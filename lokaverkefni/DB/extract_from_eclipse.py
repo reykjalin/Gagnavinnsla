@@ -10,7 +10,7 @@ eclipse_column_names = ('catalognumber','calendardate_year','calendardate_month'
 	'path_width','central_dur')
 
 
-eclipse = pd.read_csv('eclipse.csv', sep="[  ]+", engine='python'\
+eclipse = pd.read_csv('DB/eclipse.csv', sep="[  ]+", engine='python'\
 	,encoding='UTF-8',names=eclipse_column_names,index_col=0)
 # eclipse.index.name = 'index'
 
@@ -48,7 +48,7 @@ calendardate date,
 primary key (calendardate_year));
 """)
 
-outs = open('scehma_eclipse.txt', 'w')
+outs = open('DB/schema_eclipse.txt', 'w')
 outs.write(schema_eclipse)
 outs.close()
 

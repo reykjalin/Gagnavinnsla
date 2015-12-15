@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import datetime
 
-export = pd.read_csv('TIV-Export-All-1950-2014.csv', sep=",", engine='python'\
+export = pd.read_csv('DB/TIV-Export-All-1950-2014.csv', sep=",", engine='python'\
 	,encoding='UTF-8', skiprows=range(0, 10))
 export.set_index('type', inplace = True)
 export = export.drop('deleteme', 1)
@@ -38,7 +38,7 @@ index_export real,
 primary key (index_export));
 """)
 
-outs = open('scehma_export.txt', 'w')
+outs = open('DB/schema_export.txt', 'w')
 outs.write(schema_export)
 outs.close()
 

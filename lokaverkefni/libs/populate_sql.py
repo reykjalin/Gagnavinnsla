@@ -5,11 +5,11 @@ import pandas as pd
 import getpass
 from sqlalchemy import create_engine
 
-from extract_from_export_all import export_sql, schema_export
-from extract_from_conflict import conflict, schema_conflict
-from extract_from_eclipse import eclipse, schema_eclipse
-from extract_from_conflicts_loactions_coords import conflict_location_cords, schema_conflict_location_cords
-from extract_from_eclipse_loactions_coords import eclipse_location_cords, schema_eclipse_location_cords
+from DB.extract_from_export_all import export_sql, schema_export
+from DB.extract_from_conflict import conflict, schema_conflict
+from DB.extract_from_eclipse import eclipse, schema_eclipse
+from DB.extract_from_conflicts_loactions_coords import conflict_location_cords, schema_conflict_location_cords
+from DB.extract_from_eclipse_loactions_coords import eclipse_location_cords, schema_eclipse_location_cords
 
 def sql_create_database(user_name, password, name_of_database, host):
 
