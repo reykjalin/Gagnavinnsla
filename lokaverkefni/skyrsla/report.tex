@@ -12,6 +12,11 @@
 \section{Inngangur} % sections break up the document into pieces
 Himingeimurinn er fyrir mörgum jafn áhugaverður og hann er að stærð og menn hafa öldum saman spáð mikið í himintunglum og önnur fyrirbæri út í geimi. Ákveðið var því að ná í gögn fyrir sólmyrkva jarðar, ásamt því að ná í gögn fyrir stríð  sem herjað hefur jörðina og vopnasölu út um heim allan. Fyrst og fremst vildi hópurinn skoða hvernig stríð dreifist á jörðina, hversu oft og hvar lenda sólmyrkvarnari á jörðina meðan stríðin geisa og hvort það sé möguleiki á fylgni milli fjölda sólmyrkva og fjölda stríðsátaka? Þessir útgangspunktar verða skoðaðir nánar og gefin skil á niðurstöðunum. 
 \section{Framkvæmd}
+\subsection{Hnötturinn}
+Við gerð hnattarins þá var notast við Basemap sem er viðbót við matplotlib og var búið til fall sem að sér um að plotta jörðina og er það gert með falli, fallið tekur inn lönd, lengdar og breiddarbauga sem 'ints' og plottar, síðan er hnötturinn gerður raunverulegri með innbyggðu falli sem heitir map.bluemarble(). Notast var við gögn úr gagnagrunninum til að fá hnit sólmyrkvana frá 1901-2100 og til að framkalla svo snúning jarðarinnar þá búnar til 180 myndir af mismunandi staðsetningu jarðar sem síðan var notað í falli til að ganga á allar myndirnar með forlykkju og býr til annað hvort mp4 skrá eða GIF.
+
+ 
+\subsection{Myndrænt notendaviðmót}
 
 
 
@@ -23,13 +28,14 @@ Við hönnun á GUI þá notast  við Qt4 Designer \cite{qt4}. Ákveðið var a�
 
 Við notumst við Basemap\cite{basemap} sem er viðbótarpakki fyrir Matplotlib til að sýna hvernig sólmyrkvinn lendir á jörðinni. Gögnin um sólmyrkvan eru frá NASA og eru þær upplýsingar notaðar til að sýna staðsetningarnar sólmyrkvana á jörðinni, einnig sýnum við að 
 
-\subsection{Virkni}
-Virkni forritsins er þannig að notandinn skoðar upplýsingarnar út frá árum og getur annað hvort hreyft stiku til að velja árið sem á að skoða, eða skrifa ártalið beint í glugga, upplýsingarnar skila sér svo í dálka við hliðina.
-
+\subsection{Virkni forrits}
+Eftir að notandi er búinn að tengjast gagnagrunni þá getur hann skoðar ýmsar upplýsingar út frá árum. Það er hægt að hreyfa við stiku til að fá árið af eigin vali eða slegið inn ártalið til að fá viðkomandi upplýsingar um hvað gerðist á því ári til að fá upp upplýsingar eftir hentisemi, upplýsingarnar skila sér svo á kortinu sem er á upphafskjánnum og það birtast upplýsingar í dálkum vinstra megin fyrir. 
 
 
 \section{Niðurstöður}\label{nidurstodur}
-Þegar plottaðir voru staðsetningarnar fyrir sólmyrkvana þá sást að lína myndaðist á breiddargráðum 60$^{\circ}$-75$^{\circ}$ bæði á norður- og suðurhveli og sú lína spannar ca 43,6\% af öllum sólmyrkvunum\ref{fig:3DNP}\ref{fig:3DSP} sem hafa verið á jörðinni frá tímabilinu 1901 - 2100. 
+Hópurinn
+Þegar plottaðir voru staðsetningarnar fyrir sólmyrkvana þá sást að lína myndaðist á breiddargráðum 60$^{\circ}$-75$^{\circ}$ bæði á norður- \ref{fig:3DNP} og suðurhveli \ref{fig:3DSP} og sú lína spannar ca 43,6\% af öllum sólmyrkvunum sem hafa verið á jörðinni frá tímabilinu 1901 - 2100. 
+Einnig sést að þegar skoðað eru ár og sólmyrkvar
 \pagebreak
 
 \begin{figure}
@@ -46,6 +52,12 @@ Virkni forritsins er þannig að notandinn skoðar upplýsingarnar út frá áru
 	\label{fig:3DSP}
 \end{figure}
 
+\begin{figure}
+	\centering 
+	\includegraphics[width = 18cm]{dataSchema.pdf}
+	\caption{Database schema \label{fig:dataschema}}
+\end{figure} 
+%
 
 \clearpage
 
