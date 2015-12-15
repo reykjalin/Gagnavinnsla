@@ -26,7 +26,7 @@ export_sql['price'] = price
 export_sql.index.name = 'index_export'
 # remove total price
 export_sql = export_sql[export_sql.year != 'total']
-export_sql = export_sql.apply(pd.to_numeric, errors='coerce')
+export_sql = export_sql.convert_objects(convert_numeric=True)
 
 # create schema
 
