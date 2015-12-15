@@ -14,7 +14,7 @@ til þess þarf:
 	 	2. pandas
 	 	3. matplotlib
 	 	4. numpy
-	 	5. pil
+	 	5. pillow
 	 	6. sqlalchemy 
 	 	7. pygeocoder
 		8. psycopg2
@@ -23,3 +23,17 @@ til þess þarf:
 5. Til að fara ut úr enviroment slá in: deactivate
 
 til að activate enviroment aftur seinna, þarf að slá in: activate python27
+
+Mac: 
+Til þess að setja upp eftirfarandi pakka í mac þarf að skrifa eftirfarandi inn í terminal.
+
+basemap		: pip3 install basemap --allow-all-external --allow-unverified basemap
+geopy		: pip3 install geopy
+pandas		: pip3 install pandas
+matplotlib	: pip3 install matplotlib
+numpy		: pip3 install numpy
+SQLAlchemy 	: pip3 install sqlalchemy
+pygeocoder 	: pip3 install pygeocoder
+psycopg2 	: pip3 install psycopg2
+moviepy		: pip3 install moviepy
+Pillow 		: pip3 install Pillow
