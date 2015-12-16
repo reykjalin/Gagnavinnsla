@@ -10,7 +10,7 @@
 %\section*{Errata} %%section* avoids putting a number 
 %
 \section{Inngangur} % sections break up the document into pieces
-Himingeimurinn er fyrir mörgum jafn áhugaverður og hann er stór, menn hafa öldum saman spáð mikið í himintunglum ásamt öðrum fyrirbærum út í hinum víðamikla geimi frá örófi alda jafnvel verið orsakavaldur styrjalda. Af því hópurinn deilir sömu hrifningu á himinhvolfunum, var ákveðið að ná í gögn um sólmyrkva jarðar, stríð og átök sem herjað hafa á jörðina ásamt vopnasölu út um heim allan. Fyrst og fremst vildi hópurinn skoða hvernig átök heimsins dreifast niður á jörðina, hversu oft og hvar lenda sólmyrkvarnari á jörðina á hverju ári og hvort það sé möguleiki á fylgni milli fjölda sólmyrkva og fjölda stríðsátaka? Þessir útgangspunktar verða skoðaðir nánar og þeim gefin frekari skil í niðurstöðunum.  
+Himingeimurinn er fyrir mörgum jafn áhugaverður og hann er stór, menn hafa öldum saman spáð mikið í himintunglum ásamt öðrum fyrirbærum út í hinum víðamikla geimi frá örófi alda, jafnvel verið orsakavaldur styrjalda. Af því hópurinn deilir sömu hrifningu á himinhvolfunum, var ákveðið að ná í gögn um sólmyrkva jarðar, stríð og átök sem herjað hafa á jörðina ásamt vopnasölu út um heim allan. Fyrst og fremst vildi hópurinn skoða hvernig átök heimsins dreifast niður á jörðina, hversu oft og hvar lenda sólmyrkvarnari á jörðina á hverju ári og hvort það sé möguleiki á fylgni milli fjölda sólmyrkva og fjölda stríðsátaka? Þessir útgangspunktar verða skoðaðir nánar og þeim gefin frekari skil í niðurstöðunum.  
 \section{Framkvæmd}
 \subsection{Hnötturinn}
 Við gerð hnattarins þá var notast við Basemap sem er viðbót við matplotlib. Til að fá hnöttin raunverulegri var notast við bluemarble fall sem er að finna í Pillow \cite{pillow} pakkanum en það tekur myndir frá NASA \cite{bluemarble} og varpar þeim á hnöttinn. Notast var við gögn úr gagnagrunninum til að fá hnit sólmyrkvana frá 1901-2100 og til að framkalla svo snúning jarðarinnar þá voru búnar til 180 myndir á tveggja lengdargráðu fresti, og þeim skeytt saman í hreyfimynd eða myndband eftir henntisemi notanda með MoviePy pakkanum \cite{moviepy}.
@@ -21,7 +21,7 @@ Við gerð hnattarins þá var notast við Basemap sem er viðbót við matplotl
 
 \section{Aðferð}
 \subsection{Hönnun}
-Við hönnun á GUI þá var notast við Qt4 Designer \cite{qt4}. Ákveðið var að það yrði innskráningar gluggi (sjá mynd \ref{fig:logScreen}). Hann hefur tvo tilganga, annars vegar er hægt að slá inn upplýsingar til að búa til gagnagrunninn ef hann er ekki til staðar í tölvunni með því að ýta á 'Populate DB' hnappinn og hins vegar til að tengjast gagnagrunninum með því að ýta á ok hnappinn, forritið lætur svo notandan vita hvort tenging hafi tekist( sjá mynd \ref{fig:logsucces}). Eftir það sprettur upp aðal gluggi forritsins(sjá mynd \ref{fig:openScreen}), sem er í grunninn heimskort með tímastiku fyrir neðan það og hægra megin við það eru 4 dálkar sem sína ástand viðkomandi árs, en hann er útskýrður  í kafla \ref{virkni}
+Við hönnun á GUI þá var notast við Qt4 Designer \cite{qt4}. Ákveðið var að það yrði innskráningar gluggi (sjá mynd \ref{fig:logScreen}). Hann hefur tvo tilganga, annars vegar er hægt að slá inn upplýsingar til að búa til gagnagrunninn ef hann er ekki til staðar í tölvunni með því að ýta á 'Populate DB' hnappinn og hins vegar til að tengjast gagnagrunninum með því að ýta á ok hnappinn. Forritið lætur svo notandan vita hvort tenging hafi tekist( sjá mynd \ref{fig:logsucces}). Eftir það sprettur upp aðal gluggi forritsins(sjá mynd \ref{fig:openScreen}), sem er í grunninn heimskort með tímastiku fyrir neðan það og hægra megin við það eru 4 dálkar sem sína ástand viðkomandi árs, en hann er útskýrður  í kafla \ref{virkni}
 
 
 \subsection{Gögn}
@@ -29,9 +29,9 @@ Fyrst var farið á veraldarvefin og leitað af gögnum sem hægt væri að vinn
 
 
 \subsection{Á bakvið tjöldin - undirvirknir forrits}
-Þó svo að eitt forrit sé keyrt í command glugganum, þá fer óragrúinn allur af undirforritum sem fer í gang við það, keðjuverkandi útfrá aðal forritinu eins og sést á mynd xx. Aðalforritið hefur tvær leiðir til að byrja með, skrá sig inn í gagnagrunn sem er nú þegar fyrir hendi, eða búa hann til. Ef notandi velur að búa til gagnagrunn, keyrir forritið populate\_sql.py sem býr til gagnagrunninn, allar töflurnar og fyllir þær, notandinn þarf þó að vera búinn að filla út alla dálka á fyrsta spretti glugganum og passa nafnið á nýja gagnagrunninum sé ekki frátekið en ef svo er kemur villumelding.
+Þó svo að eitt forrit sé keyrt í command glugganum, þá fer virkjast aragrúi af undirforritum eins og sést á mynd \ref{fig:diagram}. Aðalforritið hefur tvær leiðir til að byrja með, skrá sig inn í gagnagrunn sem er nú þegar fyrir hendi, eða búa hann til. Ef notandi velur að búa til gagnagrunn, keyrir forritið populate\_sql.py sem býr til gagnagrunninn, allar töflurnar og fyllir þær, notandinn þarf þó að vera búinn að fylla út alla dálka á fyrsta spretti glugganum og passa nafnið á nýja gagnagrunninum sé ekki frátekið en ef svo er kemur villumelding.
 
-Þegar notandi er búinn að búa til gagnagrunninn og aðalglugginn opnast er fallið komið inn í GUI.py skránna, sem hefur eiginlega tvískipta virkni, að teikna staðseningar inná kort sem eru smellanlegir og að tala við gagnagrunninn og ná í upplýsingar fyrir alla viðeigandi dálka. Ef smellt er á staðsetningu, nær forritið líka í allar viðeigandi upplýsingar og birtir í viðkomandi dálkum.
+Þegar notandi er búinn að búa til gagnagrunninn og aðalglugginn opnast er fallið komið inn í GUI.py skránna, sem hefur eiginlega tvískipta virkni, annars vegar að teikna staðseningar inná kort sem eru smellanlegir og að tala við gagnagrunninn, ná í upplýsingar fyrir alla viðeigandi dálka. Ef smellt er á staðsetningu, nær forritið líka í allar viðeigandi upplýsingar og birtir í viðkomandi dálkum.
 
 
 
