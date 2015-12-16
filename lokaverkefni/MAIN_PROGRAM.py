@@ -55,14 +55,18 @@ class Main(QMainWindow, Ui_MainWindow):
         self.chkconflicts.toggle()
         self.chkeclipses.toggle()
 
+    ######################### Plot all data #########################
     def plot_all_datapoints(self):
         self.plotall = True
         self.updFig()
 
+    ######################### Map button #########################
     def globebutton(self):
         if self.plot2D:
             self.plot2D = False
             self.btnglobe.setText('Map view')
+            self.slyear.setMaximum(0)
+            self.slyear.setMaximum(360)
             self.updFig()
 
         else:
@@ -70,7 +74,7 @@ class Main(QMainWindow, Ui_MainWindow):
             self.btnglobe.setText('Globe view')
             self.updFig()
 
-
+    ######################### Checkbox features #########################
     def conflictCheck(self):
         if self.Ccheck:
             self.Cplot = True
@@ -109,7 +113,7 @@ class Main(QMainWindow, Ui_MainWindow):
         
         failed = False
         try:
-            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D,self.plotall)
+            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D,self.plotall,deg)
             self.addmpl(fig1)
         except Exception as e:
             print(e)
@@ -123,6 +127,7 @@ class Main(QMainWindow, Ui_MainWindow):
             self.updConflist()
             self.updExplist()
 
+    ######################### Check if event is clicked #########################
     def onpick(self, event):
         ind = event.ind
         artist = event.artist
@@ -148,6 +153,7 @@ class Main(QMainWindow, Ui_MainWindow):
             except:
                 pass
 
+    ######################### Create a movie #########################
     def globemovie(self):
         makethevideo(self.engine,int(self.txtyear.text()), self.Eplot,self.Cplot,self.plotall)
 
