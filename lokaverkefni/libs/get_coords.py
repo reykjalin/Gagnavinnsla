@@ -65,9 +65,5 @@ def get_confinfo_data(engine, lat, lon, year):
     return run_query(engine, 'location, sidea, sideb, territoryname, startdate, ependdate', 'conflict', "where year = {} and location like '%%{}%%'".format(year, loc), '', 'order by location, startdate, sidea, sideb, territoryname').fetchall()
 
 def get_eclipse_data(engine, lat, lon, year):
-    print('latraw: ', lat)
-    print('lonraw: ', lon)
     lat, lon = to_str([lat,], [lon,])
-    print('lat: ', lat)
-    print('lon: ', lon)
     return run_query(engine, 'calendardate, central_dur, ecl_type, sun_alt, path_width', 'eclipse', "where lat = '{}' and long = '{}' and calendardate_year = {}".format(lat[0], lon[0], year)).fetchall()

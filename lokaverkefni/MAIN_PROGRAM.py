@@ -8,7 +8,7 @@ from matplotlib.backends.backend_qt4agg import (
     NavigationToolbar2QT as NavigationToolbar)
 import  matplotlib.pyplot as plt
 import GUI.dbinfo as db
-from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo
+from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo, get_eclipseinfo
 from libs.SpinTest import plotmap
 from libs.get_coords import get_locs_db
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
@@ -21,6 +21,11 @@ class Main(QMainWindow, Ui_MainWindow):
         self.engine = '' # engine variable stores database information
         self.wedit = db.DBInfo(self)
         self.wedit.exec_()
+        self.plot2D = True
+        self.Echeck = True
+        self.Eplot = True
+        self.Ccheck = True
+        self.Cplot = True
         
         super(Main, self).__init__()
         self.setupUi(self)
@@ -37,9 +42,47 @@ class Main(QMainWindow, Ui_MainWindow):
         self.slyear.sliderReleased.connect(self.updFig)
         self.txtyear.returnPressed.connect(self.updSl)
         self.actionDatabase_info.triggered.connect(self.edit)
+        self.btnglobe.clicked.connect(self.globebutton)
+        self.chkconflicts.stateChanged.connect(self.conflictCheck)
+        self.chkeclipses.stateChanged.connect(self.eclipseCheck)
 
         fig = plotmap()
         self.addmpl(fig)
+
+        self.chkconflicts.toggle()
+        self.chkeclipses.toggle()
+
+    def globebutton(self):
+        if self.plot2D:
+            self.plot2D = False
+            self.btnglobe.setText('Map view')
+            self.updFig()
+
+        else:
+            self.plot2D = True
+            self.btnglobe.setText('Globe view')
+            self.updFig()
+
+
+    def conflictCheck(self):
+        if self.Ccheck:
+            self.Cplot = True
+            self.Ccheck = False
+            self.updFig()
+        else:
+            self.Cplot = False
+            self.Ccheck = True
+            self.updFig()
+
+    def eclipseCheck(self):
+        if self.Echeck:
+            self.Eplot = True
+            self.Echeck = False
+            self.updFig()
+        else:
+            self.Eplot = False
+            self.Echeck = True
+            self.updFig()
 
     ######################### Edit textbox and slider #########################
     def updTxt(self):
@@ -56,9 +99,8 @@ class Main(QMainWindow, Ui_MainWindow):
             pass
         
         failed = False
-        fig1 = get_conflicts(self.engine, int(self.txtyear.text()))
         try:
-            
+            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D)
             self.addmpl(fig1)
         except Exception as e:
             print(e)
@@ -79,17 +121,23 @@ class Main(QMainWindow, Ui_MainWindow):
         ydata = artist.get_ydata()
 
         if ind[0] in range(len(xdata)):
-            print('The coordinates are {}, {}'.format(xdata[ind[0]],ydata[ind[0]]))
             self.updTxtinfo(ind, artist)
         return ind[0]
 
     def updTxtinfo(self, ind, artist):
-        print('updating text boxes...')
-        self.txteclipse.setText('ecl')
         lat = artist.get_ydata()[ind[0]]
         lon = artist.get_xdata()[ind[0]]
         year = int(self.txtyear.text())
-        self.txtconfinfo.setText(get_confinfo(self.engine, lat, lon, year))        
+        conflict = True
+        try:
+            self.txtconfinfo.setText(get_confinfo(self.engine, lat, lon, year))
+        except:
+            conflict = False
+        if not conflict:
+            try:
+                self.txteclipse.setText(get_eclipseinfo(self.engine, lat, lon, year))
+            except:
+                pass
 
     def updConflist(self):
         self.txtconflist.setText(get_conflist(self.engine, int(self.txtyear.text())))

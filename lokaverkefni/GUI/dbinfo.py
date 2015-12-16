@@ -1,7 +1,6 @@
 from PyQt4.uic import loadUiType
 import sys
 from PyQt4 import QtGui
-from libs.populate_sql import sql_create_database, sql_populate_database
 from sqlalchemy import create_engine
 Ui_dbDialog, QWidget = loadUiType('GUI/dbDialog.ui')
 
@@ -25,6 +24,7 @@ class DBInfo(QWidget, Ui_dbDialog):
         self.btnpopulate.clicked.connect(self.createdb)
 
     def createdb(self):
+        from libs.populate_sql import sql_create_database, sql_populate_database
         try:
             sql_create_database(self.txtUser.text(), self.txtPwd.text(), self.txtDb.text(), self.txtHost.text())
             self.parent.engine = sql_populate_database(self.txtUser.text(), self.txtPwd.text(), self.txtDb.text(), self.txtHost.text())
