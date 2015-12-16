@@ -33,7 +33,7 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         os.mkdir(d)
 
     # Rotate the earth
-    for l in range((2*count-180),180,2):
+    for l in range((20*count-180),180,20):
         fig = plt.figure(figsize=(10,10))
         map = Basemap(projection='ortho', lat_0 = 23.4 , lon_0 = l ,resolution = 'l')
 
@@ -166,7 +166,7 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         os.mkdir(d)
 
     # Rotate the earth
-    for l in range((2*count-180),180,2):
+    for l in range((20*count-180),180,20):
         fig = plt.figure(figsize=(10,10))
         map = Basemap(projection='ortho', lat_0 = 23.4 , lon_0 = l ,resolution = 'l')
 
@@ -193,13 +193,13 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         count += 1
         plt.clf()
         plt.close(fig)
-        print('Percent completed: {} %'.format((count/180)*100))
+        print('Percent completed: {} %'.format((count*20/360)*100))
 
 
     frames = []
 
     # Put all the frame names in a list
-    for i in range(180):
+    for i in range(count):
         frames.append("./globeframes/frame{0}.png".format((str(i).rjust(3, "0"))))
 
     # Create a video file from the frames

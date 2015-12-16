@@ -9,6 +9,12 @@ def get_conflicts(engine, year,Eplot,Cplot,TwoD):
     Elats, Elons = get_eclipse_coords(engine, year)
     return plot2D(Elats,Elons,Eplot,Clats,Clons,Cplot,TwoD)
 
+def makethevideo(engine,year,Eplot,Cplot):
+    Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
+    Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
+    Elats, Elons = get_eclipse_coords(engine, year)
+    plotme(Elats,Elons,Eplot,Clats,Clons,Cplot)
+
 def get_maxyear(engine):
     return run_query(engine, 'max(year)', 'conflict').fetchall()[0][0]
 

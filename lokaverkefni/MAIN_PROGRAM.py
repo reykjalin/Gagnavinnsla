@@ -8,7 +8,7 @@ from matplotlib.backends.backend_qt4agg import (
     NavigationToolbar2QT as NavigationToolbar)
 import  matplotlib.pyplot as plt
 import GUI.dbinfo as db
-from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo, get_eclipseinfo
+from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo, get_eclipseinfo,makethevideo
 from libs.SpinTest import plotmap
 from libs.get_coords import get_locs_db
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
@@ -45,6 +45,12 @@ class Main(QMainWindow, Ui_MainWindow):
         self.btnglobe.clicked.connect(self.globebutton)
         self.chkconflicts.stateChanged.connect(self.conflictCheck)
         self.chkeclipses.stateChanged.connect(self.eclipseCheck)
+
+
+        self.btnglobe.clicked.connect(self.globebutton)
+        self.chkconflicts.stateChanged.connect(self.conflictCheck)
+        self.chkeclipses.stateChanged.connect(self.eclipseCheck)
+        self.actionGenerate_Globe.triggered.connect(self.globemovie)
 
         fig = plotmap()
         self.addmpl(fig)
@@ -122,6 +128,7 @@ class Main(QMainWindow, Ui_MainWindow):
 
         if ind[0] in range(len(xdata)):
             self.updTxtinfo(ind, artist)
+            self.txtconflictinfo.setValue(xdata[ind[0]])
         return ind[0]
 
     def updTxtinfo(self, ind, artist):
@@ -138,6 +145,9 @@ class Main(QMainWindow, Ui_MainWindow):
                 self.txteclipse.setText(get_eclipseinfo(self.engine, lat, lon, year))
             except:
                 pass
+
+    def globemovie(self):
+        makethevideo(self.engine,int(self.txtyear.text()), self.Eplot,self.Cplot)
 
     def updConflist(self):
         self.txtconflist.setText(get_conflist(self.engine, int(self.txtyear.text())))
