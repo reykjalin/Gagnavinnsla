@@ -304,6 +304,7 @@
     </property>
     <addaction name="actionDatabase_info"/>
     <addaction name="actionGenerate_Globe"/>
+    <addaction name="actionPlot_all"/>
    </widget>
    <addaction name="menuGenerate_Globe"/>
   </widget>
@@ -321,6 +322,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionPlot_all">
+   <property name="text">
+    <string>Plot all</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
    </property>
   </action>
  </widget>

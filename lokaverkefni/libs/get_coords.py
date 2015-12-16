@@ -67,3 +67,12 @@ def get_confinfo_data(engine, lat, lon, year):
 def get_eclipse_data(engine, lat, lon, year):
     lat, lon = to_str([lat,], [lon,])
     return run_query(engine, 'calendardate, central_dur, ecl_type, sun_alt, path_width', 'eclipse', "where lat = '{}' and long = '{}' and calendardate_year = {}".format(lat[0], lon[0], year)).fetchall()
+
+
+def get_all_conflicts(engine):
+    data = run_query(engine, 'lat, long', 'conflictlc').fetchall()
+    print(data)
+
+def get_all_eclipses(engine):
+    data = run_query(engine, 'lat, long', 'eclipselc').fetchall()
+    print(data)
