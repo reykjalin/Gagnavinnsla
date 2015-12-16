@@ -45,11 +45,6 @@ class Main(QMainWindow, Ui_MainWindow):
         self.btnglobe.clicked.connect(self.globebutton)
         self.chkconflicts.stateChanged.connect(self.conflictCheck)
         self.chkeclipses.stateChanged.connect(self.eclipseCheck)
-
-
-        self.btnglobe.clicked.connect(self.globebutton)
-        self.chkconflicts.stateChanged.connect(self.conflictCheck)
-        self.chkeclipses.stateChanged.connect(self.eclipseCheck)
         self.actionGenerate_Globe.triggered.connect(self.globemovie)
 
         fig = plotmap()
@@ -128,7 +123,6 @@ class Main(QMainWindow, Ui_MainWindow):
 
         if ind[0] in range(len(xdata)):
             self.updTxtinfo(ind, artist)
-            self.txtconflictinfo.setValue(xdata[ind[0]])
         return ind[0]
 
     def updTxtinfo(self, ind, artist):
