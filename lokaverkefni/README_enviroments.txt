@@ -18,6 +18,7 @@ til þess þarf:
 	 	6. sqlalchemy 
 	 	7. pygeocoder
 		8. psycopg2
+		9. moviepy
 	 	
 4. Ef kemur ASCII villa, þarf að bæta í efsta línu í kóðan # coding=utf-8	
 5. Til að fara ut úr enviroment slá in: deactivate
