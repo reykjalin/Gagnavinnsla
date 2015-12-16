@@ -40,7 +40,7 @@ def plotme(Elats,Elons,plotEclipse,Clats,Clons,plotConflict):
         map = Basemap(projection='ortho', lat_0 = 23.4 , lon_0 = l ,resolution = 'l')
 
         # Make the globe more realistic
-        map.bluemarble()
+        map.bluemarble(scale=0.2)
 
         if plotEclipse:
             # compute the native map projection coordinates for countries.
@@ -91,7 +91,7 @@ def plot2D(Elats,Elons,plotEclipse,Clats,Clons,plotConflict,Plot2D):
     map.drawcoastlines()
     #map.fillcontinents(color='coral',lake_color='aqua')
     #map.drawmapboundary(fill_color='aqua')
-    map.bluemarble()
+    map.bluemarble(scale=0.2)
     #draw the edge of the map projection region
     map.drawcountries()
     map.drawstates()
@@ -124,7 +124,7 @@ def plotmap():
     map.drawcoastlines()
     #map.fillcontinents(color='coral',lake_color='aqua')
     #map.drawmapboundary(fill_color='aqua')
-    map.bluemarble()
+    map.bluemarble(scale=0.2)
     #draw the edge of the map projection region
     map.drawcountries()
     map.drawstates()
