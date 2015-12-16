@@ -26,10 +26,6 @@ Við hönnun á GUI þá var notast við Qt4 Designer \cite{qt4}. Ákveðið var
 Forritið lætur notandan vita hvort tenging hafi tekist (sjá mynd \ref{fig:logsucces}). Eftir það sprettur upp aðal gluggi forritsins(sjá mynd \ref{fig:openScreen}), sem er í grunninn heimskort með tímastiku fyrir neðan. Kortið sínir einnig 4 dálka sem sína ástand viðkomandi árs, en hann er útskýrður  í kafla \ref{virkni}.Keyrsluskráin hefur eiginlega tvískipta virkni, annars vegar að teikna staðseningar inná kort sem eru smellanlegir og að tala við gagnagrunninn. Ef smellt er á staðsetningu, nær forritið líka í allar viðeigandi upplýsingar og birtir í viðkomandi dálkum.
  
 
-%Þó svo að eitt forrit sé keyrt í command glugganum, þá fer virkjast aragrúi af undirforritum eins og sést á mynd \ref{fig:diagram}. Aðalforritið hefur tvær leiðir til að byrja með, skrá sig inn í gagnagrunn sem er nú þegar fyrir hendi, eða búa hann til. Ef notandi velur að búa til gagnagrunn, keyrir forritið populate\_sql.py sem býr til gagnagrunninn, allar töflurnar og fyllir þær, notandinn þarf þó að vera búinn að fylla út alla dálka á fyrsta spretti glugganum og passa nafnið á nýja gagnagrunninum sé ekki frátekið en ef svo er kemur villumelding.
-
-%Þegar notandi er búinn að búa til gagnagrunninn og aðalglugginn opnast er fallið komið inn í GUI.py skránna, sem hefur eiginlega tvískipta virkni, annars vegar að teikna staðseningar inná kort sem eru smellanlegir og að tala við gagnagrunninn, ná í upplýsingar fyrir alla viðeigandi dálka. Ef smellt er á staðsetningu, nær forritið líka í allar viðeigandi upplýsingar og birtir í viðkomandi dálkum.
-
 \subsection{Gögn}
 Fyrst var farið á veraldarvefin og leitað af gögnum sem hægt væri að vinna með, gögnin voru fundin á síðu hjá NASA \cite{Eclipse}, Stockholm international peace research institution \cite{weapon} og Háskólanum í Uppsölum í Svíþjóð \cite{conflict}. Gögnin voru tekin inn á csv formi, þau hreinsuð í python og unnið með þau sem Dataframes áður en þau voru flutt inn í gagnagrunninn sjálfan. Þegar kom að því að túlka hnitin var stuðst við pygeocoder pakkann \cite{geocoder}. Pakkinn tók við hnitum og gaf heiti viðkomandi lands og öfugt.
 
@@ -43,7 +39,9 @@ Eftir að notandi er búinn að tengjast gagnagrunni þá getur hann skoðar ým
 
 \section{Niðurstöður}\label{nidurstodur}
 
-Þegar staðsetningar sólmyrkvana er teiknuð á hnöttinn sást að hringir myndast á breiddargráðum 60$^{\circ}$-75$^{\circ}$ bæði á norður- (sjá mynd \ref{fig:3DNP}) og suðurhveli jarðar (sjá mynd \ref{fig:3DSP}) og sú lína spannar ca 43,6\% af öllum sólmyrkvunum sem hafa verið á jörðinni frá tímabilinu 1901 - 2100. Hægt er að sjá að á svæðum sem sólmyrkvarnir mynda þéttan kjarna að það eru mun færri stríð á þessum svæðum sbr60$^{\circ}$-75$^{\circ}$
+Þegar staðsetningar sólmyrkvana er teiknuð á hnöttinn sást að hringir myndast á breiddargráðum 60$^{\circ}$-75$^{\circ}$ bæði á norður- (sjá mynd \ref{fig:3DNP}) og suðurhveli jarðar (sjá mynd \ref{fig:3DSP}) og sú lína spannar ca 43,6\% af öllum sólmyrkvunum sem hafa verið á jörðinni frá tímabilinu 1901 - 2100. Hægt er að sjá að á svæðum sem sólmyrkvarnir mynda þéttan kjarna að það eru mun færri stríð á þessum svæðum sbr. 60$^{\circ}$-75$^{\circ}$.
+
+Einnig er hægt að sjá ef vel er rínt í mynd \ref{fig:3DNP} að nær engir sólmyrkvar eru alveg frá mið Asíu, niður með miðausturlöndunum og alveg inn í miðja Afríku. Einnig er það líka svæðið sem er með hæsta þéttleika átaka ef öll gögn gagnasafnsins eru teiknuð upp í einu. Út frá þessum gögnum er því hægt að draga huglæt álit á því að því fleiri átök á landsvæði, því færri sólmyrkvar. \textbf{Always stay on the dark side of life !}
 \pagebreak
 
 \begin{figure}
