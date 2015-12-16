@@ -8,7 +8,7 @@ from matplotlib.backends.backend_qt4agg import (
     NavigationToolbar2QT as NavigationToolbar)
 import  matplotlib.pyplot as plt
 import GUI.dbinfo as db
-from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo, get_eclipseinfo,makethevideo
+from libs.get_data import get_conflicts, get_minyear, get_maxyear, get_conflist, get_exportlist, get_confinfo, get_eclipseinfo, makethevideo, plot_all
 from libs.SpinTest import plotmap
 from libs.get_coords import get_locs_db
 Ui_MainWindow, QMainWindow = loadUiType('GUI/mainframe.ui')
@@ -26,6 +26,7 @@ class Main(QMainWindow, Ui_MainWindow):
         self.Eplot = True
         self.Ccheck = True
         self.Cplot = True
+        self.plotall = False
         
         super(Main, self).__init__()
         self.setupUi(self)
@@ -46,12 +47,17 @@ class Main(QMainWindow, Ui_MainWindow):
         self.chkconflicts.stateChanged.connect(self.conflictCheck)
         self.chkeclipses.stateChanged.connect(self.eclipseCheck)
         self.actionGenerate_Globe.triggered.connect(self.globemovie)
+        self.actionPlot_all.triggered.connect(self.plot_all_datapoints)
 
         fig = plotmap()
         self.addmpl(fig)
 
         self.chkconflicts.toggle()
         self.chkeclipses.toggle()
+
+    def plot_all_datapoints(self):
+        self.plotall = True
+        self.updFig()
 
     def globebutton(self):
         if self.plot2D:
@@ -87,8 +93,10 @@ class Main(QMainWindow, Ui_MainWindow):
 
     ######################### Edit textbox and slider #########################
     def updTxt(self):
+        self.plotall = False
         self.txtyear.setText(str(self.slyear.value()))
     def updSl(self):
+        self.plotall = False
         self.slyear.setValue(int(self.txtyear.text()))
         self.updFig()
 
@@ -101,7 +109,7 @@ class Main(QMainWindow, Ui_MainWindow):
         
         failed = False
         try:
-            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D)
+            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D,self.plotall)
             self.addmpl(fig1)
         except Exception as e:
             print(e)
@@ -114,7 +122,7 @@ class Main(QMainWindow, Ui_MainWindow):
         else:
             self.updConflist()
             self.updExplist()
- 
+
     def onpick(self, event):
         ind = event.ind
         artist = event.artist
@@ -141,7 +149,7 @@ class Main(QMainWindow, Ui_MainWindow):
                 pass
 
     def globemovie(self):
-        makethevideo(self.engine,int(self.txtyear.text()), self.Eplot,self.Cplot)
+        makethevideo(self.engine,int(self.txtyear.text()), self.Eplot,self.Cplot,self.plotall)
 
     def updConflist(self):
         self.txtconflist.setText(get_conflist(self.engine, int(self.txtyear.text())))

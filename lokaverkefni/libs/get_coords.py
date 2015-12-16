@@ -70,9 +70,19 @@ def get_eclipse_data(engine, lat, lon, year):
 
 
 def get_all_conflicts(engine):
+    lats = []
+    lons = []
     data = run_query(engine, 'lat, long', 'conflictlc').fetchall()
-    print(data)
+    for d in data:
+        lats.append(d[0])
+        lons.append(d[1])
+    return lats, lons
 
 def get_all_eclipses(engine):
+    lats = []
+    lons = []
     data = run_query(engine, 'lat, long', 'eclipselc').fetchall()
-    print(data)
+    for d in data:
+        lats.append(d[0])
+        lons.append(d[1])
+    return lats, lons

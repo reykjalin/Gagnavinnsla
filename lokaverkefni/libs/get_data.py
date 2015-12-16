@@ -1,18 +1,24 @@
 # coding=utf-8
 from libs.execute_query import run_query
-from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords, get_export_typeprice, get_confinfo_data, get_eclipse_data
+from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords, get_export_typeprice, get_confinfo_data, get_eclipse_data, get_all_conflicts, get_all_eclipses
 from libs.SpinTest import plot2D, plotme
 
-def get_conflicts(engine, year,Eplot,Cplot,TwoD):
-    Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
-    Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
-    Elats, Elons = get_eclipse_coords(engine, year)
+def get_conflicts(engine, year,Eplot,Cplot,TwoD, plotall):
+    if not plotall:
+        Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
+        Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
+        Elats, Elons = get_eclipse_coords(engine, year)
+    else:
+        Clats, Clons, Elats, Elons = plot_all(engine)
     return plot2D(Elats,Elons,Eplot,Clats,Clons,Cplot,TwoD)
 
-def makethevideo(engine,year,Eplot,Cplot):
-    Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
-    Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
-    Elats, Elons = get_eclipse_coords(engine, year)
+def makethevideo(engine,year,Eplot,Cplot, plotall):
+    if not plotall:
+        Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
+        Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
+        Elats, Elons = get_eclipse_coords(engine, year)
+    else:
+        Clats, Clons, Elats, Elons = plot_all(engine)
     plotme(Elats,Elons,Eplot,Clats,Clons,Cplot)
 
 def get_maxyear(engine):
@@ -76,3 +82,8 @@ def get_eclipseinfo(engine, lat, lon, year):
                 'Sun altitude: ' + str(d['sun_alt']) + '°' + '\n' +\
                 'Path width: ' + d['path_width'] + 'km' + '\n\n'
     return info
+
+def plot_all(engine):
+    clats, clons = get_all_conflicts(engine)
+    elats, elons = get_all_eclipses(engine)
+    return clats, clons, elats, elons
