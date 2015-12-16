@@ -288,8 +288,6 @@
     </item>
    </layout>
    <zorder></zorder>
-   <zorder>chkeclipses</zorder>
-   <zorder>btnglobe</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -320,6 +318,9 @@
   <action name="actionGenerate_Globe">
    <property name="text">
     <string>Generate Globe</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
    </property>
   </action>
  </widget>
