@@ -1,6 +1,6 @@
 from pygeocoder import Geocoder # pip install pygeocoder
 from libs.execute_query import run_query
-from libs.coord_converter import to_num
+from libs.coord_converter import to_num, to_str
 
 def get_coords_geocoder(locs):
     retlat = []
@@ -61,8 +61,13 @@ def get_export_typeprice(engine, year):
     return typeprice
 
 def get_confinfo_data(engine, lat, lon, year):
-    loc = get_loc_from_coords_db(engine, [lat,], [lon,], 'conflictlc')
-    print('loc1: ',loc)
-    loc = loc[0][0][0]
-    print('loc2: ', loc)
-    return run_query(engine, 'location, sidea, sideb, territoryname, startdate, ependdate', 'conflict', "where year = {} and location = '{}'".format(year, loc), '', 'order by location, startdate, sidea, sideb, territoryname').fetchall()
+    loc = get_loc_from_coords_db(engine, [lat,], [lon,], 'conflictlc')[0][0][0]
+    return run_query(engine, 'location, sidea, sideb, territoryname, startdate, ependdate', 'conflict', "where year = {} and location like '%%{}%%'".format(year, loc), '', 'order by location, startdate, sidea, sideb, territoryname').fetchall()
+
+def get_eclipse_data(engine, lat, lon, year):
+    print('latraw: ', lat)
+    print('lonraw: ', lon)
+    lat, lon = to_str([lat,], [lon,])
+    print('lat: ', lat)
+    print('lon: ', lon)
+    return run_query(engine, 'calendardate, central_dur, ecl_type, sun_alt, path_width', 'eclipse', "where lat = '{}' and long = '{}' and calendardate_year = {}".format(lat[0], lon[0], year)).fetchall()
