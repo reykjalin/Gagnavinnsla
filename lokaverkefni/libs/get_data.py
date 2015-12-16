@@ -1,3 +1,4 @@
+# coding=utf-8
 from libs.execute_query import run_query
 from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords, get_export_typeprice, get_confinfo_data, get_eclipse_data
 from libs.SpinTest import plot2D, plotme
