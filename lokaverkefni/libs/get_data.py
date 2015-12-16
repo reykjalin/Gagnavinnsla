@@ -3,14 +3,14 @@ from libs.execute_query import run_query
 from libs.get_coords import get_locs_db, get_coords_from_loc_db, get_eclipse_coords, get_export_typeprice, get_confinfo_data, get_eclipse_data, get_all_conflicts, get_all_eclipses
 from libs.SpinTest import plot2D, plotme
 
-def get_conflicts(engine, year,Eplot,Cplot,TwoD, plotall):
+def get_conflicts(engine, year,Eplot,Cplot,TwoD, plotall, deg):
     if not plotall:
         Cdata = get_locs_db(engine, 'conflict', 'where year = {}'.format(year))
         Clats, Clons = get_coords_from_loc_db(engine, Cdata, 'conflictlc')
         Elats, Elons = get_eclipse_coords(engine, year)
     else:
         Clats, Clons, Elats, Elons = plot_all(engine)
-    return plot2D(Elats,Elons,Eplot,Clats,Clons,Cplot,TwoD)
+    return plot2D(Elats,Elons,Eplot,Clats,Clons,Cplot,TwoD,deg)
 
 def makethevideo(engine,year,Eplot,Cplot, plotall):
     if not plotall:

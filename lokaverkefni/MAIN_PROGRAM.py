@@ -32,8 +32,9 @@ class Main(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         
         # TODO: make queries for max year and min year
+        self.year = get_minyear(self.engine)
         self.slyear.setMaximum(get_maxyear(self.engine))
-        self.slyear.setMinimum(get_minyear(self.engine))
+        self.slyear.setMinimum(self.year)
 
         ######################### Initialize text for selected year #########################
         self.txtyear.setText(str(self.slyear.value()))
@@ -72,6 +73,9 @@ class Main(QMainWindow, Ui_MainWindow):
         else:
             self.plot2D = True
             self.btnglobe.setText('Globe view')
+            self.year = get_minyear(self.engine)
+            self.slyear.setMaximum(get_maxyear(self.engine))
+            self.slyear.setMinimum(self.year)
             self.updFig()
 
     ######################### Checkbox features #########################
@@ -97,10 +101,12 @@ class Main(QMainWindow, Ui_MainWindow):
 
     ######################### Edit textbox and slider #########################
     def updTxt(self):
-        self.plotall = False
+        if  self.plot2D:
+            self.plotall = False
         self.txtyear.setText(str(self.slyear.value()))
     def updSl(self):
-        self.plotall = False
+        if self.plot2D:
+            self.plotall = False
         self.slyear.setValue(int(self.txtyear.text()))
         self.updFig()
 
@@ -112,8 +118,9 @@ class Main(QMainWindow, Ui_MainWindow):
             pass
         
         failed = False
+        self.updYear()
         try:
-            fig1 = get_conflicts(self.engine, int(self.txtyear.text()),self.Eplot ,self.Cplot ,self.plot2D,self.plotall,deg)
+            fig1 = get_conflicts(self.engine, self.year, self.Eplot, self.Cplot, self.plot2D, self.plotall, int(self.txtyear.text()))
             self.addmpl(fig1)
         except Exception as e:
             print(e)
@@ -126,6 +133,11 @@ class Main(QMainWindow, Ui_MainWindow):
         else:
             self.updConflist()
             self.updExplist()
+
+    def updYear(self):
+        if self.plot2D:
+            self.year = int(self.txtyear.text())
+            
 
     ######################### Check if event is clicked #########################
     def onpick(self, event):
